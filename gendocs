@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+# Generate HTML files from markdown ones
+# Argument gives specific files if present; otherwise convert everything
+bqn md.bqn ${1-src/*.md} ${@:2:$#}
