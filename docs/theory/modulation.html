@@ -1,0 +1,151 @@
+<head>
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <link href="../style.css" rel="stylesheet"/>
+  <title>BQN Musician: Tertian scale modulation</title>
+</head>
+<div class="nav">(<a href="https://github.com/mlochbaum/BQN-musician">github</a>) / <a href="../index.html">BQN Musician</a> / <a href="index.html">theory</a></div>
+<h1 id="tertian-scale-modulation"><a class="header" href="#tertian-scale-modulation">Tertian scale modulation</a></h1>
+<p>If you draw a graph connecting every <a href="tertian.html">tertian scale</a> to all the others that are only off by a single note, you get this:</p>
+<svg viewBox='-320 -128 640 352'>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' stroke-width='2.5' d='M-195 -67m78 45m0 130l50 87m0 -130m-50 -87m50 87m-78 -45m0 130l78 45m-50 -87l-78 -45l130 0l50 87l78 45l-50 -87m-78 -45l78 45l-130 0l50 87l130 0m-78 -45l-130 0l87 -50l78 45l130 0l-78 -45m-130 0l130 0l-87 50l78 45l87 -50m-130 0l-87 50l45 -78l130 0l87 -50l-130 0m-87 50l87 -50l-45 78l130 0l45 -78m-87 50l-45 78l0 -130l87 -50l45 -78l-87 50m-45 78l45 -78l0 130l87 -50l0 -130m-45 78l0 130m-50 -87m45 -78m0 -130m-45 78m0 130m0 -130m50 87l45 -78m-50 -87m0 130m50 87l-78 -45l0 -130m-50 -87m0 130m50 87m-50 -87m78 45m0 -130m-78 -45m50 87l78 45l-130 0m-50 -87m-78 -45m50 87m78 45l-78 -45l130 0m-50 -87m-130 0m78 45m130 0m-87 50m-78 -45m-130 0m78 45m130 0m-130 0m87 -50m-78 -45m-87 50m130 0m87 -50m-45 78m-130 0m-87 50m130 0m87 -50m-87 50m45 -78m-130 0m-45 78m87 -50m45 -78m0 130l-87 50l-45 78l87 -50m45 -78l-45 78m0 -130m-87 50m0 130m45 -78m0 -130m50 87m-45 78m0 130l45 -78m0 -130m0 130l-50 -87l-45 78l50 87m0 -130m-50 -87'/>
+</svg>
+
+<p>More precisely, the paths show modulations from one scale to another that move one note by a semitone, without changing the root. The direction of the path indicates which note is being moved—along one direction it might mean moving the note 5 half steps above the root to 6, which would mean the other direction moves 6 back to 5.</p>
+<p>It's not as chaotic as it looks. First, let's highlight the diatonic scales. These are the most connected class and form something of a backbone for the others. The directions have been chosen according to the circle of fifths so that these scales follow a simple path.</p>
+<svg viewBox='-320 -128 640 352'>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' stroke-width='2.5' d='M-195 -67m78 45m0 130l50 87m0 -130m-50 -87m50 87m-78 -45m0 130l78 45m-50 -87l-78 -45l130 0l50 87l78 45l-50 -87m-78 -45l78 45l-130 0l50 87l130 0m-78 -45l-130 0l87 -50l78 45l130 0l-78 -45m-130 0l130 0l-87 50l78 45l87 -50m-130 0l-87 50l45 -78l130 0l87 -50l-130 0m-87 50l87 -50l-45 78l130 0l45 -78m-87 50l-45 78l0 -130l87 -50l45 -78l-87 50m-45 78l45 -78l0 130l87 -50l0 -130m-45 78l0 130m-50 -87m45 -78m0 -130m-45 78m0 130m0 -130m50 87l45 -78m-50 -87m0 130m50 87l-78 -45l0 -130m-50 -87m0 130m50 87m-50 -87m78 45m0 -130m-78 -45m50 87l78 45l-130 0m-50 -87m-78 -45m50 87m78 45l-78 -45l130 0m-50 -87m-130 0m78 45m130 0m-87 50m-78 -45m-130 0m78 45m130 0m-130 0m87 -50m-78 -45m-87 50m130 0m87 -50m-45 78m-130 0m-87 50m130 0m87 -50m-87 50m45 -78m-130 0m-45 78m87 -50m45 -78m0 130l-87 50l-45 78l87 -50m45 -78l-45 78m0 -130m-87 50m0 130m45 -78m0 -130m50 87m-45 78m0 130l45 -78m0 -130m0 130l-50 -87l-45 78l50 87m0 -130m-50 -87'/>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' class='yellow' style='fill:none' stroke-width='4' d='M-195 63l50 87l78 45l130 0l87 -50l45 -78l0 -130'/>
+  <g fill='currentColor' font-size='14'>
+    <text dy='0.33em' text-anchor='end' x='-206.7' y='66.78'>Locrian</text>
+    <text dy='0.33em' text-anchor='end' x='-153.7' y='159'>Phrygian</text>
+    <text dy='0.33em' text-anchor='middle' x='-71.02' y='206.7'>Aeolian (minor)</text>
+    <text dy='0.33em' text-anchor='middle' x='66.78' y='206.7'>Dorian</text>
+    <text dy='0.33em' text-anchor='start' x='159' y='153.7'>Mixolydian</text>
+    <text dy='0.33em' text-anchor='start' x='206.7' y='71.02'>Ionian (major)</text>
+    <text dy='0.33em' text-anchor='start' x='206.7' y='-66.78'>Lydian</text>
+  </g>
+</svg>
+
+<p>The entire rest of the arrangement is made up of one structure that slides along the backbone. The Greek name for this structure's shape is &quot;kubos&quot;, or, in English, &quot;cube&quot;. To study it, let's look at the relationship between one mode and another three apart, say, minor and major.</p>
+<svg viewBox='-256 -64 512 128'>
+  <g fill='currentColor'>
+    <g font-size='19' text-anchor='middle'>
+      <text dy='0.33em' x='-70' y='-36'>0</text>
+      <text dy='0.33em' x='-30' y='-36'>2</text>
+      <text dy='0.33em' x='-10' y='-36'>3</text>
+      <text dy='0.33em' x='30' y='-36'>5</text>
+      <text dy='0.33em' x='70' y='-36'>7</text>
+      <text dy='0.33em' x='90' y='-36'>8</text>
+      <text dy='0.33em' x='130' y='-36'>10</text>
+      <text dy='0.33em' x='-70' y='36'>0</text>
+      <text dy='0.33em' x='-30' y='36'>2</text>
+      <text dy='0.33em' x='10' y='36'>4</text>
+      <text dy='0.33em' x='30' y='36'>5</text>
+      <text dy='0.33em' x='70' y='36'>7</text>
+      <text dy='0.33em' x='110' y='36'>9</text>
+      <text dy='0.33em' x='150' y='36'>11</text>
+    </g>
+    <g font-size='16' text-anchor='end'>
+      <text dy='0.33em' x='-110' y='-36'>Minor</text>
+      <text dy='0.33em' x='-110' y='36'>Major</text>
+    </g>
+    <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' stroke-width='2.5' d='M-70 -20L-70 20M-30 -20L-30 20M30 -20L30 20M70 -20L70 20'/>
+    <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' class='yellow' style='fill:none' stroke-width='4' d='M-10 -20L10 20M90 -20L110 20M130 -20L150 20'/>
+  </g>
+</svg>
+
+<p>Three changes are required to get from one to the other. Going along diatonic modes, we'd first change 8 to 9 to get to dorian, then 3 to 4 to get to mixolydian, and finally 10 to 11. But other orderings are possible. In baroque music particularly it's common to see a progression of minor, harmonic minor, melodic minor, which moves 10, then 8, then 3. Given that these three moves are completely independent, we can choose to use or leave out each one, giving 2³ possible combinations connected like the corners of a cube. Three is the greatest number of transitions that can be reordered like this, because a fourth would be 2 to 3 or 5 to 4, and this requires the 3↔4 transition be done first, or it gives a non-tertian scale with two half steps next to each other.</p>
+<svg viewBox='-256 -96 512 192'>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' stroke-width='1.5' d='M-75 60l100 0l50 -40l-100 0l-50 40l0 -80l100 0l50 -40l-100 0l-50 40l50 -40l0 80l100 0l0 -80l-50 40l0 80'/>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' class='yellow' style='fill:none' stroke-width='4' d='M-75 60l100 0l50 -40l0 -80'/>
+  <g fill='currentColor' font-size='14'>
+    <g text-anchor='end'>
+      <text dy='0.33em' x='-87' y='60'>Minor</text>
+      <text dy='0.33em' x='-87' y='-20'>Harmonic minor</text>
+      <text dy='0.33em' x='-37' y='20'>Melodic major</text>
+      <text dy='0.33em' x='-37' y='-60'>Harmonic major</text>
+    </g>
+    <g>
+      <text dy='0.33em' x='37' y='60'>Dorian</text>
+      <text dy='0.33em' x='37' y='-20'>Melodic minor</text>
+      <text dy='0.33em' x='87' y='20'>Mixolydian</text>
+      <text dy='0.33em' x='87' y='-60'>Major</text>
+    </g>
+  </g>
+</svg>
+
+<p>Two corners haven't been mentioned yet. Harmonic major is an unusual scale formed from major by making the 9→8 move so that the top four notes match harmonic minor. Melodic major, a mix of minor and mixolydian, is less weird. I've heard it called the &quot;wonder scale&quot;. It's also a mode of melodic minor. Take a look at the right and bottom faces of the cube. They both have diatonic scales at three corners, plus a fourth scale towards the center of the cube. All of these scales are the same, but translated by a fifth—up a fifth when moving from minor to dorian for example.</p>
+<svg viewBox='-256 -96 512 192'>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' stroke-width='1.5' d='M-75 60l100 0l50 -40l-100 0l-50 40l0 -80l100 0l50 -40l-100 0l-50 40l50 -40l0 80l100 0l0 -80l-50 40l0 80'/>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' class='yellow' style='fill:none' stroke-width='4' d='M-75 60l100 0l50 -40l0 -80'/>
+  <g fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' style='fill:none' stroke-width='3' class='red'><path d='M-75 60l100 0l50 -40l-100 0l-50 40'/></g>
+  <g fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' style='fill:none' stroke-width='3' class='bluegreen'><path d='M25 60l50 -40l0 -80l-50 40l0 80'/></g>
+  <g fill='currentColor' font-size='14'>
+    <g text-anchor='end'>
+      <text dy='0.33em' x='-87' y='60'>Minor</text>
+      <text dy='0.33em' x='-87' y='-20'>Harmonic minor</text>
+      <text dy='0.33em' x='-37' y='20'>Melodic major</text>
+      <text dy='0.33em' x='-37' y='-60'>Harmonic major</text>
+    </g>
+    <g>
+      <text dy='0.33em' x='37' y='60'>Dorian</text>
+      <text dy='0.33em' x='37' y='-20'>Melodic minor</text>
+      <text dy='0.33em' x='87' y='20'>Mixolydian</text>
+      <text dy='0.33em' x='87' y='-60'>Major</text>
+    </g>
+  </g>
+</svg>
+
+<p>Here's the scale graph again. Can you see the four complete cubes locrian→dorian, phrygian→mixolydian, aeolian→ionian, and dorian→lydian? After these, there are more two faces added on each side, which come from partial cubes.</p>
+<svg viewBox='-320 -128 640 352'>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' stroke-width='2.5' d='M-195 -67m78 45m0 130l50 87m0 -130m-50 -87m50 87m-78 -45m0 130l78 45m-50 -87l-78 -45l130 0l50 87l78 45l-50 -87m-78 -45l78 45l-130 0l50 87l130 0m-78 -45l-130 0l87 -50l78 45l130 0l-78 -45m-130 0l130 0l-87 50l78 45l87 -50m-130 0l-87 50l45 -78l130 0l87 -50l-130 0m-87 50l87 -50l-45 78l130 0l45 -78m-87 50l-45 78l0 -130l87 -50l45 -78l-87 50m-45 78l45 -78l0 130l87 -50l0 -130m-45 78l0 130m-50 -87m45 -78m0 -130m-45 78m0 130m0 -130m50 87l45 -78m-50 -87m0 130m50 87l-78 -45l0 -130m-50 -87m0 130m50 87m-50 -87m78 45m0 -130m-78 -45m50 87l78 45l-130 0m-50 -87m-78 -45m50 87m78 45l-78 -45l130 0m-50 -87m-130 0m78 45m130 0m-87 50m-78 -45m-130 0m78 45m130 0m-130 0m87 -50m-78 -45m-87 50m130 0m87 -50m-45 78m-130 0m-87 50m130 0m87 -50m-87 50m45 -78m-130 0m-45 78m87 -50m45 -78m0 130l-87 50l-45 78l87 -50m45 -78l-45 78m0 -130m-87 50m0 130m45 -78m0 -130m50 87m-45 78m0 130l45 -78m0 -130m0 130l-50 -87l-45 78l50 87m0 -130m-50 -87'/>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' class='yellow' style='fill:none' stroke-width='4' d='M-195 63l50 87l78 45l130 0l87 -50l45 -78l0 -130'/>
+  <g fill='currentColor' font-size='14'>
+    <text dy='0.33em' text-anchor='end' x='-206.7' y='66.78'>Locrian</text>
+    <text dy='0.33em' text-anchor='end' x='-153.7' y='159'>Phrygian</text>
+    <text dy='0.33em' text-anchor='middle' x='-71.02' y='206.7'>Aeolian (minor)</text>
+    <text dy='0.33em' text-anchor='middle' x='66.78' y='206.7'>Dorian</text>
+    <text dy='0.33em' text-anchor='start' x='159' y='153.7'>Mixolydian</text>
+    <text dy='0.33em' text-anchor='start' x='206.7' y='71.02'>Ionian (major)</text>
+    <text dy='0.33em' text-anchor='start' x='206.7' y='-66.78'>Lydian</text>
+  </g>
+</svg>
+
+<p>The modes of melodic minor are tightly connected to the diatonic scales, since each one (except two at the edges) connects to two of them. Modes of harmonic minor and major only connect to one diatonic mode—in fact, each connects to one scale from each other class (again, except at boundaries). The move from minor to harmonic minor or major to harmonic major is further out of order than the moves to melodic minor modes, since it skips two other moves instead of one, so in that sense these scales are &quot;less diatonic&quot;.</p>
+<h2 id="going-off-root"><a class="header" href="#going-off-root">Going off-root</a></h2>
+<p>Okay, the scale graph clearly has some symmetry, but why is it so limited? Here's the full version:</p>
+<svg viewBox='-256 -224 512 448'>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' stroke-width='2.5' d='M-195 -67l78 45l0 130l50 87l0 -130m-50 -87l50 87l-78 -45l0 130l78 45m-50 -87l-78 -45l130 0l50 87l78 45l-50 -87m-78 -45l78 45l-130 0l50 87l130 0m-78 -45l-130 0l87 -50l78 45l130 0l-78 -45m-130 0l130 0l-87 50l78 45l87 -50m-130 0l-87 50l45 -78l130 0l87 -50l-130 0m-87 50l87 -50l-45 78l130 0l45 -78m-87 50l-45 78l0 -130l87 -50l45 -78l-87 50m-45 78l45 -78l0 130l87 -50l0 -130m-45 78l0 130l-50 -87l45 -78l0 -130l-45 78m0 130l0 -130l50 87l45 -78l-50 -87m0 130l50 87l-78 -45l0 -130l-50 -87l0 130m50 87l-50 -87l78 45l0 -130l-78 -45m50 87l78 45l-130 0l-50 -87l-78 -45l50 87m78 45l-78 -45l130 0l-50 -87l-130 0m78 45l130 0l-87 50l-78 -45l-130 0l78 45m130 0l-130 0l87 -50l-78 -45l-87 50m130 0l87 -50l-45 78l-130 0l-87 50l130 0m87 -50l-87 50l45 -78l-130 0l-45 78m87 -50l45 -78l0 130l-87 50l-45 78l87 -50m45 -78l-45 78l0 -130l-87 50l0 130m45 -78l0 -130l50 87l-45 78l0 130l45 -78m0 -130l0 130l-50 -87l-45 78l50 87m0 -130l-50 -87'/>
+</svg>
+
+<p>This graph includes 7-note tertian scales that <em>don't</em> contain the root. Generally, these wouldn't be considered scales, although it's possible to play in them if the impression of a root note is strong enough from outside context. For example, from a lydian scale you might modulate to a sort of super-lydian by moving the root up a step, giving the impression of a scale even brighter than lydian. If you rebase the scale at the moved note as a new root, you get locrian, but it's not really the same scale: that's a mode change. To really get to locrian, you have to make 5 more modulations through various rootless scales until there's space to sharpen the top note into the root position. In total, you can get from lydian to locrian by flattening every note but the root, or by sharpening every note <em>including</em> the root, except the shared note 6.</p>
+<svg viewBox='-256 -64 512 128'>
+  <g fill='currentColor' font-size='19' text-anchor='middle'>
+    <text dy='0.33em' x='-70' y='-36'>0</text>
+    <text dy='0.33em' x='-30' y='-36'>2</text>
+    <text dy='0.33em' x='10' y='-36'>4</text>
+    <text dy='0.33em' x='50' y='-36'>6</text>
+    <text dy='0.33em' x='70' y='-36'>7</text>
+    <text dy='0.33em' x='110' y='-36'>9</text>
+    <text dy='0.33em' x='150' y='-36'>11</text>
+    <text dy='0.33em' x='-70' y='36'>0</text>
+    <text dy='0.33em' x='-50' y='36'>1</text>
+    <text dy='0.33em' x='-10' y='36'>3</text>
+    <text dy='0.33em' x='30' y='36'>5</text>
+    <text dy='0.33em' x='50' y='36'>6</text>
+    <text dy='0.33em' x='90' y='36'>8</text>
+    <text dy='0.33em' x='130' y='36'>10</text>
+    <text dy='0.33em' opacity='0.5' x='170' y='36'>0</text>
+    <g font-size='16' text-anchor='end'>
+      <text dy='0.33em' x='-110' y='-36'>Lydian</text>
+      <text dy='0.33em' x='-110' y='36'>Locrian</text>
+    </g>
+    <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' stroke-width='2.5' d='M-70 -20L-70 20'/>
+    <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' stroke-width='2.5' d='M50 -20L50 20'/>
+    <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' class='yellow' style='fill:none' stroke-width='4' d='M-30 -20L-50 20M10 -20L-10 20M50 -20L30 20M70 -20L50 20M110 -20L90 20M150 -20L130 20'/>
+    <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' class='red' style='fill:none' stroke-width='4' d='M-70 -20L-50 20M-30 -20L-10 20M10 -20L30 20M70 -20L90 20M110 -20L130 20M150 -20L170 20'/>
+  </g>
+</svg>
+
+<p>The big graph has full 12-fold symmetry since it can be rotated by changing which note we consider to be the root (this display pertubs that slightly to keep certain scales from landing exactly on top of each other). So it has 12 modes of each scale class instead of the 7 we had before, and exactly twice as many transitions. This is because a transition only appears in the rooted graph if it moves between two rooted scales. So one of the six common notes between the two scales has to be the root. Which is half of the twelve total notes; by symmetry exactly half of transitions appear in the rooted graph. This incidentally makes it easy to count the number of transitions in each. The rooted graph has 12 cubes (12 transitions each), and 12 shared faces (4 transitions), so each adds 8 transitions, for a total of 96. Half that gives 48 transitions among the 28 scales in the rooted graph.</p>
+<p>Another kind of symmetry does make it into the rooted graph: inversion. In the full graph, there are 12 inversions, one that fixes each of the 6 pairs of tritones and another set of 6 that flip around an axis halfway between two tritones. Only one of these works for the rooted graph, the inversion that fixes the root. It fixes the symmetric scales dorian and harmonic major, and shuffles the others around.</p>
