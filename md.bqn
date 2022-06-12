@@ -149,7 +149,7 @@ Base64 ← {
 
 # Various URLs
 tryURL  ← "https://mlochbaum.github.io/BQN/try.html#code="
-repoURL ← "https://github.com/mlochbaum/BQNmusician"
+repoURL ← "https://github.com/mlochbaum/BQN-musician"
 blobURL ← repoURL∾"/blob/master/"
 
 # Environments
