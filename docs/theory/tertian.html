@@ -1,0 +1,210 @@
+<head>
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <link href="../style.css" rel="stylesheet"/>
+  <title>BQN Musician: Tertian scales</title>
+</head>
+<div class="nav">(<a href="https://github.com/mlochbaum/BQNmusician">github</a>) / <a href="../index.html">BQN Musician</a> / <a href="index.html">theory</a></div>
+<h1 id="tertian-scales"><a class="header" href="#tertian-scales">Tertian scales</a></h1>
+<p><a href="https://en.wikipedia.org/wiki/Tertian">Tertian</a> sounds a lot like &quot;Martian&quot;. Sorry about that one—these scales are definitely used on earth, and include all our most common ones like major and minor. All it means is &quot;built out of thirds&quot;. I would have used &quot;third scale&quot; but this gets confusing when I want to talk about a few scales and the third one comes up.</p>
+<p>Oliver Prehn (NewJazz) calls these &quot;scales of harmonies&quot; and presents them all in <a href="https://www.youtube.com/watch?v=Vq2xt2D3e3E">this video</a> and <a href="https://newjazz.dk/Compendiums/scales_of_harmonies.pdf">this pdf</a>. The video makes a nice complement to this page since I don't have audio examples working yet.</p>
+<h2 id="what-are-they"><a class="header" href="#what-are-they">What are they?</a></h2>
+<p>The problem at hand: there are too many scales. Also lots of them are terrible. Listing all possible scales by brute force, there are <code><span class='Number'>2</span><span class='Function'>⋆</span><span class='Number'>11</span></code> in total, and 351 different classes if we consider rotations to be equivalent.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=4omgIGFsbFNjYWxlcyDihpAgMeKKuOKIvsKoIOKliuKGlTEx4qWKMgoKTm9ybWFsaXplIOKGkCB7IOKKkSDiiKgg4oy94p+c8J2VqcKoIOKGleKJoPCdlakgfQriiaAg4o23IE5vcm1hbGl6ZcKoIGFsbFNjYWxlcw==">↗️</a><pre>    <span class='Function'>≠</span> <span class='Value'>allScales</span> <span class='Gets'>←</span> <span class='Number'>1</span><span class='Modifier2'>⊸</span><span class='Function'>∾</span><span class='Modifier'>¨</span> <span class='Function'>⥊↕</span><span class='Number'>11</span><span class='Function'>⥊</span><span class='Number'>2</span>
+2048
+
+    <span class='Function'>Normalize</span> <span class='Gets'>←</span> <span class='Brace'>{</span> <span class='Function'>⊑</span> <span class='Function'>∨</span> <span class='Function'>⌽</span><span class='Modifier2'>⟜</span><span class='Value'>𝕩</span><span class='Modifier'>¨</span> <span class='Function'>↕≠</span><span class='Value'>𝕩</span> <span class='Brace'>}</span>
+    <span class='Function'>≠</span> <span class='Function'>⍷</span> <span class='Function'>Normalize</span><span class='Modifier'>¨</span> <span class='Value'>allScales</span>
+351
+</pre>
+<p>So we'll define a <em>tertian scale</em> to be one where two adjacent intervals—cyclically, so the last interval is adjacent to the first—always add to 3 or 4 semitones or steps. In theory terms, every scale third is either a minor third (3 steps) or major third (4 steps). And there are much fewer of these. We can list all of them by testing each scale to see if it satisfies our required condition. <code><span class='Function'>Int</span></code> finds the sizes of all <code><span class='Value'>𝕨</span></code>-note intervals and <code><span class='Function'>IsTertian</span></code> tests if all 2-note intervals are 3 or 4 steps.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=SW50IOKGkCB7IDEyIHwgKPCdlajijL3wnZWpKSAtIPCdlakgfQpJc1RlcnRpYW4g4oaQIHsg4oinwrQgKDIgSW50IC/wnZWpKSDiiIogM+KAvzQgfQoK4omgIHRlcnRpYW5TY2FsZXMg4oaQIElzVGVydGlhbsKo4oq4LyBhbGxTY2FsZXMKCuKJoCDijbcgTm9ybWFsaXplwqggdGVydGlhblNjYWxlcw==">↗️</a><pre>    <span class='Function'>Int</span> <span class='Gets'>←</span> <span class='Brace'>{</span> <span class='Number'>12</span> <span class='Function'>|</span> <span class='Paren'>(</span><span class='Value'>𝕨</span><span class='Function'>⌽</span><span class='Value'>𝕩</span><span class='Paren'>)</span> <span class='Function'>-</span> <span class='Value'>𝕩</span> <span class='Brace'>}</span>
+    <span class='Function'>IsTertian</span> <span class='Gets'>←</span> <span class='Brace'>{</span> <span class='Function'>∧</span><span class='Modifier'>´</span> <span class='Paren'>(</span><span class='Number'>2</span> <span class='Function'>Int</span> <span class='Function'>/</span><span class='Value'>𝕩</span><span class='Paren'>)</span> <span class='Function'>∊</span> <span class='Number'>3</span><span class='Ligature'>‿</span><span class='Number'>4</span> <span class='Brace'>}</span>
+
+    <span class='Function'>≠</span> <span class='Value'>tertianScales</span> <span class='Gets'>←</span> <span class='Function'>IsTertian</span><span class='Modifier'>¨</span><span class='Modifier2'>⊸</span><span class='Function'>/</span> <span class='Value'>allScales</span>
+33
+
+    <span class='Function'>≠</span> <span class='Function'>⍷</span> <span class='Function'>Normalize</span><span class='Modifier'>¨</span> <span class='Value'>tertianScales</span>
+7
+</pre>
+<p>In such a scale, two thirds together always make one of the tertian chords: diminished (3/3), minor (3/4), major (4/3), or augmented (4/4). Why aren't other sizes good? They still form or imply chords, but the root of the chord is almost never the bottom note. For example, a 3/5 pair of intervals forms a major chord, starting on the last note (it splits an octave in 3-5-4, which rotates to 4-3-5), and 2/4 implies a dominant chord, sitting on the second (4-3-3-2, after rotation). It might sound wild that a listener would do all this work to force a strange scale into a familiar shape, but after listening to so much music by writers who intentionally apply these sorts of rearrangements, it's just impossible not to!</p>
+<p>We might also try to form chords based on larger or smaller scale intervals instead of thirds. This often works, but yields chords that overlap in unusual ways, so that each scale would require its own little theory to understand. With one chord on each note, a common harmonic theory can be used across many scales.</p>
+<p>This approach works well for many kinds of music, especially more harmonically complicated ones like jazz and progressive rock. But pentatonic and blues scales aren't tertian scales, since they have 2-step and 3-step intervals next to each other. When musicians use these scales, they always play over chords with notes from outside the scale, so these scales have a different purpose than tertian ones in some sense.</p>
+<h2 id="what-are-they-really"><a class="header" href="#what-are-they-really">What are they really?</a></h2>
+<p>So we have 33 scales, which form 7 classes if you put scales that are rotations of one another in the same class. Well, 7 sounds like a manageably small number. But this brute-force approach isn't very enlightening. The tertian scales can be analyzed with very little casework, it turns out.</p>
+<p>A comment about intervals is worth making even though we won't need it: an interval in any scale is at least one step, because a scale can't feature the same note twice, and in a tertian scale it's at most three steps. That's because, when added to an adjacent interval, the total is at most four steps.</p>
+<p>In a tertian scale, the total number of steps in all the thirds is 24. This is because the total size of all the intervals is 12 (it's an octave scale), and each interval appears in exactly two thirds: the one that begins at its lower note and the one that ends at its upper note. So if there are <code><span class='Value'>a</span></code> 3-step intervals and <code><span class='Value'>b</span></code> 4-step ones, we know that</p>
+<pre><span class='Number'>24</span> <span class='Function'>=</span> <span class='Paren'>(</span><span class='Number'>3</span><span class='Function'>×</span><span class='Value'>a</span><span class='Paren'>)</span> <span class='Function'>+</span> <span class='Number'>4</span><span class='Function'>×</span><span class='Value'>b</span>
+   <span class='Function'>=</span> <span class='Paren'>(</span><span class='Number'>3</span> <span class='Function'>×</span> <span class='Value'>a</span><span class='Function'>+</span><span class='Value'>b</span><span class='Paren'>)</span> <span class='Function'>+</span> <span class='Value'>b</span>
+   <span class='Function'>=</span> <span class='Paren'>(</span><span class='Number'>3</span><span class='Function'>×</span><span class='Value'>n</span><span class='Paren'>)</span> <span class='Function'>+</span> <span class='Value'>b</span>
+</pre>
+<p>where <code><span class='Value'>n</span> <span class='Gets'>←</span> <span class='Value'>a</span><span class='Function'>+</span><span class='Value'>b</span></code> is the number of notes in the scale. Since <code><span class='Number'>0</span><span class='Function'>≤</span><span class='Value'>b</span><span class='Function'>≤</span><span class='Value'>n</span></code>, we find that</p>
+<pre><span class='Number'>24</span> <span class='Function'>≤</span> <span class='Number'>3</span><span class='Function'>×</span><span class='Value'>n</span>  <span class='Gets'>→</span>  <span class='Number'>8</span> <span class='Function'>≤</span> <span class='Value'>n</span>
+<span class='Number'>24</span> <span class='Function'>≥</span> <span class='Number'>4</span><span class='Function'>×</span><span class='Value'>n</span>  <span class='Gets'>→</span>  <span class='Number'>6</span> <span class='Function'>≥</span> <span class='Value'>n</span>
+</pre>
+<p>So <code><span class='Value'>n</span></code> can be 6, 7, or 8. Given <code><span class='Value'>n</span></code>, it's easy to solve the equation <code><span class='Number'>24</span> <span class='Function'>=</span> <span class='Paren'>(</span><span class='Number'>3</span><span class='Function'>×</span><span class='Value'>n</span><span class='Paren'>)</span> <span class='Function'>+</span> <span class='Value'>b</span></code> for <code><span class='Value'>b</span></code>, and then <code><span class='Value'>a</span> <span class='Function'>=</span> <span class='Value'>n</span> <span class='Function'>-</span> <span class='Value'>b</span></code>. Let's write a function to compute <code><span class='Value'>a</span></code> and <code><span class='Value'>b</span></code> for us.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=Q29tcG9zaXRpb24g4oaQIHsgYuKGkDI0LTPDl/Cdlakg4ouEIGHihpDwnZWpLWIg4ouEIGHigL9iIH0KQ29tcG9zaXRpb24gNg==">↗️</a><pre>    <span class='Function'>Composition</span> <span class='Gets'>←</span> <span class='Brace'>{</span> <span class='Value'>b</span><span class='Gets'>←</span><span class='Number'>24</span><span class='Function'>-</span><span class='Number'>3</span><span class='Function'>×</span><span class='Value'>𝕩</span> <span class='Separator'>⋄</span> <span class='Value'>a</span><span class='Gets'>←</span><span class='Value'>𝕩</span><span class='Function'>-</span><span class='Value'>b</span> <span class='Separator'>⋄</span> <span class='Value'>a</span><span class='Ligature'>‿</span><span class='Value'>b</span> <span class='Brace'>}</span>
+    <span class='Function'>Composition</span> <span class='Number'>6</span>
+⟨ 0 6 ⟩
+</pre>
+<p>When <code><span class='Value'>n</span><span class='Function'>=</span><span class='Number'>6</span></code>, this tells us <code><span class='Value'>a</span><span class='Function'>=</span><span class='Number'>0</span></code> and <code><span class='Value'>b</span><span class='Function'>=</span><span class='Number'>6</span></code>: every third in the scale has length 4. As a result, notes 0, 2, and 4 occupy positions 0, 4, and 8, that is, they form an augmented chord. The remaining notes also form an augmented chord, but can start at position 1, 2, or 3. The following bit of code shows how to use Table (<code><span class='Modifier'>⌜</span></code>) to make the scale for possition 1, and then puts all possibilities in one array.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=MOKAvzTigL84ICvijJwgMOKAvzEKCj4geyDipYogMOKAvzTigL84ICvijJwgMOKAv/CdlakgfcKoIDHigL8y4oC/Mw==">↗️</a><pre>    <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>4</span><span class='Ligature'>‿</span><span class='Number'>8</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>1</span>
+┌─     
+╵ 0 1  
+  4 5  
+  8 9  
+      ┘
+
+    <span class='Function'>&gt;</span> <span class='Brace'>{</span> <span class='Function'>⥊</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>4</span><span class='Ligature'>‿</span><span class='Number'>8</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Value'>𝕩</span> <span class='Brace'>}</span><span class='Modifier'>¨</span> <span class='Number'>1</span><span class='Ligature'>‿</span><span class='Number'>2</span><span class='Ligature'>‿</span><span class='Number'>3</span>
+┌─              
+╵ 0 1 4 5 8  9  
+  0 2 4 6 8 10  
+  0 3 4 7 8 11  
+               ┘
+</pre>
+<p>The scales corresponding to 1 and 3, which are modes of each other, are called augmented scales. They're strange and disorienting, certainly the weirdest tertian scales. However, the very symmetrical scale with note 1 at 2 is a famous construct called the whole tone scale, which can sound elegant, ethereal, and beautiful. Unfortunately, Debussy has used up this scale, and it's no longer possible to make original music with it.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=Q29tcG9zaXRpb24gOA==">↗️</a><pre>    <span class='Function'>Composition</span> <span class='Number'>8</span>
+⟨ 8 0 ⟩
+</pre>
+<p>When <code><span class='Value'>n</span><span class='Function'>=</span><span class='Number'>8</span></code>, <code><span class='Value'>a</span><span class='Function'>=</span><span class='Number'>8</span></code> and <code><span class='Value'>b</span><span class='Function'>=</span><span class='Number'>0</span></code>, so every third is 3 steps. In a similar pattern to the 6-note scales, each splits into two rings of four (each ring is now a diminished seventh). Now there are only two possibilities, as note 1 can start on 1 or 2, but position 3 is occupied by note 2.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=PiB7IOKliiAoM8OX4oaVNCkgK+KMnCAw4oC/8J2VqSB9wqggMeKAvzI=">↗️</a><pre>    <span class='Function'>&gt;</span> <span class='Brace'>{</span> <span class='Function'>⥊</span> <span class='Paren'>(</span><span class='Number'>3</span><span class='Function'>×↕</span><span class='Number'>4</span><span class='Paren'>)</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Value'>𝕩</span> <span class='Brace'>}</span><span class='Modifier'>¨</span> <span class='Number'>1</span><span class='Ligature'>‿</span><span class='Number'>2</span>
+┌─                  
+╵ 0 1 3 4 6 7 9 10  
+  0 2 3 5 6 8 9 11  
+                   ┘
+</pre>
+<p>These scales are modes of each other and are fittingly called octotonic (eight tone) scales. They're a bit creepy sounding, as well as unstable in that they &quot;want&quot; to resolve to some other scale. So they're most often used in a transient way, moving between chords or adding character in jazz improvization and late classical music.</p>
+<h3 id="the-seven-note-case"><a class="header" href="#the-seven-note-case">The seven-note case</a></h3>
+<p>The interesting case is <code><span class='Value'>n</span><span class='Function'>=</span><span class='Number'>7</span></code>. We've shown 3 scales with <code><span class='Value'>n</span><span class='Function'>=</span><span class='Number'>6</span></code> and 2 with <code><span class='Value'>n</span><span class='Function'>=</span><span class='Number'>8</span></code>, so <code><span class='Number'>33</span><span class='Function'>-</span><span class='Number'>5</span> <span class='Gets'>←→</span> <span class='Number'>28</span></code> scales must fit into this case. It's no coincidence that this number is a multiple of 7: a 7-note scale can't display any symmetry at all, so that each has 7 modes. So we should expect 4 distinct classes here.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=Q29tcG9zaXRpb24gNw==">↗️</a><pre>    <span class='Function'>Composition</span> <span class='Number'>7</span>
+⟨ 4 3 ⟩
+</pre>
+<p>We see that every 7-note scale contains 3 4-note thirds and 4 3-note thirds (each gives us half of the 24 total steps). Just like we can represent a scale by listing all its intervals, we can also represent one with an odd number of notes by listing all its thirds. This goes through the notes in the order shown below, which reaches all of them before returning to the root.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=NyB8IDLDl+KGlTg=">↗️</a><pre>    <span class='Number'>7</span> <span class='Function'>|</span> <span class='Number'>2</span><span class='Function'>×↕</span><span class='Number'>8</span>
+⟨ 0 2 4 6 1 3 5 0 ⟩
+</pre>
+<p>An arrangement consists of choosing which 3 of the 7 thirds should be larger, an instance of the <a href="https://en.wikipedia.org/wiki/Combination">combination</a> function. To count them, we can pick the large thirds one by one: there are 7 options for the first choice, 6 for the second, and 5 for the third. But this counts each option 6 times, because for any combination we could have selected the intervals in 6 different orders.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=KDfDlzbDlzUpIMO3IDPDlzLDlzEKCjcgKC3Dt+KXiyjDl8K0KTHiirgrKeKfnOKGlSAzICAjIEFzIHNlZW4gb24gYnFuY3JhdGU=">↗️</a><pre>    <span class='Paren'>(</span><span class='Number'>7</span><span class='Function'>×</span><span class='Number'>6</span><span class='Function'>×</span><span class='Number'>5</span><span class='Paren'>)</span> <span class='Function'>÷</span> <span class='Number'>3</span><span class='Function'>×</span><span class='Number'>2</span><span class='Function'>×</span><span class='Number'>1</span>
+35
+
+    <span class='Number'>7</span> <span class='Paren'>(</span><span class='Function'>-÷</span><span class='Modifier2'>○</span><span class='Paren'>(</span><span class='Function'>×</span><span class='Modifier'>´</span><span class='Paren'>)</span><span class='Number'>1</span><span class='Modifier2'>⊸</span><span class='Function'>+</span><span class='Paren'>)</span><span class='Modifier2'>⟜</span><span class='Function'>↕</span> <span class='Number'>3</span>  <span class='Comment'># As seen on bqncrate
+</span>35
+</pre>
+<p>Too many scales! But we can generate the normalized classes according to this scheme to see what goes wrong.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=4omgIHBhdHRlcm5zIOKGkCAoMjQ9K8K0KcKo4oq4LyAzICsg4qWK4oaVN+KlijIKdW5pcSDihpAgPiDijbfiiKggTm9ybWFsaXplwqggcGF0dGVybnMKCnVudW0g4oaQICjiiKcxMnwrYCnLmHVuaXEgICMgQXMgbm90ZSBudW1iZXJzCnVpbnQg4oaQIDEyfDHiirjijL3iirgty5h1bnVtICAjIEludGVydmFsIHNpemVzCgrin6h1bmlxLCB1bnVtLCB1aW504p+p">↗️</a><pre>    <span class='Function'>≠</span> <span class='Value'>patterns</span> <span class='Gets'>←</span> <span class='Paren'>(</span><span class='Number'>24</span><span class='Function'>=+</span><span class='Modifier'>´</span><span class='Paren'>)</span><span class='Modifier'>¨</span><span class='Modifier2'>⊸</span><span class='Function'>/</span> <span class='Number'>3</span> <span class='Function'>+</span> <span class='Function'>⥊↕</span><span class='Number'>7</span><span class='Function'>⥊</span><span class='Number'>2</span>
+35
+    <span class='Value'>uniq</span> <span class='Gets'>←</span> <span class='Function'>&gt;</span> <span class='Function'>⍷∨</span> <span class='Function'>Normalize</span><span class='Modifier'>¨</span> <span class='Value'>patterns</span>
+
+    <span class='Value'>unum</span> <span class='Gets'>←</span> <span class='Paren'>(</span><span class='Function'>∧</span><span class='Number'>12</span><span class='Function'>|+</span><span class='Modifier'>`</span><span class='Paren'>)</span><span class='Modifier'>˘</span><span class='Value'>uniq</span>  <span class='Comment'># As note numbers
+</span>    <span class='Value'>uint</span> <span class='Gets'>←</span> <span class='Number'>12</span><span class='Function'>|</span><span class='Number'>1</span><span class='Modifier2'>⊸</span><span class='Function'>⌽</span><span class='Modifier2'>⊸</span><span class='Function'>-</span><span class='Modifier'>˘</span><span class='Value'>unum</span>  <span class='Comment'># Interval sizes
+</span>
+    <span class='Bracket'>⟨</span><span class='Value'>uniq</span><span class='Separator'>,</span> <span class='Value'>unum</span><span class='Separator'>,</span> <span class='Value'>uint</span><span class='Bracket'>⟩</span>
+┌─                                                        
+· ┌─                ┌─                 ┌─                 
+  ╵ 4 4 4 3 3 3 3   ╵ 0 0 3 4 6 8  9   ╵ 0 3 1 2 2 1 3    
+    4 4 3 4 3 3 3     0 3 4 6 8 9 11     3 1 2 2 1 2 1    
+    4 4 3 3 4 3 3     0 2 4 6 8 9 11     2 2 2 2 1 2 1    
+    4 4 3 3 3 4 3     0 2 4 5 8 9 11     2 2 1 3 1 2 1    
+    4 3 4 3 4 3 3     0 2 4 6 7 9 11     2 2 2 1 2 2 1    
+                  ┘                  ┘                 ┘  
+                                                         ┘
+</pre>
+<p>The first of these classes is not a real scale: it contains the root note twice, so it only has six distinct notes and these don't qualify as a tertian scale.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=MTIgfCArYCA04oC/NOKAvzTigL8z4oC/M+KAvzPigL8zCgoxMuKGkS/igbwgMTIgfCArYCA04oC/NOKAvzTigL8z4oC/M+KAvzPigL8z">↗️</a><pre>    <span class='Number'>12</span> <span class='Function'>|</span> <span class='Function'>+</span><span class='Modifier'>`</span> <span class='Number'>4</span><span class='Ligature'>‿</span><span class='Number'>4</span><span class='Ligature'>‿</span><span class='Number'>4</span><span class='Ligature'>‿</span><span class='Number'>3</span><span class='Ligature'>‿</span><span class='Number'>3</span><span class='Ligature'>‿</span><span class='Number'>3</span><span class='Ligature'>‿</span><span class='Number'>3</span>
+⟨ 4 8 0 3 6 9 0 ⟩
+
+    <span class='Number'>12</span><span class='Function'>↑/</span><span class='Modifier'>⁼</span> <span class='Number'>12</span> <span class='Function'>|</span> <span class='Function'>+</span><span class='Modifier'>`</span> <span class='Number'>4</span><span class='Ligature'>‿</span><span class='Number'>4</span><span class='Ligature'>‿</span><span class='Number'>4</span><span class='Ligature'>‿</span><span class='Number'>3</span><span class='Ligature'>‿</span><span class='Number'>3</span><span class='Ligature'>‿</span><span class='Number'>3</span><span class='Ligature'>‿</span><span class='Number'>3</span>
+⟨ 2 0 0 1 1 0 1 0 1 1 0 0 ⟩
+</pre>
+<p>So, once that case is stricken, there are four classes of 7-note tertian scales, accounting for 28 total.</p>
+<h3 id="four-seven-note-classes"><a class="header" href="#four-seven-note-classes">Four seven-note classes</a></h3>
+<p>Let's dig into the 7-note scale classes we've identified above. I'll go ahead and break the suspense by giving each a name. Below, I've reordered the intervals to give the best-known example of each scale, and also placed the classes in a more logical order, musically speaking. Now the scales form a loop where each is only one changed note away from the next! This sort of one-note change reveals a rich structure to the 7-note scales, described in the page on <a href="modulation.html">tertian modulations</a>.</p>
+<p><em>No, I will not be writing &quot;ascending melodic minor&quot;.</em></p>
+<table>
+<thead>
+<tr>
+<th>Thirds</th>
+<th>Intervals</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 3 4 3 4 3 3</td>
+<td>2 2 1 2 2 2 1</td>
+<td>Major</td>
+</tr>
+<tr>
+<td>4 4 3 3 4 3 3</td>
+<td>2 1 2 2 2 2 1</td>
+<td>Melodic minor</td>
+</tr>
+<tr>
+<td>4 4 3 3 3 4 3</td>
+<td>2 1 2 2 1 3 1</td>
+<td>Harmonic minor</td>
+</tr>
+<tr>
+<td>4 4 3 4 3 3 3</td>
+<td>2 2 1 2 1 3 1</td>
+<td>Harmonic major</td>
+</tr>
+</tbody>
+</table>
+<p>The first set of scales are the diatonic modes, including major (ionian) and minor (aeolian) as well as some less well-known but still very common scales such as dorian and lydian. They're way more common than the other kinds, and that modulations page gives some good reasons for this.</p>
+<p>Every class except the last has two 4-step thirds in a row, which form an augmented chord. Perhaps because this chord isn't found in diatonic scales, it sounds spacey and eerie. It's also ambiguous, because it splits the octave in 4-4-4, so rearranging the notes gives another augmented chord with a different root. But within a 7-note scale the root can always be identified, because two of the 4-step intervals are scale thirds, while the last is made up of 3 scale intervals and not 2. Similarly, the harmonic minor and major scales both have three 3-step thirds in a row, making up a diminished seventh chord that splits the octave 3-3-3-3. It's another sound that's not found in a diatonic scale, and often comes across as hungry or sour. Both of these chords are great ways to transition between different scales or harmonic frameworks, because their symmetry makes them free for reinterpretation and they readily resolve into &quot;nicer&quot; chords.</p>
+<p>The definition of a tertian scale works either ascending or descending, so if we invert a tertian scale we get another tertian scale. Here's what that does to our four classes of scales:</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=e/Cdlakg4ouIIE5vcm1hbGl6ZeKImOKMvcuYIPCdlal9IDTigL8y4oC/M+KAvzEg4oqPIHVuaXE=">↗️</a><pre>    <span class='Brace'>{</span><span class='Value'>𝕩</span> <span class='Function'>⋈</span> <span class='Function'>Normalize</span><span class='Modifier2'>∘</span><span class='Function'>⌽</span><span class='Modifier'>˘</span> <span class='Value'>𝕩</span><span class='Brace'>}</span> <span class='Number'>4</span><span class='Ligature'>‿</span><span class='Number'>2</span><span class='Ligature'>‿</span><span class='Number'>3</span><span class='Ligature'>‿</span><span class='Number'>1</span> <span class='Function'>⊏</span> <span class='Value'>uniq</span>
+┌─                                     
+· ┌─                ┌─                 
+  ╵ 4 3 4 3 4 3 3   ╵ 4 3 4 3 4 3 3    
+    4 4 3 3 4 3 3     4 4 3 3 4 3 3    
+    4 4 3 3 3 4 3     4 4 3 4 3 3 3    
+    4 4 3 4 3 3 3     4 4 3 3 3 4 3    
+                  ┘                 ┘  
+                                      ┘
+</pre>
+<p>A diatonic scale inverts to give another diatonic scale, as does a mode of melodic minor. But minor and major harmonic scales invert to give each other. Musically speaking, inversion isn't really a relationship you'd want to use in a work. But it does tell us that minor harmonic and major harmonic have similarities in overall tonality, because they feature the same intervals. In particular they both have that distinctive 1-3-1 pattern, which harmonic minor and harmonic major in particular place at the end.</p>
+<h2 id="loose-tertian-scales"><a class="header" href="#loose-tertian-scales">Loose tertian scales</a></h2>
+<p>A few occasionally-used scales aren't quite tertian because the starting and ending intervals are both half steps, so that they add up to a 2-step third, which is too small. We can find all of these scales by changing the handling of the last interval from <code><span class='Function'>IsTertian</span></code>:</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=SXNMb29zZVRlcnRpYW4g4oaQIHsgaeKGkDIgSW50IC/wnZWpIOKLhCAoMj3CrzHiipFpKSDiiKcg4oinwrQowq8x4oaTaSniiIoz4oC/NCB9Cgo+IElzTG9vc2VUZXJ0aWFuwqjiirgvIGFsbFNjYWxlcw==">↗️</a><pre>    <span class='Function'>IsLooseTertian</span> <span class='Gets'>←</span> <span class='Brace'>{</span> <span class='Value'>i</span><span class='Gets'>←</span><span class='Number'>2</span> <span class='Function'>Int</span> <span class='Function'>/</span><span class='Value'>𝕩</span> <span class='Separator'>⋄</span> <span class='Paren'>(</span><span class='Number'>2</span><span class='Function'>=</span><span class='Number'>¯1</span><span class='Function'>⊑</span><span class='Value'>i</span><span class='Paren'>)</span> <span class='Function'>∧</span> <span class='Function'>∧</span><span class='Modifier'>´</span><span class='Paren'>(</span><span class='Number'>¯1</span><span class='Function'>↓</span><span class='Value'>i</span><span class='Paren'>)</span><span class='Function'>∊</span><span class='Number'>3</span><span class='Ligature'>‿</span><span class='Number'>4</span> <span class='Brace'>}</span>
+
+    <span class='Function'>&gt;</span> <span class='Function'>IsLooseTertian</span><span class='Modifier'>¨</span><span class='Modifier2'>⊸</span><span class='Function'>/</span> <span class='Value'>allScales</span>
+┌─                         
+╵ 1 1 0 0 1 1 0 0 1 1 0 1  
+  1 1 0 0 1 1 0 1 0 1 0 1  
+  1 1 0 0 1 1 0 1 1 0 0 1  
+  1 1 0 1 0 1 0 1 0 1 0 1  
+  1 1 0 1 0 1 0 1 1 0 0 1  
+  1 1 0 1 0 1 1 0 1 1 0 1  
+  1 1 0 1 1 0 0 1 1 0 0 1  
+  1 1 0 1 1 0 1 0 1 1 0 1  
+  1 1 0 1 1 0 1 1 0 1 0 1  
+                          ┘
+</pre>
+<p>Two of them just add a note to an augmented scale (which to be fair is a cool idea), and there are three different octotonic scales that start with one inversion (1 1 0…1 0) and end with another (1 0 1…0 1), switching over in different places. Three of the four remaining scales are known, and the other one certainly seems like it should be, as a reasonable variation of the major scale, but I haven't seen it before.</p>
+<table>
+<thead>
+<tr>
+<th>Scale</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 1 0 0 1 1 0 1 0 1 0 1</td>
+<td>Aeolian ♭2?</td>
+</tr>
+<tr>
+<td>1 1 0 0 1 1 0 1 1 0 0 1</td>
+<td>Double harmonic</td>
+</tr>
+<tr>
+<td>1 1 0 1 0 1 0 1 0 1 0 1</td>
+<td>Neapolitan major</td>
+</tr>
+<tr>
+<td>1 1 0 1 0 1 0 1 1 0 0 1</td>
+<td>Neapolitan minor</td>
+</tr>
+</tbody>
+</table>
