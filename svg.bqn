@@ -39,6 +39,8 @@ At ← {
 Pos ← ⟨"x","y"⟩ ≍˘ FmtNum
 Elt ← Void∘Attr
 
+Ge ← "g"⊸At⊸Enc
+Text ← ("text"Attr"dy"‿"0.33em"∾⊢){𝔽⊘(𝔽⊸Enc)}
 SVG ← {
   ("svg" Attr ⟨"viewBox",Fmt 𝕨⟩) Enc 𝕩
 }

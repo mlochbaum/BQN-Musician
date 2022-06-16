@@ -9,8 +9,6 @@ off ← ∾"M "∾¨FmtNum -2÷˜+˝dirh
 co ← "ABabCABabBcACbc" ⋄ co -↩ "Aa" ⊏˜ ci ← co≥'a'
 cs ← ¬⊸-ci
 dedup ← 4↓ci≤1≠co
-Ge ← "g"⊸At⊸Enc
-Text ← ("text"Attr"dy"‿"0.33em"∾⊢){𝔽⊘(𝔽⊸Enc)}
 
 circ ← (4↓cs)⊸×˘dir⊏˜ dd ← 12|(↕12)+⌜4↓co
 HL ← { pa Elt "d"⋈off∾ ∾⥊ (𝕩⊏"m "≍"l ") ∾¨⎉(=⊣) FmtNum circ }
