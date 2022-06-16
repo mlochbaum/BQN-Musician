@@ -172,3 +172,10 @@ svg tspan {
 .red       { fill:#532923; stroke:#ae251e; } text.red      ,.red       text { fill:#a6221a; stroke:none; }
 .green     { fill:#25431e; stroke:#298221; } text.green    ,.green     text { fill:#298221; stroke:none; }
 }
+
+.set       { fill:white;   } text.set ,.set text { fill:#0a0a0a; stroke:none; }
+.unset     { fill:#222;    }
+@media (prefers-color-scheme: dark) {
+.set       { fill:#d6d7d9; } text.set ,.set text { fill:#0a0a0a; stroke:none; }
+.unset     { fill:#141515; }
+}

@@ -133,9 +133,17 @@ A few occasionally-used scales aren't quite tertian because the starting and end
 
 Two of them just add a note to an augmented scale (which to be fair is a cool idea), and there are three different octotonic scales that start with one inversion (1 1 0…1 0) and end with another (1 0 1…0 1), switching over in different places. Three of the four remaining scales are known, and the other one certainly seems like it should be, as a reasonable variation of the major scale, but I haven't seen it before.
 
-| Scale                   | Name
-|-------------------------|-----
-| 1 1 0 0 1 1 0 1 0 1 0 1 | Aeolian ♭2?
-| 1 1 0 0 1 1 0 1 1 0 0 1 | Double harmonic
-| 1 1 0 1 0 1 0 1 0 1 0 1 | Neapolitan major
-| 1 1 0 1 0 1 0 1 1 0 0 1 | Neapolitan minor
+<!--GEN ring.bqn
+rp ← 5 + rs ← ring.size
+lt_sc ← ⟨
+  "110011010101"‿"Aeolian ♭2?"
+  "110011011001"‿"Double harmonic"
+  "110101010101"‿"Neapolitan major"
+  "110101011001"‿"Neapolitan minor"
+⟩
+DrawSc ← {
+  t ← "text-anchor=middle|fill=currentColor" Ge (-⊸⋈8+rp) (Pos 0⊸⋈)⊸Text¨ 𝕩
+  ("transform=translate("∾(Fmt𝕨)∾")") Ge (ring.Draw '0'-˜⊑𝕩) ∾ <t
+}
+(⥊¯1‿2×⌜⟨4×rp,rp+24⟩) SVG (⋈⟜0¨rp×·(2×↕)⊸¬≠)⊸(DrawSc¨) lt_sc
+-->
