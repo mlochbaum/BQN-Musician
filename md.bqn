@@ -166,7 +166,7 @@ _getSvgExec ← {𝕗
 ################################
 Markdown ← {filename𝕊𝕩:
   extensions ← filename ≢ 0
-  path ← extensions◶""‿(⊢/˜·∨`⌾⌽'/'⊸=) filename
+  spath ← "src/" ∾ path ← extensions◶""‿(⊢/˜·∨`⌾⌽'/'⊸=) filename
 
   CodeExec ← @_getCodeExec
   GenHtml ← @_getSvgExec
@@ -310,8 +310,8 @@ Markdown ← {filename𝕊𝕩:
   IsHtmlBlock ← ("<!--"≡4↑⊢)◶('>'∨´∘=⊢)‿2
   ProcComment ← {
     n←≠s←"<!--GEN" ⋄ l←¯3↓⍟(1=≠𝕩)⊑𝕩 ⋄ a←s≡n↑l
-    Source ← {((0<≠)◶<‿(•file.Lines path∾⊢) Trim n↓l) ∾ 1↓¯1↓𝕩}
-    ⟨•file.At path⟩ GenHtml⍟a JoinLines Source⍟a 𝕩
+    Source ← {((0<≠)◶<‿(•file.Lines spath∾⊢) Trim n↓l) ∾ 1↓¯1↓𝕩}
+    ⟨•file.At spath⟩ GenHtml⍟a JoinLines Source⍟a 𝕩
   }
   ProcHtml ← {
     codeMask ← "<code>" (6⥊0)⊸»⊸(>○(⌈`(1+↕∘≠)⊸×))○((≠𝕩)↑⍷⟜𝕩) "</code>"
