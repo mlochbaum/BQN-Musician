@@ -56,6 +56,14 @@ When `n=6`, this tells us `a=0` and `b=6`: every third in the scale has length 4
 
         > { ⥊ 0‿4‿8 +⌜ 0‿𝕩 }¨ 1‿2‿3
 
+<!--GEN ring.bqn
+ring.DrawRow 1‿2‿3 {⥊0‿4‿8+⌜0‿𝕩}⊸((12↑/⁼∘⊣)<⊸∾Fmt⊸⋈)¨ ⟨
+  "Inverse augmented"
+  "Whole tone"
+  "Augmented"
+⟩
+-->
+
 The scales corresponding to 1 and 3, which are modes of each other, are called augmented scales. They're strange and disorienting, certainly the weirdest tertian scales. However, the very symmetrical scale with note 1 at 2 is a famous construct called the whole tone scale, which can sound elegant, ethereal, and beautiful. Unfortunately, Debussy has used up this scale, and it's no longer possible to make original music with it.
 
         Composition 8
@@ -64,7 +72,14 @@ When `n=8`, `a=8` and `b=0`, so every third is 3 steps. In a similar pattern to 
 
         > { ⥊ (3×↕4) +⌜ 0‿𝕩 }¨ 1‿2
 
-These scales are modes of each other and are fittingly called octotonic (eight tone) scales. They're a bit creepy sounding, as well as unstable in that they "want" to resolve to some other scale. So they're most often used in a transient way, moving between chords or adding character in jazz improvization and late classical music.
+<!--GEN
+ring.DrawRow 1‿2 {⥊(3×↕4)+⌜0‿𝕩}⊸((12↑/⁼∘⊣)<⊸∾Fmt⊸⋈)¨ ⟨
+  "Octatonic"
+  "Other octatonic"
+⟩
+-->
+
+These scales are modes of each other and are fittingly called octatonic (eight tone) scales. They're a bit creepy sounding, as well as unstable in that they "want" to resolve to some other scale. So they're most often used in a transient way, moving between chords or adding character in jazz improvization and late classical music.
 
 ### The seven-note case
 
@@ -113,6 +128,15 @@ Let's dig into the 7-note scale classes we've identified above. I'll go ahead an
 | 4 4 3 3 3 4 3 | 2 1 2 2 1 3 1 | Harmonic minor
 | 4 4 3 4 3 3 3 | 2 2 1 2 1 3 1 | Harmonic major
 
+<!--GEN
+ring.DrawRow {i‿n:⟨12↑/⁼0∾+`i-'0',n⟩}¨ ⟨
+  "2212221"‿"Major"
+  "2122221"‿"Melodic minor"
+  "2122131"‿"Harmonic minor"
+  "2212131"‿"Harmonic major"
+⟩
+-->
+
 The first set of scales are the diatonic modes, including major (ionian) and minor (aeolian) as well as some less well-known but still very common scales such as dorian and lydian. They're way more common than the other kinds, and that modulations page gives some good reasons for this.
 
 Every class except the last has two 4-step thirds in a row, which form an augmented chord. Perhaps because this chord isn't found in diatonic scales, it sounds spacey and eerie. It's also ambiguous, because it splits the octave in 4-4-4, so rearranging the notes gives another augmented chord with a different root. But within a 7-note scale the root can always be identified, because two of the 4-step intervals are scale thirds, while the last is made up of 3 scale intervals and not 2. Similarly, the harmonic minor and major scales both have three 3-step thirds in a row, making up a diminished seventh chord that splits the octave 3-3-3-3. It's another sound that's not found in a diatonic scale, and often comes across as hungry or sour. Both of these chords are great ways to transition between different scales or harmonic frameworks, because their symmetry makes them free for reinterpretation and they readily resolve into "nicer" chords.
@@ -131,19 +155,13 @@ A few occasionally-used scales aren't quite tertian because the starting and end
 
         > IsLooseTertian¨⊸/ allScales
 
-Two of them just add a note to an augmented scale (which to be fair is a cool idea), and there are three different octotonic scales that start with one inversion (1 1 0…1 0) and end with another (1 0 1…0 1), switching over in different places. Three of the four remaining scales are known, and the other one certainly seems like it should be, as a reasonable variation of the major scale, but I haven't seen it before.
+Two of them just add a note to an augmented scale (which to be fair is a cool idea), and there are three different octatonic scales that start with one inversion (1 1 0…1 0) and end with another (1 0 1…0 1), switching over in different places. Three of the four remaining scales are known, and the other one certainly seems like it should be, as a reasonable variation of the major scale, but I haven't seen it before.
 
-<!--GEN ring.bqn
-rp ← 5 + rs ← ring.size
-lt_sc ← ⟨
+<!--GEN
+ring.DrawRow ('0'-˜⊏)⊸∾¨ ⟨
   "110011010101"‿"Aeolian ♭2?"
   "110011011001"‿"Double harmonic"
   "110101010101"‿"Neapolitan major"
   "110101011001"‿"Neapolitan minor"
 ⟩
-DrawSc ← {
-  t ← "text-anchor=middle|fill=currentColor" Ge (-⊸⋈8+rp) (Pos 0⊸⋈)⊸Text¨ 𝕩
-  ("transform=translate("∾(Fmt𝕨)∾")") Ge (ring.Draw '0'-˜⊑𝕩) ∾ <t
-}
-(⥊¯1‿2×⌜⟨4×rp,rp+24⟩) SVG (⋈⟜0¨rp×·(2×↕)⊸¬≠)⊸(DrawSc¨) lt_sc
 -->
