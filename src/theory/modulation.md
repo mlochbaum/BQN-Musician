@@ -53,7 +53,7 @@ Te ← Pos⊸Text
 ⟩
 -->
 
-Three changes are required to get from one to the other. Going along diatonic modes, we'd first change 8 to 9 to get to dorian, then 3 to 4 to get to mixolydian, and finally 10 to 11. But other orderings are possible. In baroque music particularly it's common to see a progression of minor, harmonic minor, melodic minor, which moves 10, then 8, then 3. Given that these three moves are completely independent, we can choose to use or leave out each one, giving 2³ possible combinations connected like the corners of a cube. Three is the greatest number of transitions that can be reordered like this, because a fourth would be 2 to 3 or 5 to 4, and this requires the 3↔4 transition be done first, or it gives a non-tertian scale with two half steps next to each other.
+Three changes are required to get from one to the other. Going along diatonic modes, we'd first change 8 to 9 to get to dorian, then 3 to 4 to get to mixolydian, and finally 10 to 11. But other orderings are possible. In baroque music particularly it's common to see a progression of minor, harmonic minor, melodic minor, which moves 10, then 8, then 3. Given that these three moves are completely independent, we can choose to use or leave out each one, giving 2³ possible combinations connected like the corners of a cube. Three is the greatest number of transitions that can be reordered like this, because next comes 5 to 6, which requires the 8 to 9 move first, or it gives a non-tertian scale with two half steps next to each other (and the same for 2 to 1 in the other direction).
 
 <!--GEN
 names ← 2‿1‿0⍉⌽⌽˘2‿2‿2⥊⟨
@@ -83,7 +83,7 @@ faces ← (c0(⊣≍+)⊏cdir) (<"path"Elt CPd⟜(∾⟜-))˘ 2↕cdir
 (⥊¯1‿2×⌜256‿96) SVG ⌽⌾(¯2⊸↑) figCube ∾ ⋈"red"‿"bluegreen" Gpr¨ faces
 -->
 
-Here's the scale graph again. Can you see the four complete cubes locrian→dorian, phrygian→mixolydian, aeolian→ionian, and dorian→lydian? After these, there are more two faces added on each side, which come from partial cubes.
+Here's the scale graph again. Can you see the four complete cubes locrian→dorian, phrygian→mixolydian, aeolian→ionian, and dorian→lydian? After these, there are two more faces added on each side, which come from partial cubes.
 
 <!--GEN
 svgLabel
