@@ -149,3 +149,181 @@
 
 <p>The big graph has full 12-fold symmetry since it can be rotated by changing which note we consider to be the root (this display pertubs that slightly to keep certain scales from landing exactly on top of each other). So it has 12 modes of each scale class instead of the 7 we had before, and exactly twice as many transitions. This is because a transition only appears in the rooted graph if it moves between two rooted scales. So one of the six common notes between the two scales has to be the root. Which is half of the twelve total notes; by symmetry exactly half of transitions appear in the rooted graph. This incidentally makes it easy to count the number of transitions in each. The rooted graph has 12 cubes (12 transitions each), and 12 shared faces (4 transitions), so each adds 8 transitions, for a total of 96. Half that gives 48 transitions among the 28 scales in the rooted graph.</p>
 <p>Another kind of symmetry does make it into the rooted graph: inversion. In the full graph, there are 12 inversions, one that fixes each of the 6 pairs of tritones and another set of 6 that flip around an axis halfway between two tritones. Only one of these works for the rooted graph, the inversion that fixes the root. It fixes the symmetric scales dorian and harmonic major, and shuffles the others around.</p>
+<svg viewBox='-320 -128 640 352'>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' stroke-width='2.5' d='M-195 -67m78 45m0 130l50 87m0 -130m-50 -87m50 87m-78 -45m0 130l78 45m-50 -87l-78 -45l130 0l50 87l78 45l-50 -87m-78 -45l78 45l-130 0l50 87l130 0m-78 -45l-130 0l87 -50l78 45l130 0l-78 -45m-130 0l130 0l-87 50l78 45l87 -50m-130 0l-87 50l45 -78l130 0l87 -50l-130 0m-87 50l87 -50l-45 78l130 0l45 -78m-87 50l-45 78l0 -130l87 -50l45 -78l-87 50m-45 78l45 -78l0 130l87 -50l0 -130m-45 78l0 130m-50 -87m45 -78m0 -130m-45 78m0 130m0 -130m50 87l45 -78m-50 -87m0 130m50 87l-78 -45l0 -130m-50 -87m0 130m50 87m-50 -87m78 45m0 -130m-78 -45m50 87l78 45l-130 0m-50 -87m-78 -45m50 87m78 45l-78 -45l130 0m-50 -87m-130 0m78 45m130 0m-87 50m-78 -45m-130 0m78 45m130 0m-130 0m87 -50m-78 -45m-87 50m130 0m87 -50m-45 78m-130 0m-87 50m130 0m87 -50m-87 50m45 -78m-130 0m-45 78m87 -50m45 -78m0 130l-87 50l-45 78l87 -50m45 -78l-45 78m0 -130m-87 50m0 130m45 -78m0 -130m50 87m-45 78m0 130l45 -78m0 -130m0 130l-50 -87l-45 78l50 87m0 -130m-50 -87'/>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' class='yellow' style='fill:none' stroke-width='4' d='M-195 63l50 87l78 45l130 0l87 -50l45 -78l0 -130'/>
+  <g fill='currentColor' font-size='14'>
+    <text dy='0.33em' text-anchor='end' x='-206.7' y='66.78'>Locrian</text>
+    <text dy='0.33em' text-anchor='end' x='-153.7' y='159'>Phrygian</text>
+    <text dy='0.33em' text-anchor='middle' x='-71.02' y='206.7'>Aeolian (minor)</text>
+    <text dy='0.33em' text-anchor='middle' x='66.78' y='206.7'>Dorian</text>
+    <text dy='0.33em' text-anchor='start' x='159' y='153.7'>Mixolydian</text>
+    <text dy='0.33em' text-anchor='start' x='206.7' y='71.02'>Ionian (major)</text>
+    <text dy='0.33em' text-anchor='start' x='206.7' y='-66.78'>Lydian</text>
+  </g>
+  <line fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' class='purple' stroke-width='6' stroke-dasharray='20 16' opacity='0.8' x1='-75.6' y1='-234' x2='75.6' y2='234'/>
+</svg>
+
+<h2 id="the-weirdest-scales"><a class="header" href="#the-weirdest-scales">The weirdest scales</a></h2>
+<p>Okay, surely you're dying to know what's going on with these scales, at the ends? They're modes of harmonic major and minor, but they're not reachable from any of the diatonic modes. All the other modes of, say, harmonic minor, are reachable from the corresponding mode of ordinary minor, but for these scales, the note that would be altered is the root.</p>
+<svg viewBox='-320 -128 640 352'>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' stroke-width='2.5' d='M-195 -67m78 45m0 130l50 87m0 -130m-50 -87m50 87m-78 -45m0 130l78 45m-50 -87l-78 -45l130 0l50 87l78 45l-50 -87m-78 -45l78 45l-130 0l50 87l130 0m-78 -45l-130 0l87 -50l78 45l130 0l-78 -45m-130 0l130 0l-87 50l78 45l87 -50m-130 0l-87 50l45 -78l130 0l87 -50l-130 0m-87 50l87 -50l-45 78l130 0l45 -78m-87 50l-45 78l0 -130l87 -50l45 -78l-87 50m-45 78l45 -78l0 130l87 -50l0 -130m-45 78l0 130m-50 -87m45 -78m0 -130m-45 78m0 130m0 -130m50 87l45 -78m-50 -87m0 130m50 87l-78 -45l0 -130m-50 -87m0 130m50 87m-50 -87m78 45m0 -130m-78 -45m50 87l78 45l-130 0m-50 -87m-78 -45m50 87m78 45l-78 -45l130 0m-50 -87m-130 0m78 45m130 0m-87 50m-78 -45m-130 0m78 45m130 0m-130 0m87 -50m-78 -45m-87 50m130 0m87 -50m-45 78m-130 0m-87 50m130 0m87 -50m-87 50m45 -78m-130 0m-45 78m87 -50m45 -78m0 130l-87 50l-45 78l87 -50m45 -78l-45 78m0 -130m-87 50m0 130m45 -78m0 -130m50 87m-45 78m0 130l45 -78m0 -130m0 130l-50 -87l-45 78l50 87m0 -130m-50 -87'/>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' class='yellow' style='fill:none' stroke-width='4' d='M-195 63l50 87l78 45l130 0l87 -50l45 -78l0 -130'/>
+  <g fill='currentColor' font-size='14'>
+    <text dy='0.33em' text-anchor='end' x='-206.7' y='66.78'>Locrian</text>
+    <text dy='0.33em' text-anchor='end' x='-153.7' y='159'>Phrygian</text>
+    <text dy='0.33em' text-anchor='middle' x='-71.02' y='206.7'>Aeolian (minor)</text>
+    <text dy='0.33em' text-anchor='middle' x='66.78' y='206.7'>Dorian</text>
+    <text dy='0.33em' text-anchor='start' x='159' y='153.7'>Mixolydian</text>
+    <text dy='0.33em' text-anchor='start' x='206.7' y='71.02'>Ionian (major)</text>
+    <text dy='0.33em' text-anchor='start' x='206.7' y='-66.78'>Lydian</text>
+  </g>
+  <g class='red' stroke-width='3' opacity='0.7'>
+    <circle r='18' cx='-63' cy='-65'/>
+    <circle r='18' cx='-13' cy='-108'/>
+  </g>
+</svg>
+
+<p>Here they are. The post-locrian scale comes from shifting the root of mixolydian, and the post-lydian one from aeolian in the same way.</p>
+<svg viewBox='-299.6 -81 599.2 186'>
+  <g transform='translate(-81 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-60' cy='0'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Locrian ♭4 ♭7?</text>
+    </g>
+  </g>
+  <g transform='translate(81 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Lydian ♯2 ♯5?</text>
+    </g>
+  </g>
+</svg>
+
+<p>But… these scales are… not all that different from each other? Just swap note 1 for 11 to go back and forth. As described above, it takes six changes to get between lydian and locrian, and four are incorporated here. The other changes move a note to or from the root, so they interact with some rootless scale. Specifically, we'll be going through a sort of anti-dorian mode that's rotated halfway around, keeping the symmetry but leaving a gap at the root.</p>
+<svg viewBox='-299.6 -81 599.2 186'>
+  <g transform='translate(-81 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Anti-Dorian</text>
+    </g>
+  </g>
+  <g transform='translate(81 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Spliced octatonic</text>
+    </g>
+  </g>
+</svg>
+
+<p>Also shown for comparison is the <a href="tertian.html#loose-tertian-scales">loose tertian</a> we get by leaving the root in. It starts like a 1-2 octatonic scale, ends like a 2-1, and crosses over right in the middle.</p>
+<p>These are all some pretty strange scales. I don't think they sound quite as unusual as the augmented scales, which means they're only the weirdest 7-note tertian scales, but that's not nothing. Both the perfect fourth and fifth are missing, so you know you're going to be in a weird chord situation. Two of them, even: the root is the start of <em>both</em> an augmented chord and a diminished seventh. But only one of these is actually the root chord: in the post-locrian scale the inclusion of note 1 means we start on a 3-step third and get a diminished chord, and in the post-lydian scale we get the augmented chord instead.</p>

@@ -5,7 +5,7 @@ If you draw a graph connecting every [tertian scale](tertian.md) to all the othe
 <!--GEN
 dirh ← ⌊0.5+(6⥊130-0‿30‿40)×(•math.Sin ≍˘ •math.Cos) (2×π) × 6↑↕⊸÷12
 dir ← ∾⟜-dirh
-off ← ∾"M "∾¨FmtNum -2÷˜+˝dirh
+off ← ∾"M "∾¨FmtNum p0←-2÷˜+˝dirh
 co ← "ABabCABabBcACbc" ⋄ co -↩ "Aa" ⊏˜ ci ← co≥'a'
 cs ← ¬⊸-ci
 dedup ← 4↓ci≤1≠co
@@ -16,7 +16,8 @@ ps ← "fill=none|stroke-linejoin=round|stroke-linecap=round|stroke=currentColor
 pa ← "path"At ps∾"stroke-width=2.5"
 ph ← "path"At ps∾"class=yellow|style=fill:none|stroke-width=4"
 
-((0‿1‿0‿¯1×96)+⥊¯1‿2×⌜320‿224) SVG figMod ← ⟨
+hdim ← (0‿1‿0‿¯1×96)+⥊¯1‿2×⌜320‿224
+hdim SVG figMod ← ⟨
   HL dedup⊸×˘ (¯1⊸⌽⊸∧+`)⌾⥊ (4↓cs)⊸×˘dd⊏-˝0‿7=⌜↕12
 ⟩
 -->
@@ -30,7 +31,7 @@ modep ← (¯2÷˜+˝)⊸∾6↑1↓dir
 modename ← ⟨"Locrian","Phrygian","Aeolian (minor)","Dorian"
             "Mixolydian","Ionian (major)","Lydian"⟩
 anchor ← 2‿2‿3/"text-anchor"⊸⋈¨⌽"start"‿"middle"‿"end"
-svgLabel ← ((0‿1‿0‿¯1×96)+⥊¯1‿2×⌜320‿224) SVG figMod ∾ ⟨
+hdim SVG figLabel ← figMod ∾ ⟨
   ph Elt "d"⋈∾⥊(("M "»"l "˘)∾¨FmtNum)modep
   "fill=currentColor|font-size=14" Ge ⊑⟨
     modename Enc¨˜ anchor Text∘∾⟜Pos¨ <˘1.06×+`modep
@@ -86,7 +87,7 @@ faces ← (c0(⊣≍+)⊏cdir) (<"path"Elt CPd⟜(∾⟜-))˘ 2↕cdir
 Here's the scale graph again. Can you see the four complete cubes locrian→dorian, phrygian→mixolydian, aeolian→ionian, and dorian→lydian? After these, there are two more faces added on each side, which come from partial cubes.
 
 <!--GEN
-svgLabel
+hdim SVG figLabel
 -->
 
 The modes of melodic minor are tightly connected to the diatonic scales, since each one (except two at the edges) connects to two of them. Modes of harmonic minor and major only connect to one diatonic mode—in fact, each connects to one scale from each other class (again, except at boundaries). The move from minor to harmonic minor or major to harmonic major is further out of order than the moves to melodic minor modes, since it skips two other moves instead of one, so in that sense these scales are "less diatonic".
@@ -117,3 +118,46 @@ tpos ← 36 ScPos lydloc
 The big graph has full 12-fold symmetry since it can be rotated by changing which note we consider to be the root (this display pertubs that slightly to keep certain scales from landing exactly on top of each other). So it has 12 modes of each scale class instead of the 7 we had before, and exactly twice as many transitions. This is because a transition only appears in the rooted graph if it moves between two rooted scales. So one of the six common notes between the two scales has to be the root. Which is half of the twelve total notes; by symmetry exactly half of transitions appear in the rooted graph. This incidentally makes it easy to count the number of transitions in each. The rooted graph has 12 cubes (12 transitions each), and 12 shared faces (4 transitions), so each adds 8 transitions, for a total of 96. Half that gives 48 transitions among the 28 scales in the rooted graph.
 
 Another kind of symmetry does make it into the rooted graph: inversion. In the full graph, there are 12 inversions, one that fixes each of the 6 pairs of tritones and another set of 6 that flip around an axis halfway between two tritones. Only one of these works for the rooted graph, the inversion that fixes the root. It fixes the symmetric scales dorian and harmonic major, and shuffles the others around.
+
+<!--GEN
+csym ← ps∾"class=purple|stroke-width=6|stroke-dasharray=20 16|opacity=0.8"
+hdim SVG figLabel ∾ ⟨
+  ("line"At csym)  Elt (⥊⍉"xy"⋈⌜"12")≍˘FmtNum-⊸∾1.2×(+˝4↑dir)+p0
+⟩
+-->
+
+## The weirdest scales
+
+Okay, surely you're dying to know what's going on with these scales, at the ends? They're modes of harmonic major and minor, but they're not reachable from any of the diatonic modes. All the other modes of, say, harmonic minor, are reachable from the corresponding mode of ordinary minor, but for these scales, the note that would be altered is the root.
+
+<!--GEN
+hdim SVG figLabel ∾ ⟨
+  "class=red|stroke-width=3|opacity=0.7" Ge ⟨
+    {"circle" Elt "r"‿"cx"‿"cy"≍˘FmtNum 18∾𝕩}¨⟨
+      (+˝0‿4‿5⊏dir)+p0, (+˝6‿8‿9⊏dir)-p0
+    ⟩
+  ⟩
+⟩
+-->
+
+Here they are. The post-locrian scale comes from shifting the root of mixolydian, and the post-lydian one from aeolian in the same way.
+
+<!--GEN ring.bqn
+ring.DrawRow -⟜'0'⌾⊑¨ ⟨
+  "110110101100"‿"Locrian ♭4 ♭7?"
+  "100110101101"‿"Lydian ♯2 ♯5?"
+⟩
+-->
+
+But… these scales are… not all that different from each other? Just swap note 1 for 11 to go back and forth. As described above, it takes six changes to get between lydian and locrian, and four are incorporated here. The other changes move a note to or from the root, so they interact with some rootless scale. Specifically, we'll be going through a sort of anti-dorian mode that's rotated halfway around, keeping the symmetry but leaving a gap at the root.
+
+<!--GEN
+ring.DrawRow -⟜'0'⌾⊑¨ ⟨
+  "010110101101"‿"Anti-Dorian"
+  "110110101101"‿"Spliced octatonic"
+⟩
+-->
+
+Also shown for comparison is the [loose tertian](tertian.md#loose-tertian-scales) we get by leaving the root in. It starts like a 1-2 octatonic scale, ends like a 2-1, and crosses over right in the middle.
+
+These are all some pretty strange scales. I don't think they sound quite as unusual as the augmented scales, which means they're only the weirdest 7-note tertian scales, but that's not nothing. Both the perfect fourth and fifth are missing, so you know you're going to be in a weird chord situation. Two of them, even: the root is the start of *both* an augmented chord and a diminished seventh. But only one of these is actually the root chord: in the post-locrian scale the inclusion of note 1 means we start on a 3-step third and get a diminished chord, and in the post-lydian scale we get the augmented chord instead.
