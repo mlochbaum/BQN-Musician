@@ -32,24 +32,520 @@
 <p>That specific range is arbitrary (not to mention inaudible), but the important thing is that when the frequency would increase up to <code><span class='Number'>2</span></code>, it's reduced to <code><span class='Number'>1</span></code> and starts at the bottom again. So our frequencies now form a circle instead of a line. But neither of these are terribly musical shapes (if it were a triangle that would be a different matter). Carry on, once more.</p>
 <h2 id="twelve-tone"><a class="header" href="#twelve-tone">Twelve-tone</a></h2>
 <p>Modern music just about everywhere is now based on dividing the octave into twelve steps. The reason usually given for this is to consider the <code><span class='Number'>3</span><span class='Function'>÷</span><span class='Number'>2</span></code> ratio, the second simplest after the octave, and look at what happens when it's applied repeatedly:</p>
-<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=Um91bmQg4oaQICjijIowLjXiirgrKeKMvigxMDDiirjDlykgICMgTmVhcmVzdCBodW5kcmVkdGgsIGZvciBkaXNwbGF5CgpSb3VuZCAy4ouGMXwy4ouG4oG8ICgzw7cyKeKLhuKGlTEz">↗️</a><pre>    <span class='Function'>Round</span> <span class='Gets'>←</span> <span class='Paren'>(</span><span class='Function'>⌊</span><span class='Number'>0.5</span><span class='Modifier2'>⊸</span><span class='Function'>+</span><span class='Paren'>)</span><span class='Modifier2'>⌾</span><span class='Paren'>(</span><span class='Number'>100</span><span class='Modifier2'>⊸</span><span class='Function'>×</span><span class='Paren'>)</span>  <span class='Comment'># Nearest hundredth, for display
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=Um91bmQg4oaQIHvijIowLjUr8J2VqX3ijL4oMTAw4oq4w5cpICAjIE5lYXJlc3QgaHVuZHJlZHRoLCBmb3IgZGlzcGxheQoKUm91bmQgMuKLhjF8MuKLhuKBvCAoM8O3Minii4bihpUxMw==">↗️</a><pre>    <span class='Function'>Round</span> <span class='Gets'>←</span> <span class='Brace'>{</span><span class='Function'>⌊</span><span class='Number'>0.5</span><span class='Function'>+</span><span class='Value'>𝕩</span><span class='Brace'>}</span><span class='Modifier2'>⌾</span><span class='Paren'>(</span><span class='Number'>100</span><span class='Modifier2'>⊸</span><span class='Function'>×</span><span class='Paren'>)</span>  <span class='Comment'># Nearest hundredth, for display
 </span>
     <span class='Function'>Round</span> <span class='Number'>2</span><span class='Function'>⋆</span><span class='Number'>1</span><span class='Function'>|</span><span class='Number'>2</span><span class='Function'>⋆</span><span class='Modifier'>⁼</span> <span class='Paren'>(</span><span class='Number'>3</span><span class='Function'>÷</span><span class='Number'>2</span><span class='Paren'>)</span><span class='Function'>⋆↕</span><span class='Number'>13</span>
 ⟨ 1 1.5 1.13 1.69 1.27 1.9 1.42 1.07 1.6 1.2 1.8 1.35 1.01 ⟩
 </pre>
-<p>At step 12, we arrive at a frequency that's very nearly in the same pitch class as the starting <code><span class='Number'>1</span></code>. This is because that <code><span class='Number'>3</span><span class='Function'>÷</span><span class='Number'>2</span></code> ratio is very close to <code><span class='Number'>2</span><span class='Function'>⋆</span><span class='Number'>7</span><span class='Function'>÷</span><span class='Number'>12</span></code>. Using that value instead we arrive back at the start exactly.</p>
+<p>At step 12, we arrive at a frequency that's very nearly in the same pitch class as the starting <code><span class='Number'>1</span></code>. This is because that <code><span class='Number'>3</span><span class='Function'>÷</span><span class='Number'>2</span></code> ratio is close to <code><span class='Number'>2</span><span class='Function'>⋆</span><span class='Number'>7</span><span class='Function'>÷</span><span class='Number'>12</span></code>. Using that value instead we arrive back at the start exactly.</p>
 <a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=Um91bmQgMuKLhjF8MuKLhuKBvCAoMuKLhjfDtzEyKeKLhuKGlTEz">↗️</a><pre>    <span class='Function'>Round</span> <span class='Number'>2</span><span class='Function'>⋆</span><span class='Number'>1</span><span class='Function'>|</span><span class='Number'>2</span><span class='Function'>⋆</span><span class='Modifier'>⁼</span> <span class='Paren'>(</span><span class='Number'>2</span><span class='Function'>⋆</span><span class='Number'>7</span><span class='Function'>÷</span><span class='Number'>12</span><span class='Paren'>)</span><span class='Function'>⋆↕</span><span class='Number'>13</span>
 ⟨ 1 1.5 1.12 1.68 1.26 1.89 1.41 1.06 1.59 1.19 1.78 1.33 1 ⟩
 </pre>
-<p>We can stop at 12 notes to get an octave scale; sorting the frequencies reveals that these follow a very regular distribution, as each note is a factor of <code><span class='Number'>2</span><span class='Function'>⋆÷</span><span class='Number'>12</span></code> (or <code><span class='Number'>12</span><span class='Function'>√</span><span class='Number'>2</span></code>) larger than the previous.</p>
+<p>We can stop at 12 notes to get an octave scale; <a href="https://mlochbaum.github.io/BQN/doc/order.html#sort">sorting</a> the frequencies reveals that they follow a very regular distribution, as each note is a factor of <code><span class='Number'>2</span><span class='Function'>⋆÷</span><span class='Number'>12</span></code> (or <code><span class='Number'>12</span><span class='Function'>√</span><span class='Number'>2</span></code>) larger than the previous.</p>
 <a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=Um91bmQg4oinIDLii4YxfDLii4bigbwgKDLii4Y3w7cxMinii4bihpUxMgoKUm91bmQgICAgICAgICAgICgy4ouGIMO3MTIp4ouG4oaVMTI=">↗️</a><pre>    <span class='Function'>Round</span> <span class='Function'>∧</span> <span class='Number'>2</span><span class='Function'>⋆</span><span class='Number'>1</span><span class='Function'>|</span><span class='Number'>2</span><span class='Function'>⋆</span><span class='Modifier'>⁼</span> <span class='Paren'>(</span><span class='Number'>2</span><span class='Function'>⋆</span><span class='Number'>7</span><span class='Function'>÷</span><span class='Number'>12</span><span class='Paren'>)</span><span class='Function'>⋆↕</span><span class='Number'>12</span>
 ⟨ 1 1.06 1.12 1.19 1.26 1.33 1.41 1.5 1.59 1.68 1.78 1.89 ⟩
 
     <span class='Function'>Round</span>           <span class='Paren'>(</span><span class='Number'>2</span><span class='Function'>⋆</span> <span class='Function'>÷</span><span class='Number'>12</span><span class='Paren'>)</span><span class='Function'>⋆↕</span><span class='Number'>12</span>
 ⟨ 1 1.06 1.12 1.19 1.26 1.33 1.41 1.5 1.59 1.68 1.78 1.89 ⟩
 </pre>
-<svg viewBox='-300 -100 600 200'>
-  <path fill='none' stroke-linejoin='round' stroke='currentColor' stroke-width='2' d='M0 80L-40 -69.282L69.282 40L-80 -0L69.282 -40L-40 69.282L0 -80L40 69.282L-69.282 -40L80 -0L-69.282 40L40 -69.282z'/>
+<p>The step <code><span class='Number'>2</span><span class='Function'>⋆÷</span><span class='Number'>12</span></code> is called a &quot;semitone&quot; and <code><span class='Number'>2</span><span class='Function'>⋆</span><span class='Number'>7</span><span class='Function'>÷</span><span class='Number'>12</span></code>, approximating <code><span class='Number'>3</span><span class='Function'>÷</span><span class='Number'>2</span></code>, is called a &quot;fifth&quot;, again for very bad reasons in both cases. Below you can trace how the larger step jumps around to hit every semitone, a path known as the &quot;circle of fifths&quot;.</p>
+<svg viewBox='-300 -105 600 210'>
+  <g fill='none' stroke-linejoin='round' stroke-width='2'>
+    <path class='lilac' d='M0 -80L40 -69.282L69.282 -40L80 -0L69.282 40L40 69.282L0 80L-40 69.282L-69.282 40L-80 0L-69.282 -40L-40 -69.282z'/>
+    <path stroke='currentColor' d='M0 -80L-40 69.282L69.282 -40L-80 0L69.282 40L-40 -69.282L0 80L40 -69.282L-69.282 40L80 -0L-69.282 -40L40 69.282z'/>
+  </g>
+  <g text-anchor='middle' fill='currentColor'>
+    <text dy='0.33em' x='0' y='-92'>1</text>
+    <text dy='0.33em' x='52' y='-79.674'>1.06</text>
+    <text dy='0.33em' x='90.067' y='-46'>1.12</text>
+    <text dy='0.33em' x='104' y='-0'>1.19</text>
+    <text dy='0.33em' x='90.067' y='46'>1.26</text>
+    <text dy='0.33em' x='52' y='79.674'>1.33</text>
+    <text dy='0.33em' x='0' y='92'>1.41</text>
+    <text dy='0.33em' x='-52' y='79.674'>1.5</text>
+    <text dy='0.33em' x='-90.067' y='46'>1.59</text>
+    <text dy='0.33em' x='-104' y='0'>1.68</text>
+    <text dy='0.33em' x='-90.067' y='-46'>1.78</text>
+    <text dy='0.33em' x='-52' y='-79.674'>1.89</text>
+  </g>
 </svg>
 
 <p>This octave scale is called the <em>chromatic scale</em>. But it's still not something anyone but Schoenberg would be proud to use! Carry on!</p>
+<h2 id="musical-scales"><a class="header" href="#musical-scales">Musical scales</a></h2>
+<p>The scales that most musicians work with are subsets of the 12-tone chromatic scale. To have a concrete example, let's take the <em>major scale</em>, which can be constructed by taking a seven-note section of the circle of fifths:</p>
+<svg viewBox='-300 -105 600 210'>
+  <g fill='none' stroke-linejoin='round' stroke-width='2'>
+    <path class='lilac' d='M0 -80L40 -69.282L69.282 -40L80 -0L69.282 40L40 69.282L0 80L-40 69.282L-69.282 40L-80 0L-69.282 -40L-40 -69.282z'/>
+    <path stroke='currentColor' d='M40 69.282L0 -80L-40 69.282L69.282 -40L-80 0L69.282 40L-40 -69.282'/>
+  </g>
+  <g text-anchor='middle' fill='currentColor'>
+    <text dy='0.33em' x='0' y='-96'>0</text>
+    <text dy='0.33em' x='48' y='-83.138'>1</text>
+    <text dy='0.33em' x='83.138' y='-48'>2</text>
+    <text dy='0.33em' x='96' y='-0'>3</text>
+    <text dy='0.33em' x='83.138' y='48'>4</text>
+    <text dy='0.33em' x='48' y='83.138'>5</text>
+    <text dy='0.33em' x='0' y='96'>6</text>
+    <text dy='0.33em' x='-48' y='83.138'>7</text>
+    <text dy='0.33em' x='-83.138' y='48'>8</text>
+    <text dy='0.33em' x='-96' y='0'>9</text>
+    <text dy='0.33em' x='-83.138' y='-48'>10</text>
+    <text dy='0.33em' x='-48' y='-83.138'>11</text>
+  </g>
+  <circle class='red' r='6' cx='40' cy='69.282'/>
+  <circle class='red' r='6' cx='0' cy='-80'/>
+  <circle class='red' r='6' cx='-40' cy='69.282'/>
+  <circle class='red' r='6' cx='69.282' cy='-40'/>
+  <circle class='red' r='6' cx='-80' cy='0'/>
+  <circle class='red' r='6' cx='69.282' cy='40'/>
+  <circle class='red' r='6' cx='-40' cy='-69.282'/>
+</svg>
+
+<p>In this diagram I've relabelled the notes starting at 0, instead of using relative frequencies. We'll call 0 the &quot;root note&quot; when using this system (pretty much always), so that a note's number is the number of semitones required to go from the root to it. Generally we'll display a scale with a simpler diagram like the one below, which just shows the notes included in the scale.</p>
+<svg viewBox='-299.6 -81 599.2 186'>
+  <g transform='translate(0 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>The major scale</text>
+    </g>
+  </g>
+</svg>
+
+<p>So, one way to identify the major scale is with this note list <code><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>2</span><span class='Ligature'>‿</span><span class='Number'>4</span><span class='Ligature'>‿</span><span class='Number'>5</span><span class='Ligature'>‿</span><span class='Number'>7</span><span class='Ligature'>‿</span><span class='Number'>9</span><span class='Ligature'>‿</span><span class='Number'>11</span></code>. There are two other representations that might be useful in computing various properties of the scale. One is a list with an entry for each note in the chromatic scale, marking the notes included in the scale with a 1 and leaving a 0 elsewhere. The <a href="https://mlochbaum.github.io/BQN/doc/replicate.html">Indices</a> function would turn this representation <em>back</em> into the list of notes. To go the other way, we want <a href="https://mlochbaum.github.io/BQN/doc/replicate.html#inverse">its inverse</a> <code><span class='Function'>/</span><span class='Modifier'>⁼</span></code>. Note how the pattern of 1s and 0s corresponds to filled and empty circles going clockwise above.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=4oqiIG1haiDihpAg4oinMTJ8N8OXMS3LnOKGlTcgICMgQ29uc3RydWN0ZWQgYnkgdGhlIGNpcmNsZSBvZiBmaWZ0aHMKCjEy4oaRL+KBvCBtYWoKCijihpUxMikg4oiKIG1haiAgIyBBbiBhbHRlcm5hdGUgYXBwcm9hY2g=">↗️</a><pre>    <span class='Function'>⊢</span> <span class='Value'>maj</span> <span class='Gets'>←</span> <span class='Function'>∧</span><span class='Number'>12</span><span class='Function'>|</span><span class='Number'>7</span><span class='Function'>×</span><span class='Number'>1</span><span class='Function'>-</span><span class='Modifier'>˜</span><span class='Function'>↕</span><span class='Number'>7</span>  <span class='Comment'># Constructed by the circle of fifths
+</span>⟨ 0 2 4 5 7 9 11 ⟩
+
+    <span class='Number'>12</span><span class='Function'>↑/</span><span class='Modifier'>⁼</span> <span class='Value'>maj</span>
+⟨ 1 0 1 0 1 1 0 1 0 1 0 1 ⟩
+
+    <span class='Paren'>(</span><span class='Function'>↕</span><span class='Number'>12</span><span class='Paren'>)</span> <span class='Function'>∊</span> <span class='Value'>maj</span>  <span class='Comment'># An alternate approach
+</span>⟨ 1 0 1 0 1 1 0 1 0 1 0 1 ⟩
+</pre>
+<p>We also make sure exactly 12 notes are represented with <code><span class='Number'>12</span><span class='Function'>↑</span></code>. If we leave this off, scales that don't include note 11 will end up short. The other representation we might use lists the intervals in the scale, that is, how many semitones does it take to go from each note to the next? To get it, we <a href="https://mlochbaum.github.io/BQN/doc/shift.html">shift</a> our scale up a step up and then subtract an unshifted copy. A somewhat interesting feature of the major scale is that every interval is one or two semitones. We shift in note 12 at the top end because it's equivalent to 0, and greater than the last note.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=eygxMsKr8J2VqSkt8J2VqX0gbWFq">↗️</a><pre>    <span class='Brace'>{</span><span class='Paren'>(</span><span class='Number'>12</span><span class='Function'>«</span><span class='Value'>𝕩</span><span class='Paren'>)</span><span class='Function'>-</span><span class='Value'>𝕩</span><span class='Brace'>}</span> <span class='Value'>maj</span>
+⟨ 2 2 1 2 2 2 1 ⟩
+</pre>
+<p>Each of these alternate representations—I'll call them the &quot;boolean&quot; and &quot;interval&quot; representations—includes the total number of notes as part of its construction. For the boolean representation, it's the length of the list, and for the interval representation, it's the sum. The total could also be built into the note-list representation by adding a trailing 12, duplicating the note 0.</p>
+<h3 id="counting"><a class="header" href="#counting">Counting</a></h3>
+<p>Okay, once we've narrowed things down to subsets of the chromatic scale, it we end up for the first time with a finite number of scales. How many? With the boolean representation this is pretty easy to answer. Every length-12 boolean list defines a scale, and every (12-tone octave) scale can be defined this way. There are 2 choices for each note (in or out), and they're all independent, so the total number of choices is the product of twelve twos.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=MuKLhjEy">↗️</a><pre>    <span class='Number'>2</span><span class='Function'>⋆</span><span class='Number'>12</span>
+4096
+</pre>
+<p>A common requirement is for the scale to include the root note, since the root is usually treated as a basis or home for the scale. In that case one of the choices is already made, leaving 11 to make.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=MuKLhjEx">↗️</a><pre>    <span class='Number'>2</span><span class='Function'>⋆</span><span class='Number'>11</span>
+2048
+</pre>
+<p>Nonetheless, quite a lot of choices. Much of scale theory is based on trying to decrease this number further!</p>
+<h2 id="modes"><a class="header" href="#modes">Modes</a></h2>
+<p>Okay, the root note. So, which note is it? Well, the way we've defined things I guess it'll be the pitch class of 1 Hz, so… 256 Hz? 512 Hz? This is a silly way to do things and these pitches don't even fall in the standard chromatic scale, which is defined to have one of its notes at 440 Hz. The truth is that <em>any</em> note in the chromatic scale can serve as the root, and it's pretty common to change keys so that a different note is perceived as the root (setting aside the issue that there may not <em>be</em> as single clear root note).</p>
+<p>One thing we're very interested in as part of scale theory is what happens if we keep our scale—that is, just the collection of notes—the same, and change the root. The root isn't really part of the scale, but it affects how we interpret it, since we numbered everything starting at the root. What if we wanted to renumber so that, say, the note currently labelled 2 becomes 0? We'd subtract 2, of course.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=bWFqCgptYWogLSAy">↗️</a><pre>    <span class='Value'>maj</span>
+⟨ 0 2 4 5 7 9 11 ⟩
+
+    <span class='Value'>maj</span> <span class='Function'>-</span> <span class='Number'>2</span>
+⟨ ¯2 0 2 3 5 7 9 ⟩
+</pre>
+<p>But it's not useful to have <code><span class='Number'>¯2</span></code> as a label: we'd rather have everything in the same range as before. Modulus (<code><span class='Function'>|</span></code>) does this for use, adding or subtracting 12 until each number is at least 0 and less than 12 itself. We're basically doing <a href="https://en.wikipedia.org/wiki/Modular_arithmetic">modular arithmetic</a>, which is the natural way to work with pitch classes. And while we're at it let's sort the notes again, since they've gotten out of order.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=MTIgfCBtYWogLSAyCgriiKcgMTIgfCBtYWogLSAy">↗️</a><pre>    <span class='Number'>12</span> <span class='Function'>|</span> <span class='Value'>maj</span> <span class='Function'>-</span> <span class='Number'>2</span>
+⟨ 10 0 2 3 5 7 9 ⟩
+
+    <span class='Function'>∧</span> <span class='Number'>12</span> <span class='Function'>|</span> <span class='Value'>maj</span> <span class='Function'>-</span> <span class='Number'>2</span>
+⟨ 0 2 3 5 7 9 10 ⟩
+</pre>
+<p>If we just look at this scale in isolation, it's certainly a different scale from the major scale: it's called the dorian scale.</p>
+<svg viewBox='-299.6 -81 599.2 186'>
+  <g transform='translate(-81 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Major</text>
+    </g>
+  </g>
+  <g transform='translate(81 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Dorian</text>
+    </g>
+  </g>
+</svg>
+
+<p>But that's moving all the notes to put the &quot;new&quot; root back where the old one was! If we don't do this then the two scales coincide exactly, so they're closely related. We call these scales &quot;modes&quot; of each other. In a shocking twist, this is a great name—it comes from the same Latin root as &quot;modulus&quot;! I think the mathematical term may have actually been derived from the musical one, explaining the apparent coincidence.</p>
+<p>Every note of the major scale can be the basis of a new mode; they're all shown below along with their Greek names. These may not be the easiest to memorize but I like them. They have a consistent form and all sound fairly distinct (the first syllables are all different, and make nice abbreviations).</p>
+<svg viewBox='-368 -174 736 372'>
+  <g transform='translate(-279 -93)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Ionian (major)</text>
+    </g>
+  </g>
+  <g transform='translate(-93 -93)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Dorian</text>
+    </g>
+  </g>
+  <g transform='translate(93 -93)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Phrygian</text>
+    </g>
+  </g>
+  <g transform='translate(279 -93)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Lydian</text>
+    </g>
+  </g>
+  <g transform='translate(-186 93)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Mixolydian</text>
+    </g>
+  </g>
+  <g transform='translate(0 93)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Aeolian (minor)</text>
+    </g>
+  </g>
+  <g transform='translate(186 93)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Locrian</text>
+    </g>
+  </g>
+</svg>
+
+<p>Other scales have their own modes, although this group, the &quot;diatonic modes&quot; (yes, we're firmly back in the realm of names that make no sense) is by far the most important in Western music. The major scale is asymmetric, so that all its modes are different from each other. This is pretty common, but there are also a handful of scales where starting on a non-root note can give the same scale. So these scales have fewer modes than notes. This is possible because 12 is a composite number <code><span class='Number'>2</span><span class='Function'>×</span><span class='Number'>2</span><span class='Function'>×</span><span class='Number'>3</span></code>, allowing 2-fold, 3-fold, 4-fold, or 6-fold symmetry. And of course, the chromatic scale has 12-fold symmetry, so it only has one mode!</p>
+<svg viewBox='-299.6 -81 599.2 162'>
+  <g transform='translate(-81 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-60' cy='0'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'></g>
+  </g>
+  <g transform='translate(81 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'></g>
+  </g>
+</svg>
+
