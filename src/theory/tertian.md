@@ -1,12 +1,12 @@
 # Tertian scales
 
-[Tertian](https://en.wikipedia.org/wiki/Tertian) sounds a lot like "Martian". Sorry about that one—these scales are definitely used on earth, and include all our most common ones like major and minor. All it means is "built out of thirds". I would have used "third scale" but this gets confusing when I want to talk about a few scales and the third one comes up.
+[Tertian](https://en.wikipedia.org/wiki/Tertian) sounds a lot like "Martian". Sorry about that one—these scales are definitely used on Earth, and include all our most common ones like major and minor. All it means is "built out of thirds". I would have used "third scale" but this gets confusing when I want to talk about a few scales and the third one comes up.
 
 Oliver Prehn (NewJazz) calls these "scales of harmonies" and presents them all in [this video](https://www.youtube.com/watch?v=Vq2xt2D3e3E) and [this pdf](https://newjazz.dk/Compendiums/scales_of_harmonies.pdf). The video makes a nice complement to this page since I don't have audio examples working yet.
 
 ## What are they?
 
-The problem at hand: there are too many scales. Also lots of them are terrible. Listing all possible scales by brute force, there are `2⋆11` in total, and 351 different classes if we consider rotations to be equivalent.
+The problem at hand: there are too many [scales](scale.md). Also lots of them are terrible. Listing all possible scales by brute force, there are `2⋆11` in total, and 351 different classes if we consider rotations to be equivalent.
 
         ≠ allScales ← 1⊸∾¨ ⥊↕11⥊2
 
@@ -159,7 +159,7 @@ Two of them just add a note to an augmented scale (which to be fair is a cool id
 
 <!--GEN
 ring.DrawRow ('0'-˜⊏)⊸∾¨ ⟨
-  "110011010101"‿"Aeolian ♭2?"
+  "110011010101"‿"Ionian ♭2?"
   "110011011001"‿"Double harmonic"
   "110101010101"‿"Neapolitan major"
   "110101011001"‿"Neapolitan minor"

@@ -105,7 +105,7 @@ Each of these alternate representations—I'll call them the "boolean" and "inte
 
 ### Counting
 
-Okay, once we've narrowed things down to subsets of the chromatic scale, it we end up for the first time with a finite number of scales. How many? With the boolean representation this is pretty easy to answer. Every length-12 boolean list defines a scale, and every (12-tone octave) scale can be defined this way. There are 2 choices for each note (in or out), and they're all independent, so the total number of choices is the product of twelve twos.
+Okay, once we've narrowed things down to subsets of the chromatic scale, we end up for the first time with a finite number of scales. How many? With the boolean representation this is pretty easy to answer. Every length-12 boolean list defines a scale, and every (12-tone octave) scale can be defined this way. There are 2 choices for each note (in or out), and they're all independent, so the total number of choices is the product of twelve twos.
 
         2⋆12
 
@@ -117,7 +117,7 @@ Nonetheless, quite a lot of choices. Much of scale theory is based on trying to 
 
 ## Modes
 
-Okay, the root note. So, which note is it? Well, the way we've defined things I guess it'll be the pitch class of 1 Hz, so… 256 Hz? 512 Hz? This is a silly way to do things and these pitches don't even fall in the standard chromatic scale, which is defined to have one of its notes at 440 Hz. The truth is that *any* note in the chromatic scale can serve as the root, and it's pretty common to change keys so that a different note is perceived as the root (setting aside the issue that there may not *be* as single clear root note).
+Okay, the root note. So, which note is it? Well, the way we've defined things I guess it'll be the pitch class of 1 Hz, so… 256 Hz? 512 Hz? This is a silly way to do things, and these pitches don't even fall in the standard chromatic scale, which is defined to have one of its notes at 440 Hz. The truth is that *any* note in the chromatic scale can serve as the root, and it's pretty common to change keys so that a different note is perceived as the root (setting aside the issue that there may not *be* a single clear root note).
 
 One thing we're very interested in as part of scale theory is what happens if we keep our scale—that is, just the collection of notes—the same, and change the root. The root isn't really part of the scale, but it affects how we interpret it, since we numbered everything starting at the root. What if we wanted to renumber so that, say, the note currently labelled 2 becomes 0? We'd subtract 2, of course.
 

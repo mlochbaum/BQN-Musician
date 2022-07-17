@@ -158,6 +158,6 @@ ring.DrawRow -⟜'0'⌾⊑¨ ⟨
 ⟩
 -->
 
-Also shown for comparison is the [loose tertian](tertian.md#loose-tertian-scales) we get by leaving the root in. It starts like a 1-2 octatonic scale, ends like a 2-1, and crosses over right in the middle.
+Also shown for comparison is the [loose tertian](tertian.md#loose-tertian-scales) scale we get by leaving the root in. It starts like a 1-2 octatonic scale, ends like a 2-1, and crosses over right in the middle.
 
 These are all some pretty strange scales. I don't think they sound quite as unusual as the augmented scales, which means they're only the weirdest 7-note tertian scales, but that's not nothing. Both the perfect fourth and fifth are missing, so you know you're going to be in a weird chord situation. Two of them, even: the root is the start of *both* an augmented chord and a diminished seventh. But only one of these is actually the root chord: in the post-locrian scale the inclusion of note 1 means we start on a 3-step third and get a diminished chord, and in the post-lydian scale we get the augmented chord instead.
