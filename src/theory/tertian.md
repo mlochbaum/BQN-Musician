@@ -139,7 +139,7 @@ ring.DrawRow {i‿n:⟨12↑/⁼0∾+`i-'0',n⟩}¨ ⟨
 
 The first set of scales are the diatonic modes, including major (ionian) and minor (aeolian) as well as some less well-known but still very common scales such as dorian and lydian. They're way more common than the other kinds, and that modulations page gives some good reasons for this.
 
-Every class except the last has two 4-step thirds in a row, which form an augmented chord. Perhaps because this chord isn't found in diatonic scales, it sounds spacey and eerie. It's also ambiguous, because it splits the octave in 4-4-4, so rearranging the notes gives another augmented chord with a different root. But within a 7-note scale the root can always be identified, because two of the 4-step intervals are scale thirds, while the last is made up of 3 scale intervals and not 2. Similarly, the harmonic minor and major scales both have three 3-step thirds in a row, making up a diminished seventh chord that splits the octave 3-3-3-3. It's another sound that's not found in a diatonic scale, and often comes across as hungry or sour. Both of these chords are great ways to transition between different scales or harmonic frameworks, because their symmetry makes them free for reinterpretation and they readily resolve into "nicer" chords.
+Every class other than that one has two 4-step thirds in a row, which form an augmented chord. Perhaps because this chord isn't found in diatonic scales, it sounds spacey and eerie. It's also ambiguous, because it splits the octave in 4-4-4, so rearranging the notes gives another augmented chord with a different root. But within a 7-note scale the root can always be identified, because two of the 4-step intervals are scale thirds, while the last is made up of 3 scale intervals and not 2. Similarly, the harmonic minor and major scales both have three 3-step thirds in a row, making up a diminished seventh chord that splits the octave 3-3-3-3. It's another sound that's not found in a diatonic scale, and often comes across as hungry or sour. Both of these chords are great ways to transition between different scales or harmonic frameworks, because their symmetry makes them free for reinterpretation and they readily resolve into "nicer" chords.
 
 The definition of a tertian scale works either ascending or descending, so if we invert a tertian scale we get another tertian scale. Here's what that does to our four classes of scales:
 
@@ -163,5 +163,20 @@ ring.DrawRow ('0'-˜⊏)⊸∾¨ ⟨
   "110011011001"‿"Double harmonic"
   "110101010101"‿"Neapolitan major"
   "110101011001"‿"Neapolitan minor"
+⟩
+-->
+
+The octatonic scales are also fairly interesting. In each of these, the notes next to the root have just one empty space next to them, because otherwise there would have to be a group of three notes in the middle.
+
+        > (8=+´)¨⊸/ IsLooseTertian¨⊸/ allScales
+
+This means that taking out the root leaves us with a [rootless](modulation.md#going-off-root) tertian scale, which we can classify according to the system above. The removed note is the middle of a sequence of three 2-step intervals, so we end up with all the scales that feature this pattern: the diatonic scale has it once, and the melodic scale has two that overlap. The whole-tone scale also has it, and because it has only 6 notes it gives the Neapolitan minor scale instead of an octatonic one.
+
+<!--GEN
+ring.DrawRow ('0'-˜⊏)⊸∾¨ ⟨
+  "010101101101"‿"Offset melodic"
+  "010110101101"‿"Offset diatonic"
+  "010110110101"‿"Offset melodic"
+  "010101010101"‿"Offset whole-tone"
 ⟩
 -->

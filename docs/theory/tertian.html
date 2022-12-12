@@ -461,7 +461,7 @@
 </svg>
 
 <p>The first set of scales are the diatonic modes, including major (ionian) and minor (aeolian) as well as some less well-known but still very common scales such as dorian and lydian. They're way more common than the other kinds, and that modulations page gives some good reasons for this.</p>
-<p>Every class except the last has two 4-step thirds in a row, which form an augmented chord. Perhaps because this chord isn't found in diatonic scales, it sounds spacey and eerie. It's also ambiguous, because it splits the octave in 4-4-4, so rearranging the notes gives another augmented chord with a different root. But within a 7-note scale the root can always be identified, because two of the 4-step intervals are scale thirds, while the last is made up of 3 scale intervals and not 2. Similarly, the harmonic minor and major scales both have three 3-step thirds in a row, making up a diminished seventh chord that splits the octave 3-3-3-3. It's another sound that's not found in a diatonic scale, and often comes across as hungry or sour. Both of these chords are great ways to transition between different scales or harmonic frameworks, because their symmetry makes them free for reinterpretation and they readily resolve into &quot;nicer&quot; chords.</p>
+<p>Every class other than that one has two 4-step thirds in a row, which form an augmented chord. Perhaps because this chord isn't found in diatonic scales, it sounds spacey and eerie. It's also ambiguous, because it splits the octave in 4-4-4, so rearranging the notes gives another augmented chord with a different root. But within a 7-note scale the root can always be identified, because two of the 4-step intervals are scale thirds, while the last is made up of 3 scale intervals and not 2. Similarly, the harmonic minor and major scales both have three 3-step thirds in a row, making up a diminished seventh chord that splits the octave 3-3-3-3. It's another sound that's not found in a diatonic scale, and often comes across as hungry or sour. Both of these chords are great ways to transition between different scales or harmonic frameworks, because their symmetry makes them free for reinterpretation and they readily resolve into &quot;nicer&quot; chords.</p>
 <p>The definition of a tertian scale works either ascending or descending, so if we invert a tertian scale we get another tertian scale. Here's what that does to our four classes of scales:</p>
 <a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=e/Cdlakg4ouIIE5vcm1hbGl6ZeKImOKMvcuYIPCdlal9IDTigL8y4oC/M+KAvzEg4oqPIHVuaXE=">↗️</a><pre>    <span class='Brace'>{</span><span class='Value'>𝕩</span> <span class='Function'>⋈</span> <span class='Function'>Normalize</span><span class='Modifier2'>∘</span><span class='Function'>⌽</span><span class='Modifier'>˘</span> <span class='Value'>𝕩</span><span class='Brace'>}</span> <span class='Number'>4</span><span class='Ligature'>‿</span><span class='Number'>2</span><span class='Ligature'>‿</span><span class='Number'>3</span><span class='Ligature'>‿</span><span class='Number'>1</span> <span class='Function'>⊏</span> <span class='Value'>uniq</span>
 ┌─                                     
@@ -627,6 +627,153 @@
     <g text-anchor='middle' fill='currentColor'>
       <text dy='0.33em' x='0' y='-89'>110101011001</text>
       <text dy='0.33em' x='0' y='89'>Neapolitan minor</text>
+    </g>
+  </g>
+</svg>
+
+<p>The octatonic scales are also fairly interesting. In each of these, the notes next to the root have just one empty space next to them, because otherwise there would have to be a group of three notes in the middle.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=PiAoOD0rwrQpwqjiirgvIElzTG9vc2VUZXJ0aWFuwqjiirgvIGFsbFNjYWxlcw==">↗️</a><pre>    <span class='Function'>&gt;</span> <span class='Paren'>(</span><span class='Number'>8</span><span class='Function'>=+</span><span class='Modifier'>´</span><span class='Paren'>)</span><span class='Modifier'>¨</span><span class='Modifier2'>⊸</span><span class='Function'>/</span> <span class='Function'>IsLooseTertian</span><span class='Modifier'>¨</span><span class='Modifier2'>⊸</span><span class='Function'>/</span> <span class='Value'>allScales</span>
+┌─                         
+╵ 1 1 0 1 0 1 1 0 1 1 0 1  
+  1 1 0 1 1 0 1 0 1 1 0 1  
+  1 1 0 1 1 0 1 1 0 1 0 1  
+                          ┘
+</pre>
+<p>This means that taking out the root leaves us with a <a href="modulation.html#going-off-root">rootless</a> tertian scale, which we can classify according to the system above. The removed note is the middle of a sequence of three 2-step intervals, so we end up with all the scales that feature this pattern: the diatonic scale has it once, and the melodic scale has two that overlap. The whole-tone scale also has it, and because it has only 6 notes it gives the Neapolitan minor scale instead of an octatonic one.</p>
+<svg viewBox='-332 -105 664 210'>
+  <g transform='translate(-243 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='-89'>010101101101</text>
+      <text dy='0.33em' x='0' y='89'>Offset melodic</text>
+    </g>
+  </g>
+  <g transform='translate(-81 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='-89'>010110101101</text>
+      <text dy='0.33em' x='0' y='89'>Offset diatonic</text>
+    </g>
+  </g>
+  <g transform='translate(81 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='-89'>010110110101</text>
+      <text dy='0.33em' x='0' y='89'>Offset melodic</text>
+    </g>
+  </g>
+  <g transform='translate(243 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='-89'>010101010101</text>
+      <text dy='0.33em' x='0' y='89'>Offset whole-tone</text>
     </g>
   </g>
 </svg>
