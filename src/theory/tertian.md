@@ -57,7 +57,7 @@ When `n=6`, this tells us `a=0` and `b=6`: every third in the scale has length 4
         > { ⥊ 0‿4‿8 +⌜ 0‿𝕩 }¨ 1‿2‿3
 
 <!--GEN ring.bqn
-ring.DrawRow 1‿2‿3 {⥊0‿4‿8+⌜0‿𝕩}⊸((12↑/⁼∘⊣)<⊸∾Fmt⊸⋈)¨ ⟨
+ring.DrawTertianRow 1‿2‿3 {⥊0‿4‿8+⌜0‿𝕩}⊸((12↑/⁼∘⊣)<⊸∾Fmt⊸⋈)¨ ⟨
   "Inverse augmented"
   "Whole tone"
   "Augmented"
@@ -73,7 +73,7 @@ When `n=8`, `a=8` and `b=0`, so every third is 3 steps. In a similar pattern to 
         > { ⥊ (3×↕4) +⌜ 0‿𝕩 }¨ 1‿2
 
 <!--GEN
-ring.DrawRow 1‿2 {⥊(3×↕4)+⌜0‿𝕩}⊸((12↑/⁼∘⊣)<⊸∾Fmt⊸⋈)¨ ⟨
+ring.DrawTertianRow 1‿2 {⥊(3×↕4)+⌜0‿𝕩}⊸((12↑/⁼∘⊣)<⊸∾Fmt⊸⋈)¨ ⟨
   "Octatonic"
   "Other octatonic"
 ⟩
@@ -129,7 +129,7 @@ Let's dig into the 7-note scale classes we've identified above. I'll go ahead an
 | 4 4 3 4 3 3 3 | 2 2 1 2 1 3 1 | Harmonic major
 
 <!--GEN
-ring.DrawRow {i‿n:⟨12↑/⁼0∾+`i-'0',n⟩}¨ ⟨
+ring.DrawTertianRow {i‿n:⟨12↑/⁼0∾+`i-'0',n⟩}¨ ⟨
   "2212221"‿"Major"
   "2122221"‿"Melodic minor"
   "2122131"‿"Harmonic minor"
@@ -149,7 +149,7 @@ A diatonic scale inverts to give another diatonic scale, as does a mode of melod
 
 ## Loose tertian scales
 
-A few occasionally-used scales aren't quite tertian because the starting and ending intervals are both half steps, so that they add up to a 2-step third, which is too small. We can find all of these scales by changing the handling of the last interval from `IsTertian`:
+A few occasionally-used scales aren't quite tertian because the starting and ending intervals are both a single step, so that they add up to a 2-step third, which is too small. We can find all of these scales by changing the handling of the last interval from `IsTertian`:
 
         IsLooseTertian ← { i←2 Int /𝕩 ⋄ (2=¯1⊑i) ∧ ∧´(¯1↓i)∊3‿4 }
 
@@ -158,7 +158,7 @@ A few occasionally-used scales aren't quite tertian because the starting and end
 Two of them just add a note to an augmented scale (which to be fair is a cool idea), and there are three different octatonic scales that start with one inversion (1 1 0…1 0) and end with another (1 0 1…0 1), switching over in different places. Three of the four remaining scales are known, and the other one certainly seems like it should be, as a reasonable variation of the major scale, but I haven't seen it before.
 
 <!--GEN
-ring.DrawRow ('0'-˜⊏)⊸∾¨ ⟨
+ring.DrawTertianRow ('0'-˜⊏)⊸∾¨ ⟨
   "110011010101"‿"Ionian ♭2?"
   "110011011001"‿"Double harmonic"
   "110101010101"‿"Neapolitan major"
@@ -173,7 +173,7 @@ The octatonic scales are also fairly interesting. In each of these, the notes ne
 This means that taking out the root leaves us with a [rootless](modulation.md#going-off-root) tertian scale, which we can classify according to the system above. The removed note is the middle of a sequence of three 2-step intervals, so we end up with all the scales that feature this pattern: the diatonic scale has it once, and the melodic scale has two that overlap. The whole-tone scale also has it, and because it has only 6 notes it gives the Neapolitan minor scale instead of an octatonic one.
 
 <!--GEN
-ring.DrawRow ('0'-˜⊏)⊸∾¨ ⟨
+ring.DrawTertianRow ('0'-˜⊏)⊸∾¨ ⟨
   "010101101101"‿"Offset melodic"
   "010110101101"‿"Offset diatonic"
   "010110110101"‿"Offset melodic"

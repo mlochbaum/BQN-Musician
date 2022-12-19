@@ -143,7 +143,7 @@ hdim SVG figLabel ∾ ⟨
 Here they are. The post-locrian scale comes from shifting the root of mixolydian, and the post-lydian one from aeolian in the same way.
 
 <!--GEN ring.bqn
-ring.DrawRow -⟜'0'⌾⊑¨ ⟨
+ring.DrawTertianRow -⟜'0'⌾⊑¨ ⟨
   "110110101100"‿"Locrian ♭4 ♭7?"
   "100110101101"‿"Lydian ♯2 ♯5?"
 ⟩
@@ -152,7 +152,7 @@ ring.DrawRow -⟜'0'⌾⊑¨ ⟨
 But… these scales are… not all that different from each other? Just swap note 1 for 11 to go back and forth. As described above, it takes six changes to get between lydian and locrian, and four are incorporated here. The other changes move a note to or from the root, so they interact with some rootless scale. Specifically, we'll be going through a sort of anti-dorian mode that's rotated halfway around, keeping the symmetry but leaving a gap at the root.
 
 <!--GEN
-ring.DrawRow -⟜'0'⌾⊑¨ ⟨
+ring.DrawTertianRow -⟜'0'⌾⊑¨ ⟨
   "010110101101"‿"Anti-Dorian"
   "110110101101"‿"Spliced octatonic"
 ⟩
