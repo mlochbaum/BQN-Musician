@@ -17,7 +17,7 @@
 # - Indented code blocks
 # - Inline and raw HTML in a way that doesn't match the spec at all
 # - Tables
-# - Lists, unordered with single-line items only
+# - Lists, unordered with single-line items only; can be nested
 # - Inlines: code fully, links partially, and emphasis somewhat
 
 # Important missing features:
@@ -87,23 +87,23 @@ PrecedesGroup ← {
 Trace ← {
   # 𝕨 is a list with one index for each possible start, giving a later
   # start that is known to be enabled if that one is.
-  # 𝕩 is a mask of all starts known to be enabled.
+  # 𝕩 is a list of all starts known to be enabled.
   # A "stop" position that follows all expressions tells when to stop.
   # At each step the distance from a start to its successor in 𝕨 is
   # doubled, so the maximum number of steps is about 2⋆⁼≠𝕩.
   En ← {
-    𝕩 ↩ 1¨⌾((𝕩/𝕨)⊸⊏)𝕩  # Starts following from an enabled one are enabled
+    𝕩 ∾↩ 𝕩⊏𝕨           # Add starts following from an enabled one
     𝕨 ↩ ⊏˜ 𝕨           # Double the number of steps in 𝕨
     𝕨 En 𝕩             # Repeat
-  }⍟{0=¯1⊑𝕩}           #        until the stop is enabled
+  }⍟{stop≠¯1⊑𝕩}        #        until the stop is reached
 
   g ← ⍋𝕨               # Order expressions by starting index
   start ← g⊏𝕨
   end   ← g⊏𝕩
   next ← start ⍋ end   # An expression's successor starts after it ends
-  next ∾↩ ≠next        # The stop node is its own successor
-  enabled ← ¯1 ↓ next En (≠next)↑1  # Search and remove the stop
-  enabled / start≍˘end # List of enabled starts and ends
+  next ∾↩ stop←≠next   # The stop node is its own successor
+  enabled ← stop⊸>⊸/ next En ⋈0  # Search, then remove stops
+  enabled ⊏ start≍˘end # List of enabled starts and ends
 }
 
 # Join lines with newline characters. Include a trailing newline.
@@ -199,11 +199,31 @@ Markdown ← {filename𝕊𝕩:
     ⟨¬ useEntity , entities ⊏˜ useEntity/ind , /useEntity⟩
   }
 
+  # Function to build REPL link
+  # May include previous statements to define variables
+  makeLink ← {
+    lines ← names ← deps ← ⟨⟩
+    { ns‿assigned‿line 𝕊 𝕩:
+      M ← ⍷∘∧∘∾                       # Merge
+      n ← ≠ ls ← 𝕩 ⊏˜ ⍷line           # Lines with variables
+      lc ← (≠lines) + ↕n              # Indices they'll have
+      lines ∾↩ ls
+      JoinLines 𝕩 ∾˜ lines ⊏˜ (-n) ↓ M lc { l𝕊[n,a]:
+        e ← (≠names) > i ← names ⊐ n  # Look up the names
+        d ← l ∾˜ M (e/i) ⊏ deps       # Dependencies for this line
+        deps M⟜d¨⌾(((a∧e)/i)⊸⊏)↩      # Add these to reassigned names
+        names ∾↩ new ← (a∧¬e) / n     # Add new names
+        deps ∾↩ d¨ new                # With this line's dependencies
+        d
+      }⟜⍉¨ (⊐line) ⊔ ns≍˘assigned
+    }
+  }
+
   # Non-empty lines in code blocks have 4 leading spaces
   ProcCode ← {
     # Strip the leading spaces
-    𝕩 ↩ 4 ↓¨ 𝕩
-    code ← JoinLines 𝕩
+    lines ← 4 ↓¨ 𝕩
+    code ← JoinLines lines
 
     # Highlight and unescape html-unsafe characters
     c‿ci ← extensions◶(⋈˜⟨⟩)‿GetHighlights code
@@ -211,26 +231,56 @@ Markdown ← {filename𝕊𝕩:
 
     # If every line is indented by at least 4 additional spaces, we will
     # execute each one and insert the results.
-    addRslt ← ∧´ ' ' = ∾ 4 (⌊⟜≠ ↑ ⊢)¨ 𝕩
-    # Don't show assignment results by default
-    ShowRslt ← {
-      depth ← +` "(){}⟨⟩" (⊣(≠⊸>×¯1⋆2|⊢)⊐) 𝕩
-      𝕩 /˜↩ ¬ ∨`⌾⌽ (0=depth) ∧ (∧`𝕩≠'#') ∧ 𝕩∊"⋄,"  # Just the last statement
-      g ← 𝕩∊"←↩"
-      (⊑g⊐1) (<⟜(≠g))◶⟨1,¬(" "∾∾idChars)∧´∘∊˜↑⟩ 𝕩
-    }
-    ShowErr ← lf∾˜"span class='Error'"Html"Error: "∾(∧`lf⊸≠)⊸/⎊•Repr
-    r‿ri ← addRslt◶(⋈˜⟨⟩)‿{
-      ⟨ (ShowRslt ⊣◶⟨"",(⥊∾⟜lf⎉1)∘•Fmt∘⊢⟩ CodeExec)⎊(ShowErr∘•CurrentError)⍟(0<≠)¨ 𝕩
-        1 -˜ +` 1 + ≠¨ 𝕩   ⟩ # Don't forget the trailing newline
-    } 𝕩
+    r‿ri‿link ← {
+      extensions ?
+      ∧´ ' ' = ∾ 4 (⌊⟜≠ ↑ ⊢)¨ lines ?
+      # Top-level separators are those not inside brackets
+      m ← NotCommentOrString code
+      depth ← +` m × "(){}⟨⟩[]" (⊣(≠⊸>×·¬⊸-2|⊢)⊐) code
+      top ← m ∧ 0=depth
+      sep ← top ∧ code∊"⋄,"∾lf  # Top-level separators
+      break ← sep∧lf=code       # Mask of line breaks
+      # Don't show assignment result
+      PG ← PrecedesGroup
+      a ← m∧code∊"←↩" ⋄ sid ← m∧code∊" "∾∾idChars
+      sa ← a ∧ ¬(¬sep) PG sid∨a       # Silent assignment
+      show ← ¬ break / sa PG ¬sa∨»sep # If last expression began with one
+      # Remove indentation and split lines
+      notIndent ← (0⊸=∨4⊸<) CountRuns ¬m∧lf=code
+      parts ← code ⊔˜ 1 -˜ (notIndent∧¬break) × 1+`break
+      # Evaluate
+      E ← ⊣◶⟨"",(⥊∾⟜lf⎉1)∘•Fmt⊢⟩⟜CodeExec
+      ShowErr ← lf∾˜"span class='Error'"Html"Error: "∾(∧`lf⊸≠)⊸/⎊•Repr
+      r ← show ('#'≠⊑∘⊢)◶⟨"",E⎊(ShowErr∘•CurrentError⊢)⟩⍟(0<≠∘⊢)¨ parts
 
-    Link ← {
-      c ← tryURL ∾ Base64 ¯1 ↓ JoinLines 4↓¨𝕩
-      ("a class=""replLink"" title=""Open in the REPL"" target=""_blank"" href="∾""""(∾∾⊣)c) Html "↗️"
+      # Link that runs the code
+      # Parse assignments and variables to add previous lines if needed
+      # First locate the names
+      In ← 1=+⟜(↕2)⊸⍋
+      ma‿sp‿st ← {m∧code=𝕩}¨"↩ ‿" ⋄ id←sp<sid
+      idInd ← / word ← »⊸<id          # Starts of words
+      lc ← ((-´"aA")×"AZ"In⊢)⊸+ code  # Lowercase code
+      names ← lc ⊔˜ 1 -˜ (id∧'_'≠code) × +`word  # Used names
+      names‿idInd ("az"In⊑¨names)⊸/¨↩ # Filter out numbers
+      names (∧`'.'⊸≠)⊸/¨↩
+      iline ← idInd ⊏ +`break         # Line number
+      # Find the top-level assignments
+      fma ← ma PG⌾⌽ ¬sp∨ma            # Assume anything before ↩ with no space is modified assignment
+      ea ← top ∧ »⊸< a ∨ fma          # Character after assignment target
+      cont ← sp ∨ (»⊸∧ id) ∨ (»⊸∨ st PG sp) ∨ » 0<depth
+      target ← « ea PG⌾⌽ cont         # Top-level assignment targets
+      ia ← idInd ⊏ target             # Whether each name is assigned
+      # Build the link element
+      lu ← tryURL ∾ Base64 ¯1 ↓ names‿ia‿iline MakeLink parts
+      l ← "a class=""replLink"" title=""Open in the REPL"" target=""_blank"" href="
+      link ← (l∾""""(∾∾⊣)lu) Html "↗️"
+      ⟨r, /break, link⟩
+    ;
+      3⥊<⟨⟩
     }
+
     mod ← ⟨em,e∾c∾r,ei∾ci∾ri⟩ Modify code
-    𝕩 Link⊸∾⍟addRslt "pre" Html "code" Html⍟(¬extensions) mod
+    link ∾ "pre" Html "code" Html⍟(¬extensions) mod
   }
 
   # Headings start with #, and require 1-6 #s followed by a space.
@@ -267,7 +317,20 @@ Markdown ← {filename𝕊𝕩:
   # List items start with a bullet (unordered) or number (ordered).
   LenBullet ← +⟜× ·≤⟜4⊸× ·Lead ' '=1⊸↓
   ProcBullet ← {
-    "ul" Html lf ∾ JoinLines ("li" Html ProcInline)¨ 𝕨 ↓¨ 𝕩
+    items ← 𝕨 ↓¨ 𝕩
+    indent ← (' '=⊑)¨𝕩
+    items ↩ { ∨´indent ?
+      # Require indented lines to form a nested list
+      Len ← { ! ∧´(⊑¨𝕩)∊"-+*" ⋄ LenBullet ⊑𝕩 }
+      # Process items recursively
+      groups ← 1 -˜ (indent∾1) × +` (¬indent)∾1
+      sub ← Len⊸ProcBullet⍟(0<≠)¨ groups ⊔ items
+      # Append to the first line, which is assumed to stand alone
+      (ProcInline¨ indent ¬⊸/ items) JoinLines∘⋈¨ sub
+    ;
+      ProcInline¨ items
+    }
+    "ul" Html lf ∾ JoinLines "li"⊸Html¨ items
   }
   LenListNum ← { # Not used yet
     n ← Lead 1="0:"⍋𝕩
@@ -319,15 +382,16 @@ Markdown ← {filename𝕊𝕩:
   }⟜JoinLines
   ProcHtmlBlock ← extensions◶JoinLines‿(<⟜2◶ProcComment‿ProcHtml)
 
-  lineChars‿lineClas‿procFns ← <˘⍉>⟨
+  dig ← '0'+↕10
+  [lineChars,lineClas,procFns] ← ⍉[
     ""    ‿ (!∘0)       ‿ ProcParagraph
     "#"   ‿ LenHeading  ‿ ProcHeading
     ""    ‿ 0           ‿ ProcCode
     ""    ‿ 0           ‿ ProcTable
     "-+*" ‿ LenBullet   ‿ ProcBullet
-  # •d    ‿ LenListNum  ‿ ProcListNum
+  # dig   ‿ LenListNum  ‿ ProcListNum
     "<"   ‿ IsHtmlBlock ‿ ProcHtmlBlock
-  ⟩
+  ]
 
   ######
   # Inline elements
@@ -431,7 +495,7 @@ Markdown ← {filename𝕊𝕩:
     include ∧↩ ¬ I2M ∧ ∾ eInds∾1+2↓eInds
     eInds ∾↩ ⟨codeBounds⟩
     eTags ← ∾ eInds ≠⊸⥊¨ 2‿2‿1 / ("<"‿"</"∾¨·<∾⟜">")¨ "em"‿"strong"‿"code"
-    eInds ↩ ∾ eInds
+    eInds ∾↩
 
     # Remove backslashes used for escaping
     include ∧↩ codeMask ∨ 1 « actual
@@ -455,7 +519,7 @@ Markdown ← {filename𝕊𝕩:
   # the line processor. Note that leading blanks aren't passed in.
   lineType‿lineDat ← <˘⍉ > ClassifyLine¨ blanks ↓¨ 𝕩
   # Empty lines have type ¯1.
-  lineType ↩ ¯1¨⌾((¬nonEmptyMask)⊸/) lineType
+  lineType ¯1¨⌾((¬nonEmptyMask)⊸/)↩
 
   # Chase HTML comments
   commentStart ← /(lineType=5)∧lineDat=2
@@ -466,8 +530,8 @@ Markdown ← {filename𝕊𝕩:
     𝕩 + ↕end¬𝕩  # A list of indices
   }¨ commentStart
   newBlock ← (≠𝕩)↑/⁼ ⊑¨ (0<≠¨)⊸/ comments
-  lineType ↩ 5¨⌾(comInd⊸⊏) lineType
-  lineDat  ↩ 2¨⌾(comInd⊸⊏) lineDat
+  lineType 5¨⌾(comInd⊸⊏)↩
+  lineDat  2¨⌾(comInd⊸⊏)↩
 
   # Lines that could be included in code blocks (will be refined)
   codeMask ← nonEmptyMask ∧ (lineType ≠ 5) ∧ blanks ≥ 4
@@ -486,13 +550,19 @@ Markdown ← {filename𝕊𝕩:
   delimValid ← (⊢ =○(≠∘⊔∘CutTableRow¨ ⊏⟜𝕩) -⟜1) / tableDelimMask
   headerMask ← « delimValid⌾(tableDelimMask⊸/) 0¨𝕩
   tableMask ↩ headerMask (⊢ ∧ ⊣ ∨ ⊣ PrecedesGroup <) tableMask
-  lineType ↩ 3¨⌾(tableMask⊸/) lineType
+  lineType 3¨⌾(tableMask⊸/)↩
 
   # Code blocks consist of indented lines, possibly with blank lines
   # in between. They must be separated from paragraphs by blank lines.
   codeMask ∧↩ ¬ paragraphMask PrecedesGroup codeMask
   codeMask ∨↩ codeMask (⊢ ∧ PrecedesGroup ∧ PrecedesGroup⌾⌽) lineType < 0
-  lineType ↩ 2¨⌾(codeMask⊸/) lineType
+  lineType 2¨⌾(codeMask⊸/)↩
+
+  # List items continue over following indented lines
+  listMask ← (0=blanks) ∧ 4 = lineType
+  listIndent ← blanks ≥ »blanks + listMask×lineDat
+  listMask ↩ codeMask < listMask (⊣ PrecedesGroup <) listIndent
+  lineType 4¨⌾(listMask⊸/)↩
 
   # Lines continue blocks if they are part of the same multi-line
   # type as the previous line, and otherwise start new ones.
@@ -508,31 +578,6 @@ Markdown ← {filename𝕊𝕩:
   ProcBlock ← {t‿l G b: f←t⊑procFns ⋄ l F ⊑b }
   b ← (blockStart / lineType≍˘lineDat) <∘ProcBlock˘ blocks
   JoinLines b
-}
-
-
-################################
-# Testing
-# Uses the test cases at https://spec.commonmark.org/0.29/spec.json
-# since Github doesn't seem to have published theirs
-TestSections ← {
-  tests ← ¯2 ↓˘ 8⊸(÷˜⟜≠∾⊣)⊸⥊ 2↓•file.Lines"spec.json"
-  tests ↩ ((⊑2+⊐⟜':')¨∘⊏ ((-','=¯1⊑⊢)↓↓)¨⎉1 ⊢) tests
-  testSection ← (1↓¯1↓⊢)¨ 5⊏˘tests
-  UnEscape ← {
-    EscapeChar ← { ("\""tn"⊐𝕩) ⊏ "\"""∾@+9‿10 }
-    esc ← IsEscaped 𝕩
-    (¬«esc) / EscapeChar⌾(esc⊸/) 𝕩
-  }
-  RunTest ← {
-    in‿exp ← UnEscape∘(1↓¯1↓⊢)¨2↑𝕩
-    out ← 0 Markdown (@+10) ((⊢-˜¬×+`)∘=⊔⊢) in
-    ⟨exp≡out,in,exp,out,2⊑𝕩⟩
-  }
-
-  ignore ← (2 ⊏˘ tests) ∊ ⟨"47","85"⟩
-  res ← 1 ↓˘ (¬⊏˘)⊸/ RunTest˘ tests /˜ ignore < testSection ∊ 𝕩
-  res
 }
 
 
@@ -568,7 +613,7 @@ hlchars‿classTag ← {
     "Number"      , ∾idChars       # Will be classified among ↑↑ later
     "Gets"        , "←⇐↩→"
     "Paren"       , "()"
-    "Bracket"     , "⟨⟩"
+    "Bracket"     , "⟨⟩[]"
     "Brace"       , "{}"
     "Head"        , ":;?"
     "Ligature"    , "‿"
@@ -581,12 +626,8 @@ hlchars‿classTag ← {
   classTag ← ""‿"" ∾ > {⟨"<span class='"∾𝕩∾"'>","</span>"⟩}¨ 1↓classes
   chars‿classTag
 }
-GetHighlights ← {
-  # Find each character's group, sending unknowns to 1 and # to 0.
-  col ← (1-˜≠hlchars) (⊢-⊣×≤) hlchars FindGroup 𝕩
-  col-↩ 4×(𝕩='.')>«𝕩∊'0'+↕10 # Namespace dot: 5→1
 
-  # Locate comments and strings.
+CommentStringLocations ← {
   c ← 𝕩='#'
   le← / (𝕨 ⊢⊘∨ 𝕩=lf) ∾ 1
   # Line endings (le) end every comment (/c) on the line, so take a copy
@@ -599,12 +640,28 @@ GetHighlights ← {
   cse ← ∾ ⟨ 2+s ⋄  1↓d ⋄ ce ⟩ # Corresponding end indices
   # If 𝕨 is given, filter out strings with ends in different divisions.
   {css‿cse <∘=○(⊏⟜(+`0∾𝕩))´⊸(/¨)↩} 𝕨
-  # Now b is a table of (start,end) pairs
+  # Table of (start,end) pairs
   b ← css Trace cse
+  # Return the table, and a mask of which rows are comments
+  ⟨b, (⊏˘b)⊏c⟩
+}
+NotCommentOrString ← {
+  i‿c ← 𝕨 CommentStringLocations 𝕩
+  i +↩ (¬c) ×⌜ 0‿1  # Strings include ending character; comments don't
+  1 ≠` (≠𝕩) ↑ 2|/⁼⥊i
+}
+
+GetHighlights ← {
+  # Find each character's group, sending unknowns to 1 and # to 0.
+  col ← (1-˜≠hlchars) (⊢-⊣×≤) hlchars FindGroup 𝕩
+  col-↩ 4×(𝕩='.')>«𝕩∊'0'+↕10 # Namespace dot: 5→1
+
+  # Table of start/end pairs, and which are comments
+  b‿c ← 𝕨 CommentStringLocations 𝕩
   # Given a list of pairs, get a mask indicating included regions
   ToMask ← (≠`∨⊢) (≠𝕩)↑/⁼∘∾
   # Split rows and group into text‿comments
-  tc ← ((⊏˘b)⊏c) ∾⟜2⊸⊔ <˘b
+  tc ← c ∾⟜2⊸⊔ <˘b
   # Color with "String" and "Comment"
   col ⌈↩ +´ (2‿1-˜≠classTag) × ToMask¨ tc
 
