@@ -152,14 +152,32 @@ tryURL  ← "https://mlochbaum.github.io/BQN/try.html#code="
 repoURL ← "https://github.com/mlochbaum/BQN-musician"
 blobURL ← repoURL∾"/blob/master/"
 
+# Audio embed
+wav ← •Import "BQNoise/wav.bqn"
+EmbedAudio ← { path‿dir‿file 𝕊 data:
+  •file.CreateDir⍟(¬•file.Exists) pd←"docs/"∾path∾dir
+  data wav.Write tmp ← "/tmp/BQNMusician.wav"
+  fext ← file∾".mp3"
+  •SH ⟨"lame","-h",tmp,•file.At pd∾fext⟩
+  •file.Remove tmp
+  l ← """" (∾∾⊣) dir∾fext
+  ("audio src="∾l∾" controls") Html ""
+}
+
 # Environments
-NewREPL ← •ReBQN∘{repl⇐"strict"}
-_getCodeExec ← {𝕗⋄NewREPL@}
-_getSvgExec ← {𝕗
-  e←NewREPL@
-  ⟨"","",GetHighlights‿Modify‿E⟩ E "GetHighlights‿Modify‿Eval←•args"
-  E •file.Chars "svg.bqn"
-  JoinLines⍟(1<≡)∘E
+GetExecs ← { 𝕊 fileInfo:
+  NewREPL ← •ReBQN∘{repl⇐"strict"}
+  Cvt ← {⌊ (-˝ 0 (•MakeRand 1).Range˜ 2∾≢𝕩)+(2⋆15)×𝕩}
+  Play ← FileInfo EmbedAudio Cvt
+  # Code
+  c←NewREPL@
+  ⟨"","",⟨(ct←{⇐})⋈Play⟩⟩ C "⟨Play⟩←•args"
+  CFmt ← (⥊∾⟜lf⎉1) (⟨2⟩≡≢)◶⟨0,ct≡⊑⟩◶⟨•Fmt,1⊸⊑⟩ # Include audio tag inline
+  # Html
+  h←NewREPL@
+  ⟨"","",Play‿GetHighlights‿Modify‿H⟩ H "Play‿GetHighlights‿Modify‿Eval←•args"
+  H •file.Chars "svg.bqn"
+  ⟨⊣◶⟨"",CFmt∘⊢⟩⟜C, JoinLines⍟(1<≡)∘H⟩
 }
 
 
@@ -168,8 +186,11 @@ Markdown ← {filename𝕊𝕩:
   extensions ← filename ≢ 0
   spath ← "src/" ∾ path ← extensions◶""‿(⊢/˜·∨`⌾⌽'/'⊸=) filename
 
-  CodeExec ← @_getCodeExec
-  GenHtml ← @_getSvgExec
+  CodeExec‿GenHtml ← GetExecs {
+    dir ← "audio_" ∾ "/" ∾˜ («·∨`⌾⌽'.'⊸=)⊸/ (∧`⌾⌽'/'⊸≠)⊸/ filename
+    n ← ¯1
+    path‿dir ∾⟜< {"a"∾•Repr n+↩1; 𝕨}
+  }
 
   ######
   # First we classify each line based on the type of block it can start.
@@ -249,7 +270,7 @@ Markdown ← {filename𝕊𝕩:
       notIndent ← (0⊸=∨4⊸<) CountRuns ¬m∧lf=code
       parts ← code ⊔˜ 1 -˜ (notIndent∧¬break) × 1+`break
       # Evaluate
-      E ← ⊣◶⟨"",(⥊∾⟜lf⎉1)∘•Fmt⊢⟩⟜CodeExec
+      E ← CodeExec
       ShowErr ← lf∾˜"span class='Error'"Html"Error: "∾(∧`lf⊸≠)⊸/⎊•Repr
       r ← show ('#'≠⊑∘⊢)◶⟨"",E⎊(ShowErr∘•CurrentError⊢)⟩⍟(0<≠∘⊢)¨ parts
 

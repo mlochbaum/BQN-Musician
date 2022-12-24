@@ -92,6 +92,9 @@ pre {
   overflow-x: auto;
   padding: 0.8em;
 }
+pre audio {
+  margin: 0.8em 0em;
+}
 .replLink {
   float: right;
   position: relative;
