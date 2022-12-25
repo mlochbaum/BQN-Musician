@@ -2,7 +2,7 @@
 
 [Tertian](https://en.wikipedia.org/wiki/Tertian) sounds a lot like "Martian". Sorry about that one—these scales are definitely used on Earth, and include all our most common ones like major and minor. All it means is "built out of thirds". I would have used "third scale" but this gets confusing when I want to talk about a few scales and the third one comes up.
 
-Oliver Prehn (NewJazz) calls these "scales of harmonies" and presents them all in [this video](https://www.youtube.com/watch?v=Vq2xt2D3e3E) and [this pdf](https://newjazz.dk/Compendiums/scales_of_harmonies.pdf). The video makes a nice complement to this page since I don't have audio examples working yet.
+Oliver Prehn (NewJazz) calls these "scales of harmonies" and presents them all in [this video](https://www.youtube.com/watch?v=Vq2xt2D3e3E) and [this pdf](https://newjazz.dk/Compendiums/scales_of_harmonies.pdf). The video goes into more detail than the audio examples here.
 
 ## What are they?
 
@@ -62,6 +62,10 @@ ring.DrawTertianRow 1‿2‿3 {⥊0‿4‿8+⌜0‿𝕩}⊸((12↑/⁼∘⊣)<�
   "Whole tone"
   "Augmented"
 ⟩
+-->
+
+<!--GEN keys.bqn
+"p" Enc Play∘Keys¨ ⟨ "0-105498c-951840", "0246ca82048aca62" ⟩
 -->
 
 The scales corresponding to 1 and 3, which are modes of each other, are called augmented scales. They're strange and disorienting, certainly the weirdest tertian scales. However, the very symmetrical scale with note 1 at 2 is a famous construct called the whole tone scale, which can sound elegant, ethereal, and beautiful. Unfortunately, Debussy has used up this scale, and it's no longer possible to make original music with it.
