@@ -65,7 +65,7 @@ ring.DrawTertianRow 1‿2‿3 {⥊0‿4‿8+⌜0‿𝕩}⊸((12↑/⁼∘⊣)<�
 -->
 
 <!--GEN keys.bqn
-"p" Enc Play∘Keys¨ ⟨ "0-105498c-951840", "0246ca82048aca62" ⟩
+"p" Enc Play∘Keys¨ ⟨ "0-105498c-{98}51{85}40--", "0246ca82048aca62--" ⟩
 -->
 
 The scales corresponding to 1 and 3, which are modes of each other, are called augmented scales. They're strange and disorienting, certainly the weirdest tertian scales. However, the very symmetrical scale with note 1 at 2 is a famous construct called the whole tone scale, which can sound elegant, ethereal, and beautiful. Unfortunately, Debussy has used up this scale, and it's no longer possible to make original music with it.
@@ -81,6 +81,10 @@ ring.DrawTertianRow 1‿2 {⥊(3×↕4)+⌜0‿𝕩}⊸((12↑/⁼∘⊣)<⊸∾
   "Octatonic"
   "Other octatonic"
 ⟩
+-->
+
+<!--GEN
+"p" Enc Play∘Keys¨ ⟨ "03{67}9-a674173a{{-676}}--", "02359865bc96305--" ⟩
 -->
 
 These scales are modes of each other and are fittingly called octatonic (eight tone) scales. They're a bit creepy sounding, as well as unstable in that they "want" to resolve to some other scale. So they're most often used in a transient way, moving between chords or adding character in jazz improvization and late classical music.
@@ -139,6 +143,14 @@ ring.DrawTertianRow {i‿n:⟨12↑/⁼0∾+`i-'0',n⟩}¨ ⟨
   "2122131"‿"Harmonic minor"
   "2212131"‿"Harmonic major"
 ⟩
+-->
+
+<!--GEN
+"p" Enc Play∘Keys¨ ⟨
+  "024579bc--cc2{-4}7450295{-2}7b7{42}0-"
+  "023579bc--c{-b}c-79{{5757}30}259{cb}c53{{232323232323}}0--"
+  "023578bc--c-{78b8}7-5-3-{2373}2-0--"
+  "024578bc--c{{-8b8}}7452487{{-454}}247-b-c--" ⟩
 -->
 
 The first set of scales are the diatonic modes, including major (ionian) and minor (aeolian) as well as some less well-known but still very common scales such as dorian and lydian. They're way more common than the other kinds, and that modulations page gives some good reasons for this.

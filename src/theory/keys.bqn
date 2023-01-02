@@ -12,8 +12,9 @@ Key ← {
 notes ← ∾"0a"+⟜↕¨10‿26
 Keys ⇐ {
   root ← s.Note"A2"
-  beat ← fr÷4
-  t ← (≠notes) > n ← notes ⊐ 𝕩
-  ∾ ⟨0⥊˜⊑t⟩ ∾ (beat×(≠𝕩)⊸«⊸-/t) Key¨ (t/n) s.Trans root
+  m ← ¬ 𝕩∊"{}"
+  beat ← ⌊ (fr÷4) × 2 ⋆ m / +`-˜˝"{}"=⌜𝕩
+  t ← (≠notes) > n ← notes ⊐ m/𝕩
+  ∾ ⟨0⥊˜⊑t⟩ ∾ ((+´beat)⊸«⊸-t/+`»beat) Key¨ (t/n) s.Trans root
 }
 }
