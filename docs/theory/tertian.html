@@ -175,10 +175,16 @@
   </g>
 </svg>
 
-<p>
-  <audio src="audio_tertian/a0.mp3" controls></audio>
-  <audio src="audio_tertian/a1.mp3" controls></audio>
-</p>
+<div class='wrap'>
+  <figure>
+    <audio src="audio_tertian/a0.mp3" controls></audio>
+    <figcaption>Inverse augmented</figcaption>
+  </figure>
+  <figure>
+    <audio src="audio_tertian/a1.mp3" controls></audio>
+    <figcaption>Whole tone</figcaption>
+  </figure>
+</div>
 
 <p>The scales corresponding to 1 and 3, which are modes of each other, are called augmented scales. They're strange and disorienting, certainly the weirdest tertian scales. However, the very symmetrical scale with note 1 at 2 is a famous construct called the whole tone scale, which can sound elegant, ethereal, and beautiful. Unfortunately, Debussy has used up this scale, and it's no longer possible to make original music with it.</p>
 <a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=Q29tcG9zaXRpb24g4oaQIHsgYuKGkDI0LTPDl/Cdlakg4ouEIGHihpDwnZWpLWIg4ouEIGHigL9iIH0KQ29tcG9zaXRpb24gOA==">↗️</a><pre>    <span class='Function'>Composition</span> <span class='Number'>8</span>
@@ -272,10 +278,16 @@
   </g>
 </svg>
 
-<p>
-  <audio src="audio_tertian/a2.mp3" controls></audio>
-  <audio src="audio_tertian/a3.mp3" controls></audio>
-</p>
+<div class='wrap'>
+  <figure>
+    <audio src="audio_tertian/a2.mp3" controls></audio>
+    <figcaption>Octatonic</figcaption>
+  </figure>
+  <figure>
+    <audio src="audio_tertian/a3.mp3" controls></audio>
+    <figcaption>Other octatonic</figcaption>
+  </figure>
+</div>
 
 <p>These scales are modes of each other and are fittingly called octatonic (eight tone) scales. They're a bit creepy sounding, as well as unstable in that they &quot;want&quot; to resolve to some other scale. So they're most often used in a transient way, moving between chords or adding character in jazz improvization and late classical music.</p>
 <h3 id="the-seven-note-case"><a class="header" href="#the-seven-note-case">The seven-note case</a></h3>
@@ -288,11 +300,11 @@
 ⟨ 0 2 4 6 1 3 5 0 ⟩
 </pre>
 <p>An arrangement consists of choosing which 3 of the 7 thirds should be larger, an instance of the <a href="https://en.wikipedia.org/wiki/Combination">combination</a> function. To count them, we can pick the large thirds one by one: there are 7 options for the first choice, 6 for the second, and 5 for the third. But this counts each option 6 times, because for any combination we could have selected the intervals in 6 different orders.</p>
-<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=KDfDlzbDlzUpIMO3IDPDlzLDlzEKCjcgKC3Dt+KXiyjDl8K0KTHiirgrKeKfnOKGlSAzICAjIEFzIHNlZW4gb24gYnFuY3JhdGU=">↗️</a><pre>    <span class='Paren'>(</span><span class='Number'>7</span><span class='Function'>×</span><span class='Number'>6</span><span class='Function'>×</span><span class='Number'>5</span><span class='Paren'>)</span> <span class='Function'>÷</span> <span class='Number'>3</span><span class='Function'>×</span><span class='Number'>2</span><span class='Function'>×</span><span class='Number'>1</span>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=KDfDlzbDlzUpIMO3IDPDlzLDlzEKCjcg4oCibWF0aC5Db21iIDM=">↗️</a><pre>    <span class='Paren'>(</span><span class='Number'>7</span><span class='Function'>×</span><span class='Number'>6</span><span class='Function'>×</span><span class='Number'>5</span><span class='Paren'>)</span> <span class='Function'>÷</span> <span class='Number'>3</span><span class='Function'>×</span><span class='Number'>2</span><span class='Function'>×</span><span class='Number'>1</span>
 35
 
-    <span class='Number'>7</span> <span class='Paren'>(</span><span class='Function'>-÷</span><span class='Modifier2'>○</span><span class='Paren'>(</span><span class='Function'>×</span><span class='Modifier'>´</span><span class='Paren'>)</span><span class='Number'>1</span><span class='Modifier2'>⊸</span><span class='Function'>+</span><span class='Paren'>)</span><span class='Modifier2'>⟜</span><span class='Function'>↕</span> <span class='Number'>3</span>  <span class='Comment'># As seen on bqncrate
-</span>35
+    <span class='Number'>7</span> <span class='Value'>•math.</span><span class='Function'>Comb</span> <span class='Number'>3</span>
+35
 </pre>
 <p>Too many scales! But we can generate the normalized classes according to this scheme to see what goes wrong.</p>
 <a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=Tm9ybWFsaXplIOKGkCB7IOKKkSDiiKgg4oy94p+c8J2VqcKoIOKGleKJoPCdlakgfQriiaAgcGF0dGVybnMg4oaQICgyND0rwrQpwqjiirgvIDMgKyDipYrihpU34qWKMgp1bmlxIOKGkCA+IOKNt+KIqCBOb3JtYWxpemXCqCBwYXR0ZXJucwoKdW51bSDihpAgKOKIpzEyfCtgKcuYdW5pcSAgIyBBcyBub3RlIG51bWJlcnMKdWludCDihpAgMTJ8MeKKuOKMveKKuC3LmHVudW0gICMgSW50ZXJ2YWwgc2l6ZXMKCuKfqHVuaXEsIHVudW0sIHVpbnTin6k=">↗️</a><pre>    <span class='Function'>≠</span> <span class='Value'>patterns</span> <span class='Gets'>←</span> <span class='Paren'>(</span><span class='Number'>24</span><span class='Function'>=+</span><span class='Modifier'>´</span><span class='Paren'>)</span><span class='Modifier'>¨</span><span class='Modifier2'>⊸</span><span class='Function'>/</span> <span class='Number'>3</span> <span class='Function'>+</span> <span class='Function'>⥊↕</span><span class='Number'>7</span><span class='Function'>⥊</span><span class='Number'>2</span>
@@ -325,36 +337,38 @@
 <p>Let's dig into the 7-note scale classes we've identified above. I'll go ahead and break the suspense by giving each a name. Below, I've reordered the intervals to give the best-known example of each scale, and also placed the classes in a more logical order, musically speaking. Now the scales form a loop where each is only one changed note away from the next! This sort of one-note change reveals a rich structure to the 7-note scales, described in the page on <a href="modulation.html">tertian modulations</a>.</p>
 <p><em>No, I will not be writing &quot;ascending melodic minor&quot;.</em></p>
 <table>
-<thead>
-<tr>
-<th>Thirds</th>
-<th>Intervals</th>
-<th>Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>4 3 4 3 4 3 3</td>
-<td>2 2 1 2 2 2 1</td>
-<td>Major</td>
-</tr>
-<tr>
-<td>4 4 3 3 4 3 3</td>
-<td>2 1 2 2 2 2 1</td>
-<td>Melodic minor</td>
-</tr>
-<tr>
-<td>4 4 3 3 3 4 3</td>
-<td>2 1 2 2 1 3 1</td>
-<td>Harmonic minor</td>
-</tr>
-<tr>
-<td>4 4 3 4 3 3 3</td>
-<td>2 2 1 2 1 3 1</td>
-<td>Harmonic major</td>
-</tr>
-</tbody>
+  <tr>
+    <th>Thirds</th>
+    <th>Intervals</th>
+    <th>Name</th>
+    <th class='nopad'>Audio</th>
+  </tr>
+  <tr>
+    <td>4 3 4 3 4 3 3</td>
+    <td>2 2 1 2 2 2 1</td>
+    <td>Major</td>
+    <td class='nopad'><audio src="audio_tertian/a4.mp3" controls></audio></td>
+  </tr>
+  <tr>
+    <td>4 4 3 3 4 3 3</td>
+    <td>2 1 2 2 2 2 1</td>
+    <td>Melodic minor</td>
+    <td class='nopad'><audio src="audio_tertian/a5.mp3" controls></audio></td>
+  </tr>
+  <tr>
+    <td>4 4 3 3 3 4 3</td>
+    <td>2 1 2 2 1 3 1</td>
+    <td>Harmonic minor</td>
+    <td class='nopad'><audio src="audio_tertian/a6.mp3" controls></audio></td>
+  </tr>
+  <tr>
+    <td>4 4 3 4 3 3 3</td>
+    <td>2 2 1 2 1 3 1</td>
+    <td>Harmonic major</td>
+    <td class='nopad'><audio src="audio_tertian/a7.mp3" controls></audio></td>
+  </tr>
 </table>
+
 <svg viewBox='-332 -81 664 186'>
   <g transform='translate(-243 0)'>
     <g stroke-width='2' stroke='currentColor'>
@@ -505,13 +519,6 @@
     </g>
   </g>
 </svg>
-
-<p>
-  <audio src="audio_tertian/a4.mp3" controls></audio>
-  <audio src="audio_tertian/a5.mp3" controls></audio>
-  <audio src="audio_tertian/a6.mp3" controls></audio>
-  <audio src="audio_tertian/a7.mp3" controls></audio>
-</p>
 
 <p>The first set of scales are the diatonic modes, including major (ionian) and minor (aeolian) as well as some less well-known but still very common scales such as dorian and lydian. They're way more common than the other kinds, and that modulations page gives some good reasons for this.</p>
 <p>Every class other than that one has two 4-step thirds in a row, which form an augmented chord. Perhaps because this chord isn't found in diatonic scales, it sounds spacey and eerie. It's also ambiguous, because it splits the octave in 4-4-4, so rearranging the notes gives another augmented chord with a different root. But within a 7-note scale the root can always be identified, because two of the 4-step intervals are scale thirds, while the last is made up of 3 scale intervals and not 2. Similarly, the harmonic minor and major scales both have three 3-step thirds in a row, making up a diminished seventh chord that splits the octave 3-3-3-3. It's another sound that's not found in a diatonic scale, and often comes across as hungry or sour. Both of these chords are great ways to transition between different scales or harmonic frameworks, because their symmetry makes them free for reinterpretation and they readily resolve into &quot;nicer&quot; chords.</p>

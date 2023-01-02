@@ -50,9 +50,31 @@ table td, th {
   padding: 0.4em 0.9em;
   border: 1px solid #939b97;
 }
+.nopad {
+  padding: 0;
+}
 table th {
   background-color: #eaeeee;
   border-bottom-color: #5a5f5d;
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  padding: 1.5em 3em;
+}
+audio {
+  max-width: 16em;
+  max-height: 2.2em;
+}
+figure {
+  margin: 0.5em 0;
+  text-align: center;
+}
+table audio {
+  max-width: 14em;
+  max-height: 2em;
 }
 
 @font-face{
