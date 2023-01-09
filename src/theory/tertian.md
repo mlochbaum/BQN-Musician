@@ -194,7 +194,7 @@ The octatonic scales are also fairly interesting. In each of these, the notes ne
 
         > (8=+´)¨⊸/ IsLooseTertian¨⊸/ allScales
 
-This means that taking out the root leaves us with a [rootless](modulation.md#going-off-root) tertian scale, which we can classify according to the system above. The removed note is the middle of a sequence of three 2-step intervals, so we end up with all the scales that feature this pattern: the diatonic scale has it once, and the melodic scale has two that overlap. The whole-tone scale also has it, and because it has only 6 notes it gives the Neapolitan minor scale instead of an octatonic one.
+This means that taking out the root leaves us with a [rootless](modulation.md#going-off-root) tertian scale, which we can classify according to the system above. The removed note is the middle of a sequence of three 2-step intervals, so we end up with all the scales that feature this pattern: the diatonic scale has it once, and the melodic scale has two that overlap. The whole-tone scale also has it, and because it has only 6 notes it gives the Neapolitan major scale (7 notes) instead of an octatonic one.
 
 <!--GEN
 ring.DrawTertianRow ('0'-˜⊏)⊸∾¨ ⟨
