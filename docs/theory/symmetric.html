@@ -1,0 +1,569 @@
+<head>
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <link href="../style.css" rel="stylesheet"/>
+  <title>BQN Musician: Symmetric scale</title>
+</head>
+<div class="nav">(<a href="https://github.com/mlochbaum/BQN-musician">github</a>) / <a href="../index.html">BQN Musician</a> / <a href="index.html">theory</a></div>
+<h1 id="symmetric-scale"><a class="header" href="#symmetric-scale">Symmetric scale</a></h1>
+<p>Some <a href="scale.html">scales</a> are symmetric when transposed: that is, shifting by some number of steps smaller than 12 leaves the scale unchanged. They're known as <a href="https://en.wikipedia.org/wiki/Mode_of_limited_transposition">modes of limited transposition</a> because the number of <em>distinct</em> transpositions of the scale is smaller than the number of notes it has. Unwieldy and unintuitive, so we'll call them &quot;symmetric scales&quot; on this site.</p>
+<p>For the most part I don't find these scales musically interesting. However, they need to be accounted for when counting scales, and enumerating them is an interesting enough problem to discuss.</p>
+<svg viewBox='-299.6 -81 599.2 186'>
+  <g transform='translate(-162 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-60' cy='0'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Diminished 7th</text>
+    </g>
+  </g>
+  <g transform='translate(0 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Augmented scale</text>
+    </g>
+  </g>
+  <g transform='translate(162 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Messiaen mode 6</text>
+    </g>
+  </g>
+</svg>
+
+<p>Here are some examples: the diminished 7th chord shows 4-fold symmetry while the augmented scale shows 3-fold and that other thing has only 2-fold symmetry. When a scale has <code><span class='Value'>n</span></code>-fold symmetry, that means there are <code><span class='Value'>n</span></code> ways to transpose it that leave it unchanged. What about the number of distinct transpositions <code><span class='Value'>t</span></code>? For example, in the augmented scale <code><span class='Value'>t</span><span class='Function'>=</span><span class='Number'>3</span></code> with the transpositions shown below.</p>
+<svg viewBox='-299.6 -81 599.2 162'>
+  <g transform='translate(-162 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'></g>
+  </g>
+  <g transform='translate(0 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-60' cy='0'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'></g>
+  </g>
+  <g transform='translate(162 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'></g>
+  </g>
+</svg>
+
+<p>Each of the <code><span class='Value'>t</span></code> scales has <code><span class='Value'>n</span></code>-fold symmetry for itself, giving <code><span class='Value'>n</span><span class='Function'>×</span><span class='Value'>t</span></code> total transpositions. Between these, all 12 possible transpositions must be accounted for—it has to land on one of the <code><span class='Value'>t</span></code> unique transpositions! So <code><span class='Value'>n</span><span class='Function'>×</span><span class='Value'>t</span></code> is 12, meaning than <code><span class='Value'>n</span></code> is a divisor of 12 or <code><span class='Number'>0</span> <span class='Function'>=</span> <span class='Value'>n</span><span class='Function'>|</span><span class='Number'>12</span></code>. All right, let's list the possible values of <code><span class='Value'>n</span></code>.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=RGl2aXNvcnMg4oaQIHsgLyAwID0gKOKGlfCdlakpIHwg8J2VqSB9CgriiqIgcDEyIOKGkCBEaXZpc29ycyAxMiAgIyBQcm9wZXIgZGl2aXNvcnMKCuKKoiBkMTIg4oaQIHAxMiDiiL4gMTIgICAgICMgQWxsIGRpdmlzb3Jz">↗️</a><pre>    <span class='Function'>Divisors</span> <span class='Gets'>←</span> <span class='Brace'>{</span> <span class='Function'>/</span> <span class='Number'>0</span> <span class='Function'>=</span> <span class='Paren'>(</span><span class='Function'>↕</span><span class='Value'>𝕩</span><span class='Paren'>)</span> <span class='Function'>|</span> <span class='Value'>𝕩</span> <span class='Brace'>}</span>
+
+    <span class='Function'>⊢</span> <span class='Value'>p12</span> <span class='Gets'>←</span> <span class='Function'>Divisors</span> <span class='Number'>12</span>  <span class='Comment'># Proper divisors
+</span>⟨ 1 2 3 4 6 ⟩
+
+    <span class='Function'>⊢</span> <span class='Value'>d12</span> <span class='Gets'>←</span> <span class='Value'>p12</span> <span class='Function'>∾</span> <span class='Number'>12</span>     <span class='Comment'># All divisors
+</span>⟨ 1 2 3 4 6 12 ⟩
+</pre>
+<p>A scale is symmetric when <code><span class='Value'>n</span><span class='Function'>&gt;</span><span class='Number'>1</span></code> or equivalently <code><span class='Value'>t</span><span class='Function'>&lt;</span><span class='Number'>12</span></code>. One-fold symmetry is no symmetry at all.</p>
+<p>Now to count the scales, we should add up the number of scales for each <code><span class='Value'>t</span><span class='Function'>&lt;</span><span class='Number'>12</span></code>, that is, <code><span class='Value'>t</span><span class='Function'>∊</span><span class='Value'>p12</span></code>. Since a scale with <code><span class='Value'>t</span></code> distinct repetitions repeats every <code><span class='Value'>t</span></code> steps, we might expect that the number of scales is <code><span class='Number'>2</span><span class='Function'>⋆</span><span class='Value'>t</span></code>. That is, we choose which notes out of the first <code><span class='Value'>t</span></code> appear, and all other choices are made for us. This doesn't work though: suppose we set <code><span class='Value'>t</span><span class='Gets'>←</span><span class='Number'>4</span></code> and choose <code><span class='Number'>1</span><span class='Ligature'>‿</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>1</span><span class='Ligature'>‿</span><span class='Number'>0</span></code>. We get the following scale with only 2 unique tranpositions!</p>
+<svg viewBox='-299.6 -81 599.2 162'>
+  <g transform='translate(-81 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'></g>
+  </g>
+  <g transform='translate(81 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'></g>
+  </g>
+</svg>
+
+<p>Every scale that repeats after <code><span class='Value'>t</span></code> steps also repeats after <code><span class='Value'>k</span><span class='Function'>×</span><span class='Value'>t</span></code> steps. The number of scales with <code><span class='Value'>t</span><span class='Function'>=</span><span class='Number'>4</span></code> is really the number that repeat after 4 steps, minus the number of scales with <code><span class='Value'>t</span><span class='Function'>=</span><span class='Number'>2</span></code> and <code><span class='Value'>t</span><span class='Function'>=</span><span class='Number'>1</span></code>, the divisors of 4. The arithmetic gets complicated quickly but is easily expressed with recursion:</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=RGl2aXNvcnMg4oaQIHsgLyAwID0gKOKGlfCdlakpIHwg8J2VqSB9ClN5bUNvdW50IOKGkCB7KDLii4bwnZWpKSAtICvCtCDwnZWKwqggRGl2aXNvcnMg8J2VqX0KClN5bUNvdW50IDQ=">↗️</a><pre>    <span class='Function'>SymCount</span> <span class='Gets'>←</span> <span class='Brace'>{</span><span class='Paren'>(</span><span class='Number'>2</span><span class='Function'>⋆</span><span class='Value'>𝕩</span><span class='Paren'>)</span> <span class='Function'>-</span> <span class='Function'>+</span><span class='Modifier'>´</span> <span class='Function'>𝕊</span><span class='Modifier'>¨</span> <span class='Function'>Divisors</span> <span class='Value'>𝕩</span><span class='Brace'>}</span>
+
+    <span class='Function'>SymCount</span> <span class='Number'>4</span>
+12
+</pre>
+<p>Here's how many total scales fit into each classification. The number of scales with any degree of symmetry is the total number of scales, minus the non-symmetric ones where <code><span class='Value'>t</span><span class='Function'>=</span><span class='Number'>12</span></code>.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=RGl2aXNvcnMg4oaQIHsgLyAwID0gKOKGlfCdlakpIHwg8J2VqSB9CuKKoiBwMTIg4oaQIERpdmlzb3JzIDEyICAjIFByb3BlciBkaXZpc29ycwriiqIgZDEyIOKGkCBwMTIg4oi+IDEyICAgICAjIEFsbCBkaXZpc29ycwpTeW1Db3VudCDihpAgeygy4ouG8J2VqSkgLSArwrQg8J2VisKoIERpdmlzb3JzIPCdlal9CnN5bTEyIOKGkCBTeW1Db3VudMKoIGQxMgpkMTIg4omNIHN5bTEyCgooMuKLhjEyKSAtIFN5bUNvdW50IDEy">↗️</a><pre>    <span class='Value'>sym12</span> <span class='Gets'>←</span> <span class='Function'>SymCount</span><span class='Modifier'>¨</span> <span class='Value'>d12</span>
+    <span class='Value'>d12</span> <span class='Function'>≍</span> <span class='Value'>sym12</span>
+┌─                  
+╵ 1 2 3  4  6   12  
+  2 2 6 12 54 4020  
+                   ┘
+
+    <span class='Paren'>(</span><span class='Number'>2</span><span class='Function'>⋆</span><span class='Number'>12</span><span class='Paren'>)</span> <span class='Function'>-</span> <span class='Function'>SymCount</span> <span class='Number'>12</span>
+76
+</pre>
+<p>So there are 12 scales with 4 unique transpositions each? Not quite, just 3 of them. Our system counts a new one for each starting point, so we should divide by 4 if we want to treat transpositions as equivalent.</p>
+<svg viewBox='-299.6 -81 599.2 186'>
+  <g transform='translate(-162 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Augmented chord</text>
+    </g>
+  </g>
+  <g transform='translate(0 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-60' cy='0'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Augmented scale</text>
+    </g>
+  </g>
+  <g transform='translate(162 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Messiaen mode 3</text>
+    </g>
+  </g>
+</svg>
+
+<p>With this division we get a new breakdown of the number of scale classes. We also show a cumulative sum: 17 symmetric classes and 352 total classes. The total of 352 is one higher than the one we derived in the <a href="tertian.html">tertian scale</a> page because this method counts the scale with no notes.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=RGl2aXNvcnMg4oaQIHsgLyAwID0gKOKGlfCdlakpIHwg8J2VqSB9CuKKoiBwMTIg4oaQIERpdmlzb3JzIDEyICAjIFByb3BlciBkaXZpc29ycwriiqIgZDEyIOKGkCBwMTIg4oi+IDEyICAgICAjIEFsbCBkaXZpc29ycwpTeW1Db3VudCDihpAgeygy4ouG8J2VqSkgLSArwrQg8J2VisKoIERpdmlzb3JzIPCdlal9CnN5bTEyIOKGkCBTeW1Db3VudMKoIGQxMgpkMTIg4oi+ICjiiqIg4omNICtgKSBzeW0xMiDDtyBkMTI=">↗️</a><pre>    <span class='Value'>d12</span> <span class='Function'>∾</span> <span class='Paren'>(</span><span class='Function'>⊢</span> <span class='Function'>≍</span> <span class='Function'>+</span><span class='Modifier'>`</span><span class='Paren'>)</span> <span class='Value'>sym12</span> <span class='Function'>÷</span> <span class='Value'>d12</span>
+┌─                
+╵ 1 2 3 4  6  12  
+  2 1 2 3  9 335  
+  2 3 5 8 17 352  
+                 ┘
+</pre>
+<p>Following the method on that page, we can normalize all scales (including those that don't contain the root) and group them by the number of unique transpositions.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=RGl2aXNvcnMg4oaQIHsgLyAwID0gKOKGlfCdlakpIHwg8J2VqSB9CuKKoiBwMTIg4oaQIERpdmlzb3JzIDEyICAjIFByb3BlciBkaXZpc29ycwpOb3JtYWxpemUg4oaQIHsg4oqRIOKIqCDijL3in5zwnZWpwqgg4oaV4omg8J2VqSB9CuKJoCBzY2FsZXMg4oaQIOKNtyBOb3JtYWxpemXCqCDipYrihpUxMuKlijIKCnAxMiDiiY3LmCA+wqggwq8xIOKGkyAoK8udwqziiKhgcDEyICjijL3iiaHiiqIp4oycIHNjYWxlcykg4oqUIHNjYWxlcw==">↗️</a><pre>    <span class='Function'>Normalize</span> <span class='Gets'>←</span> <span class='Brace'>{</span> <span class='Function'>⊑</span> <span class='Function'>∨</span> <span class='Function'>⌽</span><span class='Modifier2'>⟜</span><span class='Value'>𝕩</span><span class='Modifier'>¨</span> <span class='Function'>↕≠</span><span class='Value'>𝕩</span> <span class='Brace'>}</span>
+    <span class='Function'>≠</span> <span class='Value'>scales</span> <span class='Gets'>←</span> <span class='Function'>⍷</span> <span class='Function'>Normalize</span><span class='Modifier'>¨</span> <span class='Function'>⥊↕</span><span class='Number'>12</span><span class='Function'>⥊</span><span class='Number'>2</span>
+352
+
+    <span class='Value'>p12</span> <span class='Function'>≍</span><span class='Modifier'>˘</span> <span class='Function'>&gt;</span><span class='Modifier'>¨</span> <span class='Number'>¯1</span> <span class='Function'>↓</span> <span class='Paren'>(</span><span class='Function'>+</span><span class='Modifier'>˝</span><span class='Function'>¬∨</span><span class='Modifier'>`</span><span class='Value'>p12</span> <span class='Paren'>(</span><span class='Function'>⌽≡⊢</span><span class='Paren'>)</span><span class='Modifier'>⌜</span> <span class='Value'>scales</span><span class='Paren'>)</span> <span class='Function'>⊔</span> <span class='Value'>scales</span>
+┌─                               
+╵ 1 ┌─                           
+    ╵ 0 0 0 0 0 0 0 0 0 0 0 0    
+      1 1 1 1 1 1 1 1 1 1 1 1    
+                              ┘  
+  2 ┌─                           
+    ╵ 1 0 1 0 1 0 1 0 1 0 1 0    
+                              ┘  
+  3 ┌─                           
+    ╵ 1 0 0 1 0 0 1 0 0 1 0 0    
+      1 1 0 1 1 0 1 1 0 1 1 0    
+                              ┘  
+  4 ┌─                           
+    ╵ 1 0 0 0 1 0 0 0 1 0 0 0    
+      1 1 0 0 1 1 0 0 1 1 0 0    
+      1 1 1 0 1 1 1 0 1 1 1 0    
+                              ┘  
+  6 ┌─                           
+    ╵ 1 0 0 0 0 0 1 0 0 0 0 0    
+      1 1 0 0 0 0 1 1 0 0 0 0    
+      1 0 1 0 0 0 1 0 1 0 0 0    
+      1 1 1 0 0 0 1 1 1 0 0 0    
+      1 1 0 0 1 0 1 1 0 0 1 0    
+      1 1 0 1 0 0 1 1 0 1 0 0    
+      1 1 1 1 0 0 1 1 1 1 0 0    
+      1 1 1 0 1 0 1 1 1 0 1 0    
+      1 1 1 1 1 0 1 1 1 1 1 0    
+                              ┘  
+                                ┘
+</pre>
+<p>All except the 6-fold symmetry are quite boring: just clusters of notes repeated at intervals! However, four of the 6-fold symmetric scales break this pattern.</p>
+<svg viewBox='-332 -81 664 186'>
+  <g transform='translate(-243 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>French 6th chord</text>
+    </g>
+  </g>
+  <g transform='translate(-81 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>??</text>
+    </g>
+  </g>
+  <g transform='translate(81 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>??</text>
+    </g>
+  </g>
+  <g transform='translate(243 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Messiaen mode 4</text>
+    </g>
+  </g>
+</svg>
+
