@@ -1,8 +1,8 @@
-# Symmetric scale
+# Symmetric scales
 
 Some [scales](scale.md) are symmetric when transposed: that is, shifting by some number of steps smaller than 12 leaves the scale unchanged. They're known as [modes of limited transposition](https://en.wikipedia.org/wiki/Mode_of_limited_transposition) because the number of *distinct* transpositions of the scale is smaller than the number of notes it has. Unwieldy and unintuitive, so we'll call them "symmetric scales" on this site.
 
-For the most part I don't find these scales musically interesting. However, they need to be accounted for when counting scales, and enumerating them is an interesting enough problem to discuss.
+For the most part I don't find this collection of scales musically interesting (a few classical composers have been drawn to the way their ambiguity makes for smooth modulations). However, they're a complication when counting scales, and enumerating them is an interesting enough problem to discuss.
 
 <!--GEN ring.bqn
 ring.DrawRow {12⥊𝕩-'0'}⌾⊑¨ ⟨
@@ -15,7 +15,7 @@ ring.DrawRow {12⥊𝕩-'0'}⌾⊑¨ ⟨
 Here are some examples: the diminished 7th chord shows 4-fold symmetry while the augmented scale shows 3-fold and that other thing has only 2-fold symmetry. When a scale has `n`-fold symmetry, that means there are `n` ways to transpose it that leave it unchanged. What about the number of distinct transpositions `t`? For example, in the augmented scale `t=3` with the transpositions shown below.
 
 <!--GEN
-ring.DrawRow ⋈¨ ¯1⊸⌽⍟(↕3) 12⥊1‿0‿0‿1
+ring.DrawRow ⋈¨ 1⊸⌽⍟(↕3) 12⥊1‿0‿0‿1
 -->
 
 Each of the `t` scales has `n`-fold symmetry for itself, giving `n×t` total transpositions. Between these, all 12 possible transpositions must be accounted for—it has to land on one of the `t` unique transpositions! So `n×t` is 12, meaning than `n` is a divisor of 12 or `0 = n|12`. All right, let's list the possible values of `n`.
@@ -28,7 +28,7 @@ Each of the `t` scales has `n`-fold symmetry for itself, giving `n×t` total tra
 
 A scale is symmetric when `n>1` or equivalently `t<12`. One-fold symmetry is no symmetry at all.
 
-Now to count the scales, we should add up the number of scales for each `t<12`, that is, `t∊p12`. Since a scale with `t` distinct repetitions repeats every `t` steps, we might expect that the number of scales is `2⋆t`. That is, we choose which notes out of the first `t` appear, and all other choices are made for us. This doesn't work though: suppose we set `t←4` and choose `1‿0‿1‿0`. We get the following scale with only 2 unique tranpositions!
+To find the total number of symmetric scales, we could add up the number for each `t<12`, that is, `t∊p12`. Since a scale with `t` distinct repetitions repeats every `t` steps, we might expect that the number of scales is `2⋆t`. That is, we choose which notes out of the first `t` appear, and all other choices are made for us. This doesn't work though: suppose we set `t←4` and choose `1‿0‿1‿0`. We get the following scale with only 2 unique tranpositions!
 
 <!--GEN
 ring.DrawRow ⋈¨ ¯1⊸⌽⍟(↕2) 12⥊1‿0
@@ -57,7 +57,7 @@ ring.DrawRow {12⥊𝕩-'0'}⌾⊑¨ ⟨
 ⟩
 -->
 
-With this division we get a new breakdown of the number of scale classes. We also show a cumulative sum: 17 symmetric classes and 352 total classes. The total of 352 is one higher than the one we derived in the [tertian scale](tertian.md) page because this method counts the scale with no notes.
+After dividing we get a new breakdown of the number of scale classes, displayed below. We also tack on a cumulative sum: 17 symmetric classes and 352 total classes. The total of 352 is one higher than the one we derived in the [tertian scale](tertian.md) page because this method counts the scale with no notes.
 
         d12 ∾ (⊢ ≍ +`) sym12 ÷ d12
 
@@ -75,6 +75,14 @@ ring.DrawRow {12⥊𝕩-'0'}⌾⊑¨ ⟨
   "101000"‿"French 6th chord"
   "110100"‿"??"
   "110010"‿"??"
-  "111010"‿"Messiaen mode 4"
+  "111010"‿"Messiaen mode 6"
+⟩
+-->
+
+Out of these, the first three are all subsets of the octatonic scale (although in a twist the French 6th is *also* a subset of the whole-tone scale; it's kind of its own thing). The last one is a pretty complex beast. Also it can be traversed as a cycle of 4-step and 5-step intervals (4-4-5-5-4-4-5-5) and that's… something?
+
+<!--GEN
+ring.DrawRow {12⥊𝕩-'0'}⌾⊑¨ ⟨
+  "110"‿"Octatonic scale"
 ⟩
 -->

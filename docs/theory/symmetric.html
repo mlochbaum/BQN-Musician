@@ -1,12 +1,12 @@
 <head>
   <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon"/>
   <link href="../style.css" rel="stylesheet"/>
-  <title>BQN Musician: Symmetric scale</title>
+  <title>BQN Musician: Symmetric scales</title>
 </head>
 <div class="nav">(<a href="https://github.com/mlochbaum/BQN-musician">github</a>) / <a href="../index.html">BQN Musician</a> / <a href="index.html">theory</a></div>
-<h1 id="symmetric-scale"><a class="header" href="#symmetric-scale">Symmetric scale</a></h1>
+<h1 id="symmetric-scales"><a class="header" href="#symmetric-scales">Symmetric scales</a></h1>
 <p>Some <a href="scale.html">scales</a> are symmetric when transposed: that is, shifting by some number of steps smaller than 12 leaves the scale unchanged. They're known as <a href="https://en.wikipedia.org/wiki/Mode_of_limited_transposition">modes of limited transposition</a> because the number of <em>distinct</em> transpositions of the scale is smaller than the number of notes it has. Unwieldy and unintuitive, so we'll call them &quot;symmetric scales&quot; on this site.</p>
-<p>For the most part I don't find these scales musically interesting. However, they need to be accounted for when counting scales, and enumerating them is an interesting enough problem to discuss.</p>
+<p>For the most part I don't find this collection of scales musically interesting (a few classical composers have been drawn to the way their ambiguity makes for smooth modulations). However, they're a complication when counting scales, and enumerating them is an interesting enough problem to discuss.</p>
 <svg viewBox='-299.6 -81 599.2 186'>
   <g transform='translate(-162 0)'>
     <g stroke-width='2' stroke='currentColor'>
@@ -142,14 +142,6 @@
     <g stroke-width='2' stroke='currentColor'>
       <circle fill='none' r='60'/>
       <g class='unset'>
-        <circle r='12' cx='51.962' cy='-30'/>
-        <circle r='12' cx='60' cy='-0'/>
-        <circle r='12' cx='0' cy='60'/>
-        <circle r='12' cx='-30' cy='51.962'/>
-        <circle r='12' cx='-51.962' cy='-30'/>
-        <circle r='12' cx='-30' cy='-51.962'/>
-      </g>
-      <g class='set'>
         <circle r='12' cx='0' cy='-60'/>
         <circle r='12' cx='30' cy='-51.962'/>
         <circle r='12' cx='51.962' cy='30'/>
@@ -157,14 +149,22 @@
         <circle r='12' cx='-51.962' cy='30'/>
         <circle r='12' cx='-60' cy='0'/>
       </g>
+      <g class='set'>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
     </g>
     <g text-anchor='middle' class='set'>
-      <text dy='0.33em' x='0' y='-60'>0</text>
-      <text dy='0.33em' x='30' y='-51.962'>1</text>
-      <text dy='0.33em' x='51.962' y='30'>4</text>
-      <text dy='0.33em' x='30' y='51.962'>5</text>
-      <text dy='0.33em' x='-51.962' y='30'>8</text>
-      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
     </g>
     <g text-anchor='middle' fill='currentColor'></g>
   </g>
@@ -210,7 +210,7 @@
 </span>⟨ 1 2 3 4 6 12 ⟩
 </pre>
 <p>A scale is symmetric when <code><span class='Value'>n</span><span class='Function'>&gt;</span><span class='Number'>1</span></code> or equivalently <code><span class='Value'>t</span><span class='Function'>&lt;</span><span class='Number'>12</span></code>. One-fold symmetry is no symmetry at all.</p>
-<p>Now to count the scales, we should add up the number of scales for each <code><span class='Value'>t</span><span class='Function'>&lt;</span><span class='Number'>12</span></code>, that is, <code><span class='Value'>t</span><span class='Function'>∊</span><span class='Value'>p12</span></code>. Since a scale with <code><span class='Value'>t</span></code> distinct repetitions repeats every <code><span class='Value'>t</span></code> steps, we might expect that the number of scales is <code><span class='Number'>2</span><span class='Function'>⋆</span><span class='Value'>t</span></code>. That is, we choose which notes out of the first <code><span class='Value'>t</span></code> appear, and all other choices are made for us. This doesn't work though: suppose we set <code><span class='Value'>t</span><span class='Gets'>←</span><span class='Number'>4</span></code> and choose <code><span class='Number'>1</span><span class='Ligature'>‿</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>1</span><span class='Ligature'>‿</span><span class='Number'>0</span></code>. We get the following scale with only 2 unique tranpositions!</p>
+<p>To find the total number of symmetric scales, we could add up the number for each <code><span class='Value'>t</span><span class='Function'>&lt;</span><span class='Number'>12</span></code>, that is, <code><span class='Value'>t</span><span class='Function'>∊</span><span class='Value'>p12</span></code>. Since a scale with <code><span class='Value'>t</span></code> distinct repetitions repeats every <code><span class='Value'>t</span></code> steps, we might expect that the number of scales is <code><span class='Number'>2</span><span class='Function'>⋆</span><span class='Value'>t</span></code>. That is, we choose which notes out of the first <code><span class='Value'>t</span></code> appear, and all other choices are made for us. This doesn't work though: suppose we set <code><span class='Value'>t</span><span class='Gets'>←</span><span class='Number'>4</span></code> and choose <code><span class='Number'>1</span><span class='Ligature'>‿</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>1</span><span class='Ligature'>‿</span><span class='Number'>0</span></code>. We get the following scale with only 2 unique tranpositions!</p>
 <svg viewBox='-299.6 -81 599.2 162'>
   <g transform='translate(-81 0)'>
     <g stroke-width='2' stroke='currentColor'>
@@ -391,7 +391,7 @@
   </g>
 </svg>
 
-<p>With this division we get a new breakdown of the number of scale classes. We also show a cumulative sum: 17 symmetric classes and 352 total classes. The total of 352 is one higher than the one we derived in the <a href="tertian.html">tertian scale</a> page because this method counts the scale with no notes.</p>
+<p>After dividing we get a new breakdown of the number of scale classes, displayed below. We also tack on a cumulative sum: 17 symmetric classes and 352 total classes. The total of 352 is one higher than the one we derived in the <a href="tertian.html">tertian scale</a> page because this method counts the scale with no notes.</p>
 <a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=RGl2aXNvcnMg4oaQIHsgLyAwID0gKOKGlfCdlakpIHwg8J2VqSB9CuKKoiBwMTIg4oaQIERpdmlzb3JzIDEyICAjIFByb3BlciBkaXZpc29ycwriiqIgZDEyIOKGkCBwMTIg4oi+IDEyICAgICAjIEFsbCBkaXZpc29ycwpTeW1Db3VudCDihpAgeygy4ouG8J2VqSkgLSArwrQg8J2VisKoIERpdmlzb3JzIPCdlal9CnN5bTEyIOKGkCBTeW1Db3VudMKoIGQxMgpkMTIg4oi+ICjiiqIg4omNICtgKSBzeW0xMiDDtyBkMTI=">↗️</a><pre>    <span class='Value'>d12</span> <span class='Function'>∾</span> <span class='Paren'>(</span><span class='Function'>⊢</span> <span class='Function'>≍</span> <span class='Function'>+</span><span class='Modifier'>`</span><span class='Paren'>)</span> <span class='Value'>sym12</span> <span class='Function'>÷</span> <span class='Value'>d12</span>
 ┌─                
 ╵ 1 2 3 4  6  12  
@@ -562,7 +562,45 @@
       <text dy='0.33em' x='-51.962' y='-30'>10</text>
     </g>
     <g text-anchor='middle' fill='currentColor'>
-      <text dy='0.33em' x='0' y='89'>Messiaen mode 4</text>
+      <text dy='0.33em' x='0' y='89'>Messiaen mode 6</text>
+    </g>
+  </g>
+</svg>
+
+<p>Out of these, the first three are all subsets of the octatonic scale (although in a twist the French 6th is <em>also</em> a subset of the whole-tone scale; it's kind of its own thing). The last one is a pretty complex beast. Also it can be traversed as a cycle of 4-step and 5-step intervals (4-4-5-5-4-4-5-5) and that's… something?</p>
+<svg viewBox='-299.6 -81 599.2 186'>
+  <g transform='translate(0 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Octatonic scale</text>
     </g>
   </g>
 </svg>
