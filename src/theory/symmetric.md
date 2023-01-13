@@ -12,10 +12,10 @@ ring.DrawRow {12⥊𝕩-'0'}⌾⊑¨ ⟨
 ⟩
 -->
 
-Here are some examples: the diminished 7th chord shows 4-fold symmetry while the augmented scale shows 3-fold and that other thing has only 2-fold symmetry. When a scale has `n`-fold symmetry, that means there are `n` ways to transpose it that leave it unchanged. What about the number of distinct transpositions `t`? For example, in the augmented scale `t=3` with the transpositions shown below.
+Here are some examples: the diminished 7th chord shows 4-fold symmetry while the augmented scale shows 3-fold and that other thing has only 2-fold symmetry. When a scale has `n`-fold symmetry, that means there are `n` ways to transpose it that leave it unchanged. What about the number of distinct transpositions `t`? For example, in the augmented scale `t=4` with the transpositions shown below.
 
 <!--GEN
-ring.DrawRow ⋈¨ 1⊸⌽⍟(↕3) 12⥊1‿0‿0‿1
+ring.DrawRow ⋈¨ ¯1⊸⌽⍟(↕4) 12⥊1‿1‿0‿0
 -->
 
 Each of the `t` scales has `n`-fold symmetry for itself, giving `n×t` total transpositions. Between these, all 12 possible transpositions must be accounted for—it has to land on one of the `t` unique transpositions! So `n×t` is 12, meaning than `n` is a divisor of 12 or `0 = n|12`. All right, let's list the possible values of `n`.
@@ -34,7 +34,7 @@ To find the total number of symmetric scales, we could add up the number for eac
 ring.DrawRow ⋈¨ ¯1⊸⌽⍟(↕2) 12⥊1‿0
 -->
 
-Every scale that repeats after `t` steps also repeats after `k×t` steps. The number of scales with `t=4` is really the number that repeat after 4 steps, minus the number of scales with `t=2` and `t=1`, the divisors of 4. The arithmetic gets complicated quickly but is easily expressed with recursion:
+Every scale that repeats after `t` steps also repeats after `k×t` steps. The number of scales with `t=4` is really the number that repeat after 4 steps, minus the number of scales with `t=2` and `t=1`, the divisors of 4. The arithmetic gets complicated quickly but is easily expressed with recursion. No base case needed, because 1 has no divisors!
 
         SymCount ← {(2⋆𝕩) - +´ 𝕊¨ Divisors 𝕩}
 
