@@ -1,0 +1,49 @@
+<head>
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <link href="../style.css" rel="stylesheet"/>
+  <title>BQN Musician: Oscillators</title>
+</head>
+<div class="nav">(<a href="https://github.com/mlochbaum/BQN-musician">github</a>) / <a href="../index.html">BQN Musician</a> / <a href="index.html">synth</a></div>
+<h1 id="oscillators"><a class="header" href="#oscillators">Oscillators</a></h1>
+<p>An oscillator is a simple repeating signal. In synthesizers they're the starting point for the sound—an oscillator on its own sounds terrible, but after some filtering, combining, and other transformations you might have something nice. Another use is as a sort of control value: one oscillator might set the frequency of another (like a vibrato) or its volume (tremolo).</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=UGxheSDigKJtYXRoLlNpbiA0MMO3y5zihpUxZTU=">↗️</a><pre>    <span class='Function'>Play</span> <span class='Value'>•math.</span><span class='Function'>Sin</span> <span class='Number'>40</span><span class='Function'>÷</span><span class='Modifier'>˜</span><span class='Function'>↕</span><span class='Number'>1e5</span>
+<audio src="audio_oscillator/a0.mp3" controls></audio>
+</pre>
+<svg viewBox='-178 -82 356 138'>
+  <g text-anchor='middle' fill='none'>
+    <text fill='currentColor' x='0' y='-52'>Sine wave</text>
+    <path stroke-width='2' stroke='currentColor' d='M-128 0L-125.44 -4.011L-122.88 -7.958L-120.32 -11.78L-117.76 -15.416L-115.2 -18.809L-112.64 -21.906L-110.08 -24.656L-107.52 -27.018L-104.96 -28.954L-102.4 -30.434L-99.84 -31.433L-97.28 -31.937L-94.72 -31.937L-92.16 -31.433L-89.6 -30.434L-87.04 -28.954L-84.48 -27.018L-81.92 -24.656L-79.36 -21.906L-76.8 -18.809L-74.24 -15.416L-71.68 -11.78L-69.12 -7.958L-66.56 -4.011L-64 -0L-61.44 4.011L-58.88 7.958L-56.32 11.78L-53.76 15.416L-51.2 18.809L-48.64 21.906L-46.08 24.656L-43.52 27.018L-40.96 28.954L-38.4 30.434L-35.84 31.433L-33.28 31.937L-30.72 31.937L-28.16 31.433L-25.6 30.434L-23.04 28.954L-20.48 27.018L-17.92 24.656L-15.36 21.906L-12.8 18.809L-10.24 15.416L-7.68 11.78L-5.12 7.958L-2.56 4.011L0 0L2.56 -4.011L5.12 -7.958L7.68 -11.78L10.24 -15.416L12.8 -18.809L15.36 -21.906L17.92 -24.656L20.48 -27.018L23.04 -28.954L25.6 -30.434L28.16 -31.433L30.72 -31.937L33.28 -31.937L35.84 -31.433L38.4 -30.434L40.96 -28.954L43.52 -27.018L46.08 -24.656L48.64 -21.906L51.2 -18.809L53.76 -15.416L56.32 -11.78L58.88 -7.958L61.44 -4.011L64 -0L66.56 4.011L69.12 7.958L71.68 11.78L74.24 15.416L76.8 18.809L79.36 21.906L81.92 24.656L84.48 27.018L87.04 28.954L89.6 30.434L92.16 31.433L94.72 31.937L97.28 31.937L99.84 31.433L102.4 30.434L104.96 28.954L107.52 27.018L110.08 24.656L112.64 21.906L115.2 18.809L117.76 15.416L120.32 11.78L122.88 7.958L125.44 4.011'/>
+  </g>
+</svg>
+
+<p>A sine wave is a pure tone, meaning it has only one frequency. It's the sound of an oscillator that, when displaced, pushes back with force proportional to the distance to its resting spot. A tuning fork comes close to this behavior. We hear by separating sound into these tones—hair cells function as oscillators with each resonating at a particular frequency—which makes a sine the simplest oscillator in terms of its harmonic content.</p>
+<p>The sine of any arithmetic progression, such as <code><span class='Number'>40</span><span class='Function'>÷</span><span class='Modifier'>˜</span><span class='Function'>↕</span><span class='Number'>1e5</span></code>, will give <em>some</em> sine wave, but usually we want to specify the frequency. For this we need to know the sample rate, which on this site is 44.1kHz or 44100 samples per second. Suppose we want an A, 440 cycles per second. We can make a 1-second signal that goes from 0 to 1 with <code><span class='Paren'>(</span><span class='Function'>↕</span><span class='Value'>rate</span><span class='Paren'>)</span><span class='Function'>÷</span><span class='Value'>rate</span></code>, or, using a <a href="https://mlochbaum.github.io/BQN/doc/hook.html">hook</a>, <code><span class='Function'>↕</span><span class='Modifier2'>⊸</span><span class='Function'>÷</span> <span class='Value'>rate</span></code>. Multiplying by 440 makes it go from 0 to 440, so it's increasing at 440 (no unit!) per second. But the sine function is defined to repeat at intervals of 2π, so to turn this into a 440Hz tone we should multiply by 2π and then take the sine.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=cmF0ZSDihpAgNDQxMDAKcGhhc2Ug4oaQIDQ0MCDDlyDihpXiirjDtyByYXRlClBsYXkg4oCibWF0aC5TaW4gKDLDl8+AKSDDlyBwaGFzZQ==">↗️</a><pre>    <span class='Value'>rate</span> <span class='Gets'>←</span> <span class='Number'>44100</span>
+    <span class='Value'>phase</span> <span class='Gets'>←</span> <span class='Number'>440</span> <span class='Function'>×</span> <span class='Function'>↕</span><span class='Modifier2'>⊸</span><span class='Function'>÷</span> <span class='Value'>rate</span>
+    <span class='Function'>Play</span> <span class='Value'>•math.</span><span class='Function'>Sin</span> <span class='Paren'>(</span><span class='Number'>2</span><span class='Function'>×</span><span class='Number'>π</span><span class='Paren'>)</span> <span class='Function'>×</span> <span class='Value'>phase</span>
+<audio src="audio_oscillator/a1.mp3" controls></audio>
+</pre>
+<p>The <code><span class='Value'>phase</span></code> value indicates how many cycles of the oscillator we've been through. The rule for an oscillator, as opposed to just any random function, is that it only depends on the fractional part of the phase—it repeats every time the phase increases by 1. Given this, the simplest oscillator in mathematical terms is just the fractional part of the phase, <code><span class='Number'>1</span> <span class='Function'>|</span> <span class='Value'>phase</span></code> (&quot;phase modulo 1&quot;). However, this gives a wave that spans 0 to 1 when it should be using the balanced range from -1 to 1. Transforming with <code><span class='Brace'>{</span><span class='Paren'>(</span><span class='Number'>2</span><span class='Function'>×</span><span class='Value'>𝕩</span><span class='Paren'>)</span><span class='Function'>-</span><span class='Number'>1</span><span class='Brace'>}</span></code> fixes this.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=cmF0ZSDihpAgNDQxMDAKcGhhc2Ug4oaQIDQ0MCDDlyDihpXiirjDtyByYXRlCkNlbnRlciDihpAgeygyw5fwnZWpKS0xfQpQbGF5IENlbnRlciAxIHwgcGhhc2U=">↗️</a><pre>    <span class='Function'>Center</span> <span class='Gets'>←</span> <span class='Brace'>{</span><span class='Paren'>(</span><span class='Number'>2</span><span class='Function'>×</span><span class='Value'>𝕩</span><span class='Paren'>)</span><span class='Function'>-</span><span class='Number'>1</span><span class='Brace'>}</span>
+    <span class='Function'>Play</span> <span class='Function'>Center</span> <span class='Number'>1</span> <span class='Function'>|</span> <span class='Value'>phase</span>
+<audio src="audio_oscillator/a2.mp3" controls></audio>
+</pre>
+<svg viewBox='-178 -82 356 138'>
+  <g text-anchor='middle' fill='none'>
+    <text fill='currentColor' x='0' y='-52'>Sawtooth wave</text>
+    <path stroke-width='2' stroke='currentColor' d='M-128 0L-64 -32L-64 32L64 -32L64 32L128 0'/>
+  </g>
+</svg>
+
+<p>It's called a sawtooth or saw for its appearance, and it's a pretty abrasive sound, with the most higher-frequency content of any of the oscillators we'll see here.</p>
+<p>If we take the absolute value of a sawtooth wave, the jumps from 1 to -1 are no longer jumps and we get a wave that goes up and down. But once again it only spans 0 to 1, so we need to center it.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=cmF0ZSDihpAgNDQxMDAKcGhhc2Ug4oaQIDQ0MCDDlyDihpXiirjDtyByYXRlCkNlbnRlciDihpAgeygyw5fwnZWpKS0xfQpQbGF5IENlbnRlciB8IENlbnRlciAxIHwgMC4yNSArIHBoYXNl">↗️</a><pre>    <span class='Function'>Play</span> <span class='Function'>Center</span> <span class='Function'>|</span> <span class='Function'>Center</span> <span class='Number'>1</span> <span class='Function'>|</span> <span class='Number'>0.25</span> <span class='Function'>+</span> <span class='Value'>phase</span>
+<audio src="audio_oscillator/a3.mp3" controls></audio>
+</pre>
+<svg viewBox='-178 -82 356 138'>
+  <g text-anchor='middle' fill='none'>
+    <text fill='currentColor' x='0' y='-52'>Triangle wave</text>
+    <path stroke-width='2' stroke='currentColor' d='M-128 0L-96 -32L-32 32L32 -32L96 32L128 0'/>
+  </g>
+</svg>
+
