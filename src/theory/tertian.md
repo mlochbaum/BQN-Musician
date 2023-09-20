@@ -50,7 +50,7 @@ So `n` can be 6, 7, or 8. Given `n`, it's easy to solve the equation `24 = (3×n
         Composition ← { b←24-3×𝕩 ⋄ a←𝕩-b ⋄ a‿b }
         Composition 6
 
-When `n=6`, this tells us `a=0` and `b=6`: every third in the scale has length 4. As a result, notes 0, 2, and 4 occupy positions 0, 4, and 8, that is, they form an augmented chord. The remaining notes also form an augmented chord, but can start at position 1, 2, or 3. The following bit of code shows how to use Table (`⌜`) to make the scale for possition 1, and then puts all possibilities in one array.
+When `n=6`, this tells us `a=0` and `b=6`: every third in the scale has length 4. As a result, notes 0, 2, and 4 occupy positions 0, 4, and 8, that is, they form an augmented chord. The remaining notes also form an augmented chord, but can start at position 1, 2, or 3. The following bit of code shows how to use Table (`⌜`) to make the scale for position 1, and then puts all possibilities in one array.
 
         0‿4‿8 +⌜ 0‿1
 
