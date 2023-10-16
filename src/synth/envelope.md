@@ -30,7 +30,7 @@ Plot ← {
     base
   ⟩
 }
-"Exponential decay" Plot (⊢ ≍ 0.05⊸⋆) ↕⊸∾⊸÷40
+"Exponential decay" Plot (⊢ ≍ ·⋆¯3×⊢) ↕⊸∾⊸÷40
 -->
 
         Play (0.99994 ⋆ ↕4×s) × (4×s) ⥊ tone
@@ -52,7 +52,7 @@ Now I can adjust the constant to control the decay time. For example, one that's
 Exponential decay makes for a very clean, polite approach. To put more emphasis on a sound I often try something that sticks around longer. One simple way is to add a small constant to the exponential. This generalizes to two exponentials with different bases—the lower one gives an initial impact and then the higher one sustains, but not necessarily forever like the constant. Or any number of them, but eventually you're basically taking the [Laplace transform](https://en.wikipedia.org/wiki/Laplace_transform) of some function that's not very much like an exponential, and it's better to just use another function. An aggressive choice is a function that falls off with `÷i` (or `i⋆¯1`) instead of `⋆-i`. Hear how it starts with less power but just keeps going.
 
 <!--GEN
-"1/t decay" Plot (⊢ ≍ ·÷1+6×⊢) ↕⊸∾⊸÷40
+"1/t decay" Plot (⊢ ≍ ·÷1+10×⊢) ↕⊸∾⊸÷40
 -->
 
         Play {÷1+1e¯3×↕≠𝕩}⊸× (4×s) ⥊ tone
@@ -66,3 +66,31 @@ The `1+` avoids a division by zero, making the level start at 1. And the constan
         Play {÷×˜1+2e¯4×↕≠𝕩}⊸× (4×s) ⥊ tone
 
 You also have to decrease the constant for larger powers to keep the overall sound similar. As the exponent increases, this formula gets closer to an exponential: one definition for `⋆t` is the limit as `p` goes to `∞` of `(1+t÷p)⋆p`, so by inverting and scaling `t` we find that `⋆-k×t` or `÷⋆k×t` is the limit of `÷(1+(k÷p)×t)⋆p`. This also suggests that when multiplying the exponent by a factor `f` the decay constant should be divided by roughly `f`.
+
+## Onset
+
+In the previous section the notes all started instantly, which is generally not too great. With a sine wave, you can sort of get away with it because the wave itself starts at 0, but if the wave isn't perfectly aligned with the envelope you'll often get a click at this sort of abrupt change.
+
+To have a better idea of how these notes sound I'll repeat each one a few times with `⥊3/≍note`. The idea here is that it adds a length-1 axis to the front with `≍`, repeats it three times, then deshapes to combine those repetitions. Here's our square-reciprocal envelope from before.
+
+        Play ⥊3/≍ {÷×˜1+2e¯4×↕≠𝕩}⊸× (s÷2) ↑ tone
+
+What about a softer onset, that won't poke through a mix as much? One way is to take the minimum of one envelope that increases quickly and another that decays. Since the onset is generally very short, its shape isn't all that important; a linear increase works fine.
+
+<!--GEN
+"1/t² with linear onset" Plot (⊢ ≍ 10⊸×⌊·÷·×˜1+2×⊢) ↕⊸∾⊸÷40
+-->
+
+        Play ⥊3/≍ {i←↕≠𝕩 ⋄ (2e¯3×i) ⌊ ÷×˜1+2e¯4×i}⊸× (s÷2) ↑ tone
+
+        # Very soft attack
+        Play ⥊3/≍ {i←↕≠𝕩 ⋄ (2e¯4×i) ⌊ ÷×˜1+2e¯4×i}⊸× (s÷2) ↑ tone
+
+This does make the loudest point ever so slightly less than 1. Another possibility is to [shift](https://mlochbaum.github.io/BQN/doc/shift.html) an onset curve in with `»`, delaying the start of the decay without making the overall envelope any longer.
+
+        Play ⥊3/≍ {(↕⊸÷500) » ÷×˜1+2e¯4×↕≠𝕩}⊸× (s÷2) ↑ tone
+
+In real instruments there can actually be a lot of noise during the onset. Making a realistic onset for a guitar pluck or saxophone—uh, it's pretty much just spitting—is very hard and a lot of digital instruments use samples instead. But here's an example of a sort of clicky sound added to the previous tone. Even this is enough to make it more physical and present.
+
+        plain ← {(↕⊸÷500) » ÷×˜1+2e¯4×↕≠𝕩}⊸× (s÷2) ↑ tone
+        Play ⥊3/≍ plain {𝕨+(≠𝕨)↑𝕩} (100⥊0)∾0.4 × -⟜¬ ↕⊸÷10
