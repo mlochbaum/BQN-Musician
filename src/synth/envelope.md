@@ -37,7 +37,7 @@ Plot ← {
 
 The start is too sharp to match anything real (we'll get to that), but eventually it starts to sound like a tuning fork, or maybe some sort of chime. These are very nearly perfect oscillators with friction!
 
-The envelope `0.99994 ⋆ ↕4×s` simply starts at one and decreases by a factor of `0.99994` each time. But that constant isn't very nice to work with, because counting nines is no fun. What I do instead of changing the base of the exponent is to use a fixed base and multiply the exponential part. This is equivalent to changing the base because `b⋆c×i` is `(b⋆c)⋆i`. Another thing I'll do while I'm cleaning up the code is avoid repeating the length. I'll make a function to compute the envelope from the signal being enveloped, and then apply it with `Env⊸×`. Since the [hook](https://mlochbaum.github.io/BQN/doc/hook.html) `Env⊸× s` means `(Env s) × s`, this multiplies the signal by its envelope.
+The envelope `0.99994 ⋆ ↕4×s` simply starts at one and decreases by a factor of `0.99994` each time. But that constant isn't very nice to work with, because counting nines is no fun. What I do instead of changing the base of the exponent is to use a fixed base and multiply the exponential part. This is equivalent to changing the base because `b⋆c×i` is `(b⋆c)⋆i`. Another thing I'll do while I'm tidying up the code is avoid repeating the length. I'll make a function to compute the envelope from the signal being enveloped, and then apply it with `Env⊸×`. Since the [hook](https://mlochbaum.github.io/BQN/doc/hook.html) `Env⊸× s` means `(Env s) × s`, this multiplies the signal by its envelope.
 
         ⋆⁼ 0.99994
         ⟨0.99994⋆0.4, ⋆(⋆⁼0.99994)×0.4⟩  # Same thing!
@@ -45,10 +45,24 @@ The envelope `0.99994 ⋆ ↕4×s` simply starts at one and decreases by a facto
         #    (⋆ ¯6e¯5 ×↕4×s) × (4×s) ⥊ tone
         Play {⋆ ¯6e¯5 × ↕≠𝕩}⊸× (4×s) ⥊ tone
 
-Exponential decay gives a very clean, polite sound. If I'm trying to put more emphasis on a sound I go for something that lingers longer. One way is actually a sum of two or more exponentials with different bases, because the shorter one gives an initial impact and then the longer one keeps going. More aggressive is to take a function that falls off with `÷i` (or `i⋆¯1`) instead of `⋆-i`. Hear how it starts with less power but just keeps going.
+Now I can adjust the constant to control the decay time. For example, one that's five times as big gives a signal five times shorter. You could divide by a constant instead (`¯1.6e4 ÷˜` in place of `¯6e¯5 ×` and `¯3e3 ÷˜` for `¯3e¯4 ×`) to have something that scales as a duration if that's easier.
+
+        Play {⋆ ¯3e¯4 × ↕≠𝕩}⊸× (4×s) ⥊ tone
+
+Exponential decay makes for a very clean, polite approach. To put more emphasis on a sound I often try something that sticks around longer. One simple way is to add a small constant to the exponential. This generalizes to two exponentials with different bases—the lower one gives an initial impact and then the higher one sustains, but not necessarily forever like the constant. Or any number of them, but eventually you're basically taking the [Laplace transform](https://en.wikipedia.org/wiki/Laplace_transform) of some function that's not very much like an exponential, and it's better to just use another function. An aggressive choice is a function that falls off with `÷i` (or `i⋆¯1`) instead of `⋆-i`. Hear how it starts with less power but just keeps going.
 
 <!--GEN
 "1/t decay" Plot (⊢ ≍ ·÷1+6×⊢) ↕⊸∾⊸÷40
 -->
 
         Play {÷1+1e¯3×↕≠𝕩}⊸× (4×s) ⥊ tone
+
+The `1+` avoids a division by zero, making the level start at 1. And the constant `1e¯3` controls the speed of decay as before. Another option is to take the inverse square instead of just the inverse, or more generally any power. With an exponential this would be equivalent to changing the decay time because `(⋆t)⋆p` is `⋆p×t`. But here, higher powers smooth things out and lower ones make the curve sharper.
+
+<!--GEN
+"1/t² decay" Plot (⊢ ≍ ·÷·×˜1+2×⊢) ↕⊸∾⊸÷40
+-->
+
+        Play {÷×˜1+2e¯4×↕≠𝕩}⊸× (4×s) ⥊ tone
+
+You also have to decrease the constant for larger powers to keep the overall sound similar. As the exponent increases, this formula gets closer to an exponential: one definition for `⋆t` is the limit as `p` goes to `∞` of `(1+t÷p)⋆p`, so by inverting and scaling `t` we find that `⋆-k×t` or `÷⋆k×t` is the limit of `÷(1+(k÷p)×t)⋆p`. This also suggests that when multiplying the exponent by a factor `f` the decay constant should be divided by roughly `f`.
