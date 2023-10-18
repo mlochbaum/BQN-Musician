@@ -15,12 +15,12 @@
   </g>
 </svg>
 
-<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=UGxheSDigKJtYXRoLlNpbiA0MMO3y5zihpUxZTU=">↗️</a><pre>    <span class='Function'>Play</span> <span class='Value'>•math.</span><span class='Function'>Sin</span> <span class='Number'>40</span><span class='Function'>÷</span><span class='Modifier'>˜</span><span class='Function'>↕</span><span class='Number'>1e5</span>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=4oCiUGxheSDigKJtYXRoLlNpbiA0MMO3y5zihpUxZTU=">↗️</a><pre>    <span class='Function'>Play</span> <span class='Value'>•math.</span><span class='Function'>Sin</span> <span class='Number'>40</span><span class='Function'>÷</span><span class='Modifier'>˜</span><span class='Function'>↕</span><span class='Number'>1e5</span>
 <audio src="audio_oscillator/a0.mp3" controls></audio>
 </pre>
 <p>A sine wave is a pure tone, meaning it has only one frequency. It's the sound of an oscillator that, when displaced, pushes back with force proportional to the distance to its resting spot. A tuning fork comes close to this behavior. We hear by separating sound into these tones—hair cells function as oscillators with each resonating at a particular frequency—which makes a sine the simplest oscillator in terms of its harmonic content.</p>
 <p>The sine of any arithmetic progression, such as <code><span class='Number'>40</span><span class='Function'>÷</span><span class='Modifier'>˜</span><span class='Function'>↕</span><span class='Number'>1e5</span></code>, will give <em>some</em> sine wave, but usually we want to specify the frequency. For this we need to know the sample rate, which on this site is 44.1kHz or 44100 samples per second. Suppose we want an A, 440 cycles per second. We can make a 1-second signal that goes from 0 to 1 with <code><span class='Paren'>(</span><span class='Function'>↕</span><span class='Value'>rate</span><span class='Paren'>)</span><span class='Function'>÷</span><span class='Value'>rate</span></code>, or, using a <a href="https://mlochbaum.github.io/BQN/doc/hook.html">hook</a>, <code><span class='Function'>↕</span><span class='Modifier2'>⊸</span><span class='Function'>÷</span> <span class='Value'>rate</span></code>. Multiplying by 440 makes it go from 0 to 440, so it's increasing at 440 (no unit!) per second. But the sine function is defined to repeat at intervals of 2π, so to turn this into a 440Hz tone we should multiply by 2π and then take the sine.</p>
-<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=cmF0ZSDihpAgNDQxMDAKcGhhc2Ug4oaQIDQ0MCDDlyDihpXiirjDtyByYXRlClBsYXkg4oCibWF0aC5TaW4gKDLDl8+AKSDDlyBwaGFzZQ==">↗️</a><pre>    <span class='Value'>rate</span> <span class='Gets'>←</span> <span class='Number'>44100</span>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=cmF0ZSDihpAgNDQxMDAKcGhhc2Ug4oaQIDQ0MCDDlyDihpXiirjDtyByYXRlCuKAolBsYXkg4oCibWF0aC5TaW4gKDLDl8+AKSDDlyBwaGFzZQ==">↗️</a><pre>    <span class='Value'>rate</span> <span class='Gets'>←</span> <span class='Number'>44100</span>
     <span class='Value'>phase</span> <span class='Gets'>←</span> <span class='Number'>440</span> <span class='Function'>×</span> <span class='Function'>↕</span><span class='Modifier2'>⊸</span><span class='Function'>÷</span> <span class='Value'>rate</span>
     <span class='Function'>Play</span> <span class='Value'>•math.</span><span class='Function'>Sin</span> <span class='Paren'>(</span><span class='Number'>2</span><span class='Function'>×</span><span class='Number'>π</span><span class='Paren'>)</span> <span class='Function'>×</span> <span class='Value'>phase</span>
 <audio src="audio_oscillator/a1.mp3" controls></audio>
@@ -33,7 +33,7 @@
   </g>
 </svg>
 
-<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=cmF0ZSDihpAgNDQxMDAKcGhhc2Ug4oaQIDQ0MCDDlyDihpXiirjDtyByYXRlCkNlbnRlciDihpAgeygyw5fwnZWpKS0xfQpQbGF5IENlbnRlciAxIHwgcGhhc2U=">↗️</a><pre>    <span class='Function'>Center</span> <span class='Gets'>←</span> <span class='Brace'>{</span><span class='Paren'>(</span><span class='Number'>2</span><span class='Function'>×</span><span class='Value'>𝕩</span><span class='Paren'>)</span><span class='Function'>-</span><span class='Number'>1</span><span class='Brace'>}</span>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=cmF0ZSDihpAgNDQxMDAKcGhhc2Ug4oaQIDQ0MCDDlyDihpXiirjDtyByYXRlCkNlbnRlciDihpAgeygyw5fwnZWpKS0xfQrigKJQbGF5IENlbnRlciAxIHwgcGhhc2U=">↗️</a><pre>    <span class='Function'>Center</span> <span class='Gets'>←</span> <span class='Brace'>{</span><span class='Paren'>(</span><span class='Number'>2</span><span class='Function'>×</span><span class='Value'>𝕩</span><span class='Paren'>)</span><span class='Function'>-</span><span class='Number'>1</span><span class='Brace'>}</span>
     <span class='Function'>Play</span> <span class='Function'>Center</span> <span class='Number'>1</span> <span class='Function'>|</span> <span class='Value'>phase</span>
 <audio src="audio_oscillator/a2.mp3" controls></audio>
 </pre>
@@ -46,7 +46,7 @@
   </g>
 </svg>
 
-<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=cmF0ZSDihpAgNDQxMDAKcGhhc2Ug4oaQIDQ0MCDDlyDihpXiirjDtyByYXRlCkNlbnRlciDihpAgeygyw5fwnZWpKS0xfQpQbGF5IENlbnRlciB8IENlbnRlciAxIHwgMC4yNSArIHBoYXNl">↗️</a><pre>    <span class='Function'>Play</span> <span class='Function'>Center</span> <span class='Function'>|</span> <span class='Function'>Center</span> <span class='Number'>1</span> <span class='Function'>|</span> <span class='Number'>0.25</span> <span class='Function'>+</span> <span class='Value'>phase</span>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=cmF0ZSDihpAgNDQxMDAKcGhhc2Ug4oaQIDQ0MCDDlyDihpXiirjDtyByYXRlCkNlbnRlciDihpAgeygyw5fwnZWpKS0xfQrigKJQbGF5IENlbnRlciB8IENlbnRlciAxIHwgMC4yNSArIHBoYXNl">↗️</a><pre>    <span class='Function'>Play</span> <span class='Function'>Center</span> <span class='Function'>|</span> <span class='Function'>Center</span> <span class='Number'>1</span> <span class='Function'>|</span> <span class='Number'>0.25</span> <span class='Function'>+</span> <span class='Value'>phase</span>
 <audio src="audio_oscillator/a3.mp3" controls></audio>
 </pre>
 <p>The result is called a triangle wave, and it's a pretty mellow sound, much closer to a sine wave.</p>
@@ -58,7 +58,7 @@
   </g>
 </svg>
 
-<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=cmF0ZSDihpAgNDQxMDAKcGhhc2Ug4oaQIDQ0MCDDlyDihpXiirjDtyByYXRlCkNlbnRlciDihpAgeygyw5fwnZWpKS0xfQpQbGF5IDAuNSDDlyBDZW50ZXIgMC41IDwgMSB8IHBoYXNl">↗️</a><pre>    <span class='Function'>Play</span> <span class='Number'>0.5</span> <span class='Function'>×</span> <span class='Function'>Center</span> <span class='Number'>0.5</span> <span class='Function'>&lt;</span> <span class='Number'>1</span> <span class='Function'>|</span> <span class='Value'>phase</span>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=cmF0ZSDihpAgNDQxMDAKcGhhc2Ug4oaQIDQ0MCDDlyDihpXiirjDtyByYXRlCkNlbnRlciDihpAgeygyw5fwnZWpKS0xfQrigKJQbGF5IDAuNSDDlyBDZW50ZXIgMC41IDwgMSB8IHBoYXNl">↗️</a><pre>    <span class='Function'>Play</span> <span class='Number'>0.5</span> <span class='Function'>×</span> <span class='Function'>Center</span> <span class='Number'>0.5</span> <span class='Function'>&lt;</span> <span class='Number'>1</span> <span class='Function'>|</span> <span class='Value'>phase</span>
 <audio src="audio_oscillator/a4.mp3" controls></audio>
 </pre>
 <p>The sound is similar to a triangle wave, but sharper. Changing the value <code><span class='Number'>0.5</span></code> here gives a family of waves called pulse waves, that spend more time at the top or bottom. I don't know what these are good for, but then I don't use square waves a lot either.</p>

@@ -292,7 +292,8 @@ Markdown ← {filename𝕊𝕩:
       target ← « ea PG⌾⌽ cont         # Top-level assignment targets
       ia ← idInd ⊏ target             # Whether each name is assigned
       # Build the link element
-      lu ← tryURL ∾ Base64 ¯1 ↓ names‿ia‿iline MakeLink parts
+      Sys ← "•"⊸∾⍟("Play"(⊣≡≠⊸↑)⊢)
+      lu ← tryURL ∾ Base64 ¯1 ↓ names‿ia‿iline MakeLink Sys¨ parts
       l ← "a class=""replLink"" title=""Open in the REPL"" target=""_blank"" href="
       link ← (l∾""""(∾∾⊣)lu) Html "↗️"
       ⟨r, /break, link⟩
