@@ -74,3 +74,33 @@ A way to get some insight into how the basic oscillators sound is to split each 
 This explains the relationship between triangle and square: with the same set of harmonics they have some tonal similarity, but the square is more tilted towards high frequencies.
 
 Why does nothing use only the even harmonics? Well, the odd harmonics are 1, 3, 5, and so on, with the 1 giving the frequency of the oscillator. The even ones 2, 4, 6 are all multiples of 2—this is really an oscillator with all harmonics but at twice the frequency!
+
+## Varying frequency
+
+At this point it's easy enough to make a function that plays particular note for a given number of samples, and [join](https://mlochbaum.github.io/BQN/doc/join.html) together a few of them to make a melody:
+
+        SineNote ← { len 𝕊 freq:
+          phase ← freq × (↕len) ÷ rate
+          •math.Sin (2×π) × phase
+        }
+        Play ∾ (rate÷4) SineNote¨ 440 × 2⋆0‿7‿4‿5‿9‿5‿2‿4‿0÷12
+
+With an [envelope](envelope.md) that starts and ends at 0, this would be okay, but here we get clicks between many of the notes (they're not even consistent!). These are caused by sudden jumps in the value: each sine wave starts at 0, but ends wherever it happens to be when the quarter-second is up. To make the changes smooth we should carry the phase over from one note to the next instead of restarting at zero.
+
+A clean way to do this is to work with phase differences instead of jumping to the phase immediately. In `freq × (↕len) ÷ rate`, the difference between any two samples is `freq ÷ rate`. So we can define a function taking an array `freqs` giving the frequency at each sample. It'll compute the corresponding phase differences, then sum to get a continuous phase (to align with `↕len` above starting at 0, it might be more correct to shift right one position, but a 1-sample phase difference doesn't matter at all).
+
+        Sine ← { 𝕊 freqs:
+          phase ← +` freqs ÷ rate
+          •math.Sin (2×π) × phase
+        }
+        Play Sine (rate÷4) / 440 × 2⋆0‿7‿4‿5‿9‿5‿2‿4‿0÷12
+
+We use [Replicate](https://mlochbaum.github.io/BQN/doc/replicate.html) (`/`) to compute the array of notes that we want to pass in. This way is a better fit for the array style because it works with one big array instead of a nested one. And like Each (`¨`) before, Replicate can take a list of lengths for its left argument to give the notes different durations.
+
+Now we have complete control of the frequency, down to the sample! This allows us to use dynamic frequencies that slide or wiggle around (portamento, vibrato). To be discussed more in a page on frequency modulation.
+
+The use of a sum that increases forever might be concerning because it eventually loses precision. But in a typical BQN implementation that uses double-precision floats, you have 53 bits of precision which is quite a lot. To get down to 24 bits after the decimal, there need to be about 29 above it. At an upper-treble frequency of 10kHz, the phase increases at `60×60×1e4` per hour, so how long would that take?
+
+        ((2⋆53) ÷ 2⋆24) ÷ (60×60×1e4)
+
+About 15 hours, which is also like, 20 gigabytes of data for a single channel. A waveform with sharp changes, or other processing, could amplify phase imprecisions, but I think there's no need to worry about this problem at practical scales. But if necessary, you could do the sum in segments and apply `1|` to the carried phase in between.
