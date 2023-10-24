@@ -173,11 +173,13 @@ GetExecs ← { 𝕊 fileInfo:
   c←NewREPL@
   ⟨"","",⟨(ct←{⇐})⋈Play⟩⟩ C "⟨Play⟩←•args"
   CFmt ← (⥊∾⟜lf⎉1) (⟨2⟩≡≢)◶⟨0,ct≡⊑⟩◶⟨•Fmt,1⊸⊑⟩ # Include audio tag inline
+  _rplc_ ← { ∨´m←𝕩≠⊸↑𝕗⍷𝕩 ? k←¬≠`(0¨𝕗)⊸»⊸≠m ⋄ i←𝕘≠⊸//m ⋄ (⍋(/k)∾i)⊏(k/𝕩)∾i≠⊸⥊𝕘 ; 𝕩 }
+  RR ← "•rand"_rplc_"(•MakeRand 1)"
   # Html
   h←NewREPL@
   ⟨"","",Play‿GetHighlights‿Modify‿H⟩ H "Play‿GetHighlights‿Modify‿Eval←•args"
   H •file.Chars "svg.bqn"
-  ⟨⊣◶⟨"",CFmt∘⊢⟩⟜C, JoinLines⍟(1<≡)∘H⟩
+  ⟨⊣◶⟨"",CFmt∘⊢⟩⟜(C∘RR), JoinLines⍟(1<≡)∘H⟩
 }
 
 
