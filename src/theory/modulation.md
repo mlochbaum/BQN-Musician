@@ -92,6 +92,8 @@ hdim SVG figLabel
 
 The modes of melodic minor are tightly connected to the diatonic scales, since each one (except two at the edges) connects to two of them. Modes of harmonic minor and major only connect to one diatonic mode—in fact, each connects to one scale from each other class (again, except at boundaries). The move from minor to harmonic minor or major to harmonic major is further out of order than the moves to melodic minor modes, since it skips two other moves instead of one, so in that sense these scales are "less diatonic".
 
+[Emmett Chapman](https://en.wikipedia.org/wiki/Emmett_Chapman)'s "offset modal system" also centers on tertian scales related by one-note shifts. His "offset" modes are our modes of melodic minor and "double offset" modes are harmonic major (harmonic minor modes don't appear!). So [his description](https://www.stick.com/method/articles/parallel/) of how he works with offset modes serves as a practical exploration of connecting modes and modulation to chords and improvisation.
+
 ## Going off-root
 
 Okay, the scale graph clearly has some symmetry, but why is it so limited? Here's the full version:
