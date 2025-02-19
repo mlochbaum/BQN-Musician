@@ -83,7 +83,7 @@ maj ← (12|7×1-˜↕7)⊏pts
 ⟩
 -->
 
-In this diagram I've relabelled the notes starting at 0, instead of using relative frequencies. We'll call 0 the "root note" when using this system (pretty much always), so that a note's number is the number of semitones required to go from the root to it. Generally we'll display a scale with a simpler diagram like the one below, which just shows the notes included in the scale.
+In this diagram I've relabelled the notes starting at 0, instead of using relative frequencies. When numbering like this, we'll call 0 the "root note", so that a note's number is how many semitones it takes to get there from the root (but officially the name's "tonic"). Generally we'll display a scale with a simpler diagram like the one below, which just shows the notes included in the scale.
 
 <!--GEN ring.bqn
 ring.DrawRow ⟨⟨12↑/⁼12|7×1-˜↕7,"The major scale"⟩⟩
@@ -101,7 +101,7 @@ We also make sure exactly 12 notes are represented with `12↑`. If we leave thi
 
         {(12«𝕩)-𝕩} maj
 
-Each of these alternate representations—I'll call them the "boolean" and "interval" representations—includes the total number of notes as part of its construction. For the boolean representation, it's the length of the list, and for the interval representation, it's the sum. The total could also be built into the note-list representation by adding a trailing 12, duplicating the note 0.
+Each of these alternate representations—I'll call them the "boolean" and "interval" representations—includes the total number of possible notes as part of its construction. For the boolean representation, it's the length of the list, and for the interval representation, it's the sum. The total could also be built into the note-list representation by adding a trailing 12, duplicating the note 0.
 
 ### Counting
 
@@ -113,7 +113,7 @@ A common requirement is for the scale to include the root note, since the root i
 
         2⋆11
 
-Nonetheless, quite a lot of choices. Much of scale theory is based on trying to decrease this number further!
+Nonetheless, quite a lot of choices. Much of scale theory is ultimately trying to decrease this number further!
 
 ## Modes
 

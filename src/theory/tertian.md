@@ -95,7 +95,7 @@ Samples ⟨
 ⟩
 -->
 
-These scales are modes of each other and are fittingly called octatonic (eight tone) scales. They're a bit creepy sounding, as well as unstable in that they "want" to resolve to some other scale. So they're most often used in a transient way, moving between chords or adding character in jazz improvization and late classical music.
+These scales are modes of each other and are fittingly called octatonic (eight tone) scales. They're a bit creepy sounding, as well as unstable in that they "want" to resolve to some other scale. So they're most often used in a transient way, moving between chords or adding character in jazz improvisation and late classical music.
 
 ### The seven-note case
 
@@ -169,7 +169,7 @@ The definition of a tertian scale works either ascending or descending, so if we
 
         {𝕩 ⋈ Normalize∘⌽˘ 𝕩} 4‿2‿3‿1 ⊏ uniq
 
-A diatonic scale inverts to give another diatonic scale, as does a mode of melodic minor. But minor and major harmonic scales invert to give each other. Musically speaking, inversion isn't really a relationship you'd want to use in a work. But it does tell us that minor harmonic and major harmonic have similarities in overall tonality, because they feature the same intervals. In particular they both have that distinctive 1-3-1 pattern, which harmonic minor and harmonic major in particular place at the end.
+A diatonic scale inverts to give another diatonic scale, as does a mode of melodic minor. But minor and major harmonic scales invert to give each other. Musically speaking, scale inversion isn't really a relationship you'd want to use in a work. But it does tell us that minor harmonic and major harmonic have similarities in overall tonality, because they feature the same intervals. In particular they both have that distinctive 1-3-1 pattern, which harmonic minor and harmonic major in particular place at the end.
 
 ## Loose tertian scales
 
