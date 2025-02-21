@@ -5,11 +5,11 @@ size ⇐ r+nr+4
 Draw ⇐ {
   dir ← r×(•math.Sin ⋈¨ ·-•math.Cos) (2×π) × ↕⊸÷≠𝕩
   ⟨
-    "stroke-width=2|stroke=currentColor" Ge ({dir𝕎𝕩}⟜𝕩𝕨)⊢⊘∾⟨
+    "stroke-width=2|stroke=currentColor" Ge ({dir𝕎𝕩}⟜𝕩⊑𝕨)⊢⊘∾⟨
       ("circle"At"fill=none") Elt "r"⋈FmtNum r
-      "class=unset"‿"class=set" Ge¨ 𝕩 ⊔ ("circle" Elt "r"‿"cx"‿"cy"≍˘·FmtNum nr⊸∾)¨ dir
+      ("class="∾(1↓𝕨)⊢⊘(⊣´˜)"unset")‿"class=set" Ge¨ 𝕩 ⊔ ("circle" Elt "r"‿"cx"‿"cy"≍˘·FmtNum nr⊸∾)¨ dir
     ⟩
-    "text-anchor=middle|class=set" Ge 𝕩 / dir Pos⊸Text¨ FmtNum ↕≠𝕩
+    "text-anchor=middle|class=set" Ge 𝕩 /⍟(1≥≠𝕨⊣@) dir Pos⊸Text¨ FmtNum ↕≠𝕩
   ⟩
 }
 
@@ -26,11 +26,17 @@ _extDrawRow ← { 𝕨 ext _𝕣 𝕩:
   (⥊(0≍˘a)+¯1‿2×⌜⟨8+rp×3.6⌈w,rp⟩) SVG tr DrawSc¨ 𝕩
 }
 
-DrawRow ⇐ ⟨⟩_extDrawRow
+DrawRow ⇐ ⟨⟩˙_extDrawRow
 
-DrawTertianRow ⇐ { dir 𝕊 𝕩:
-  t ← 2↑(3‿4⊐(≠𝕩)|2⊸⌽⊸-/𝕩)⊔∾¨⟜(2⊸⌽)0.93×𝕩/dir
+intervalColors ← @‿@‿@‿"yellow"‿"green"‿"bluegreen"‿"purple"
+_withIntervals_ ← { dir int _𝕣_ Neg 𝕩:
+  i ← Neg 𝕩
+  t ← (≠int)↑(int⊐(≠𝕩)|2⊸⌽⊸-/i)⊔∾¨⟜(2⊸⌽)0.93×i/dir
   P ← {("path"At"class="∾𝕨) Elt "d"⋈ ∾(FmtNum∾¨˜"M L "⥊˜≢) ∾𝕩}
-  "opacity=0.8" Ge ⌽"yellow"‿"green" P¨ t
-}_extDrawRow
+  "opacity=0.8" Ge ⌽ (int⊏intervalColors) P¨ t
+}
+
+DrawTertianRow     ⇐ 3‿4     _withIntervals_ ⊢         _extDrawRow
+DrawTertianCompRow ⇐ ⟨ 4‿5‿6 _withIntervals_ ¬, "red"⟩ _extDrawRow
+DrawQuartalRow     ⇐   4‿5‿6 _withIntervals_ ⊢         _extDrawRow
 }
