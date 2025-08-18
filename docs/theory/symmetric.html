@@ -230,7 +230,7 @@
   </g>
 </svg>
 
-<p>Each of the <code><span class='Value'>t</span></code> scales has <code><span class='Value'>n</span></code>-fold symmetry for itself, giving <code><span class='Value'>n</span><span class='Function'>×</span><span class='Value'>t</span></code> total transpositions. Between these, all 12 possible transpositions must be accounted for—it has to land on one of the <code><span class='Value'>t</span></code> unique transpositions! So <code><span class='Value'>n</span><span class='Function'>×</span><span class='Value'>t</span></code> is 12, meaning than <code><span class='Value'>n</span></code> is a divisor of 12 or <code><span class='Number'>0</span> <span class='Function'>=</span> <span class='Value'>n</span><span class='Function'>|</span><span class='Number'>12</span></code>. All right, let's list the possible values of <code><span class='Value'>n</span></code>.</p>
+<p>Each of the <code><span class='Value'>t</span></code> scales has <code><span class='Value'>n</span></code>-fold symmetry for itself, giving <code><span class='Value'>n</span><span class='Function'>×</span><span class='Value'>t</span></code> total transpositions. Between these, all 12 possible transpositions must be accounted for—it has to land on one of the <code><span class='Value'>t</span></code> unique transpositions! So <code><span class='Value'>n</span><span class='Function'>×</span><span class='Value'>t</span></code> is 12, meaning that <code><span class='Value'>n</span></code> is a divisor of 12 or <code><span class='Number'>0</span> <span class='Function'>=</span> <span class='Value'>n</span><span class='Function'>|</span><span class='Number'>12</span></code>. All right, let's list the possible values of <code><span class='Value'>n</span></code>.</p>
 <a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=RGl2aXNvcnMg4oaQIHsgLyAwID0gKOKGlfCdlakpIHwg8J2VqSB9CgriiqIgcDEyIOKGkCBEaXZpc29ycyAxMiAgIyBQcm9wZXIgZGl2aXNvcnMKCuKKoiBkMTIg4oaQIHAxMiDiiL4gMTIgICAgICMgQWxsIGRpdmlzb3Jz">↗️</a><pre>    <span class='Function'>Divisors</span> <span class='Gets'>←</span> <span class='Brace'>{</span> <span class='Function'>/</span> <span class='Number'>0</span> <span class='Function'>=</span> <span class='Paren'>(</span><span class='Function'>↕</span><span class='Value'>𝕩</span><span class='Paren'>)</span> <span class='Function'>|</span> <span class='Value'>𝕩</span> <span class='Brace'>}</span>
 
     <span class='Function'>⊢</span> <span class='Value'>p12</span> <span class='Gets'>←</span> <span class='Function'>Divisors</span> <span class='Number'>12</span>  <span class='Comment'># Proper divisors
@@ -465,7 +465,7 @@
                               ┘  
                                 ┘
 </pre>
-<p>All except the 6-fold symmetry are quite boring: just clusters of notes repeated at intervals! However, four of the 6-fold symmetric scales break this pattern.</p>
+<p>All except the last group are quite boring: just clusters of notes repeated at intervals! However, four of the 6-transposition, or 2-fold symmetric, scales break this pattern.</p>
 <svg viewBox='-332 -81 664 186'>
   <g transform='translate(-243 0)'>
     <g stroke-width='2' stroke='currentColor'>
@@ -526,7 +526,7 @@
       <text dy='0.33em' x='-60' y='0'>9</text>
     </g>
     <g text-anchor='middle' fill='currentColor'>
-      <text dy='0.33em' x='0' y='89'>??</text>
+      <text dy='0.33em' x='0' y='89'>Inverse Petrushka?</text>
     </g>
   </g>
   <g transform='translate(81 0)'>
@@ -558,7 +558,7 @@
       <text dy='0.33em' x='-51.962' y='-30'>10</text>
     </g>
     <g text-anchor='middle' fill='currentColor'>
-      <text dy='0.33em' x='0' y='89'>??</text>
+      <text dy='0.33em' x='0' y='89'>Petrushka chord</text>
     </g>
   </g>
   <g transform='translate(243 0)'>

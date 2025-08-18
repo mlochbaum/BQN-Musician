@@ -18,7 +18,7 @@ Here are some examples: the diminished 7th chord shows 4-fold symmetry while the
 ring.DrawRow ⋈¨ ¯1⊸⌽⍟(↕4) 12⥊1‿1‿0‿0
 -->
 
-Each of the `t` scales has `n`-fold symmetry for itself, giving `n×t` total transpositions. Between these, all 12 possible transpositions must be accounted for—it has to land on one of the `t` unique transpositions! So `n×t` is 12, meaning than `n` is a divisor of 12 or `0 = n|12`. All right, let's list the possible values of `n`.
+Each of the `t` scales has `n`-fold symmetry for itself, giving `n×t` total transpositions. Between these, all 12 possible transpositions must be accounted for—it has to land on one of the `t` unique transpositions! So `n×t` is 12, meaning that `n` is a divisor of 12 or `0 = n|12`. All right, let's list the possible values of `n`.
 
         Divisors ← { / 0 = (↕𝕩) | 𝕩 }
 
@@ -68,13 +68,13 @@ Following the method on that page, we can normalize all scales (including those 
 
         p12 ≍˘ >¨ ¯1 ↓ (+˝¬∨`p12 (⌽≡⊢)⌜ scales) ⊔ scales
 
-All except the 6-fold symmetry are quite boring: just clusters of notes repeated at intervals! However, four of the 6-fold symmetric scales break this pattern.
+All except the last group are quite boring: just clusters of notes repeated at intervals! However, four of the 6-transposition, or 2-fold symmetric, scales break this pattern.
 
 <!--GEN
 ring.DrawRow {12⥊𝕩-'0'}⌾⊑¨ ⟨
   "101000"‿"French 6th chord"
-  "110100"‿"??"
-  "110010"‿"??"
+  "110100"‿"Inverse Petrushka?"
+  "110010"‿"Petrushka chord"
   "111010"‿"Messiaen mode 6"
 ⟩
 -->

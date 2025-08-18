@@ -149,7 +149,7 @@ Every note of the major scale can be the basis of a new mode; they're all shown 
 (∾(-⊸⋈0.5)⋈˜¨¨(↕+¬÷2˙)¨4‿3) ring.DrawRow modes
 -->
 
-Other scales have their own modes, although this group, the "diatonic modes" (yes, we're firmly back in the realm of names that make no sense) is by far the most important in Western music. The major scale is asymmetric, so that all its modes are different from each other. This is pretty common, but there are also a handful of scales where starting on a non-root note can give the same scale. So these scales have fewer modes than notes. This is possible because 12 is a composite number `2×2×3`, allowing 2-fold, 3-fold, 4-fold, or 6-fold symmetry. And of course, the chromatic scale has 12-fold symmetry, so it only has one mode!
+Other scales have their own modes, although this group, the "diatonic modes" (yes, we're firmly back in the realm of names that make no sense) is by far the most important in Western music. The major scale is asymmetric, so that all its modes are different from each other. This is pretty common, but there are also a [handful of scales](symmetric.md) where starting on a non-root note can give the same scale. So these scales have fewer modes than notes. This is possible because 12 is a composite number `2×2×3`, allowing 2-fold, 3-fold, 4-fold, or 6-fold symmetry. And of course, the chromatic scale has 12-fold symmetry, so it only has one mode!
 
 <!--GEN
 ring.DrawRow (⋈ 12↑/⁼)∘{⥊0‿4‿8+⌜0‿𝕩}¨ 1‿3
