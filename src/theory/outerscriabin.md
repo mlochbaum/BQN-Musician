@@ -6,11 +6,12 @@ Take a listen to the first four bars of the Poème [Opus 71](https://imslp.org/w
 
 <!--GEN
 Figure ← "figure" Enc ⊢⊘("figcaption"⊸Enc⊸(⋈˜))
-Score ← FmtNum⊸{i‿w𝕊t:
+Score ← FmtNum⊸{i‿w𝕊b‿h:
+  t ← ∾"Score for bars "‿b‿" of Scriabin's Opus 71, Number 1"‿h‿"."
   a ← ⟨∾"audio_outerscriabin/im"‿i‿".png", w∾"%", t⟩
   Figure ""Enc˜ "img"∾∾ "src"‿"width"‿"title" {" "∾𝕨∾"="""(∾∾1↓⊣)𝕩}¨ a
 }
-0‿98 Score "Score for bars 1 to 4 of Scriabin's Opus 71, Number 1."
+0‿98 Score "1 to 4"‿""
 -->
 
 <!--GEN
@@ -200,12 +201,7 @@ The shared `0‿15` can be extracted with [another trick](https://mlochbaum.gith
 Moving on, bars 9 to 12 are transitional; they introduce some new ideas and don't really stick to the outer product theme. Probably because he is writing music and not some weird array programming math blog. The next section will suit us better, and what catches the eye first is an intimidating, oscillating left-hand line, delivered in 5:3 tuplets.
 
 <!--GEN
-Figure ""Enc˜ "img src=""audio_outerscriabin/im1.png"" width=""49%"" title=""Score for bars 13 and 14 of Scriabin's Opus 71, Number 1, left hand."""
-1‿49 Score "Score for bars 13 and 14 of Scriabin's Opus 71, Number 1, left hand."
--->
-
-<!--GEN
-Figure Piano 3
+⟨1‿49 Score "13 and 14"‿", left hand", Figure Piano 3⟩
 -->
 
 A younger Scriabin readily jumped into complex ad-hoc patterns, but in his most ostentatious madness he rarely went without a method. This part is in fact a short sequence moving up in tritones, obscured by regrouping them from five 3-note chords to three 5-note tuplets. No matter, [reshape](https://mlochbaum.github.io/BQN/doc/reshape.html) will do this for us, and we can throw in a quick and dirty [synthesis](../synth/README.md) as well.
@@ -279,7 +275,13 @@ The second iteration of this pattern in bars 17 to 20 starts by repeating from t
 
         0‿0‿3‿6 +⌜ ⥊ 0‿7 +⌜ 0‿3‿6  # Bars 13 to 20
 
-Those final chords might well be considered part of the next section, where they're interspersed with some fresh material. In the left hand we encounter another table-friendly chord that's also used heavily in the second piece in the set, and late Scriabin in general. The [French sixth](https://en.wikipedia.org/wiki/Augmented_sixth_chord#French_sixth) is commonly presented as `0‿6+⌜0‿4`, but Scriabin prefers the wider `0‿10+⌜0‿6`, and the lowest notes of each bar proceed 16-10-0 missing only the 6. Because the second instance is transposed down by 6 steps, the two bars together fill out the chord.
+Those final chords might well be considered part of the next section, where they're interspersed with some fresh material.
+
+<!--GEN
+⟨2‿49 Score "25 and 26"‿", left hand", Figure Piano 4⟩
+-->
+
+In the left hand we encounter another table-friendly chord that's also used heavily in the second piece in the set, and late Scriabin in general. The [French sixth](https://en.wikipedia.org/wiki/Augmented_sixth_chord#French_sixth) is commonly presented as `0‿6+⌜0‿4`, but Scriabin prefers the wider `0‿10+⌜0‿6`, and the lowest notes of bars 25 and 26 proceed 16-10-0 missing only the 6. Because the second instance is transposed down by 6 steps, the two bars together fill out the chord.
 
         0‿10 +⌜ 0‿6
 
