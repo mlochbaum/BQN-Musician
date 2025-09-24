@@ -153,6 +153,9 @@ repoURL ← "https://github.com/mlochbaum/BQN-musician"
 blobURL ← repoURL∾"/blob/master/"
 
 # Audio embed
+(•Import "BQNoise/options.bqn").SetDither {
+  {𝕩 + -˝ 0 (•MakeRand 1).Range˜ 2∾≢𝕩} # Stateless for stability
+}
 wav ← •Import "BQNoise/wav.bqn"
 EmbedAudio ← { path‿dir‿file 𝕊 data:
   •file.CreateDir⍟(¬•file.Exists) pd←"docs/"∾path∾dir
@@ -167,8 +170,7 @@ EmbedAudio ← { path‿dir‿file 𝕊 data:
 # Environments
 GetExecs ← { 𝕊 fileInfo:
   NewREPL ← •ReBQN∘{repl⇐"strict"}
-  Cvt ← {⌊ (-˝ 0 (•MakeRand 1).Range˜ 2∾≢𝕩)+(2⋆15)×𝕩}
-  Play ← FileInfo EmbedAudio Cvt
+  Play ← FileInfo⊸EmbedAudio
   # Code
   c←NewREPL@
   ⟨"","",⟨(ct←{⇐})⋈Play⟩⟩ C "⟨Play⟩←•args"
