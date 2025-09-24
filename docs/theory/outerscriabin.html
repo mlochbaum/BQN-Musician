@@ -1,0 +1,644 @@
+<head>
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <link href="../style.css" rel="stylesheet"/>
+  <title>BQN Musician: Scriabin's outer poetry</title>
+</head>
+<div class="nav">(<a href="https://github.com/mlochbaum/BQN-musician">github</a>) / <a href="../index.html">BQN Musician</a> / <a href="index.html">theory</a></div>
+<h1 id="scriabins-outer-poetry"><a class="header" href="#scriabins-outer-poetry">Scriabin's outer poetry</a></h1>
+<p>In the years leading up to his untimely death, the mad Russian Alexander Scriabin began to work sophisticated mathematical structures into his compositions. And one hundred and eleven years after its publication, I have found the perfect means to narrow the audience for this website.</p>
+<p>Take a listen to the first four bars of the Poème <a href="https://imslp.org/wiki/2_Po%C3%A8mes,_Op.71_(Scriabin,_Aleksandr)">Opus 71</a>, No. 1.</p>
+<figure><img src="audio_outerscriabin/im0.png" width="98%" title="Score for bars 1 to 4 of Scriabin's Opus 71, Number 1."></img></figure>
+<div class='wrap' style='padding:1em 3em 0em'>
+  <figure>
+    <audio src="audio_outerscriabin/p0.mp3" controls></audio>
+    <figcaption>Struggling pianist</figcaption>
+  </figure>
+  <figure>
+    <audio src="audio_outerscriabin/a0.mp3" controls></audio>
+    <figcaption>Lazy synthesist</figcaption>
+  </figure>
+</div>
+
+<p>What wretched chord could create that spine-tingling arpeggio? Would you believe… D major seventh in root position? Yes, really! The same chord that's usually seen as sweet and maybe a touch wistful, as exposed by more conventional harmony:</p>
+<div class='wrap' style='padding:0.5em 3em 0.5em'>
+  <figure><audio src="audio_outerscriabin/p1.mp3" controls></audio></figure>
+  <figure><audio src="audio_outerscriabin/a1.mp3" controls></audio></figure>
+</div>
+
+<p>So the <em>true</em> source of the eerie chill is… well actually the left hand is just playing a shell voicing of B (written C flat) major seventh. In root position. Obviously these two mild-natured chords do not get along, and if you know much about harmony it's not such a mystery. A major seventh contains two 4-semitone intervals, and we're shifting it by 3 semitones (plus an octave) to place it on top of itself. This makes for clashing 1-semitone offsets, with most notes even falling into tone clusters like D flat and D against E flat in a lower octave—it'd be a total modernist mess if not for that octave separation. We would also get the harmless shared note of G flat, but this is exactly what's left out of the B chord in the shell voicing.</p>
+<svg viewBox='-100 -24 512 128'>
+  <g fill='currentColor' text-anchor='middle'>
+    <g class='blackKey'>
+      <path stroke-width='22' d='M46 -18L46 66M92 -18L92 66M161 -18L161 66M207 -18L207 66M253 -18L253 66M322 -18L322 66'/>
+      <path stroke-width='1' d='M11.5 -18L11.5 74M126.5 -18L126.5 74M287.5 -18L287.5 74'/>
+    </g>
+    <g font-size='14'>
+      <text dy='0.33em' x='0' y='78'>B</text>
+      <text dy='0.33em' x='23' y='78'>C</text>
+      <text dy='0.33em' x='46' y='78'>D♭</text>
+      <text dy='0.33em' x='69' y='78'>D</text>
+      <text dy='0.33em' x='92' y='78'>E♭</text>
+      <text dy='0.33em' x='115' y='78'>E</text>
+      <text dy='0.33em' x='138' y='78'>F</text>
+      <text dy='0.33em' x='161' y='78'>G♭</text>
+      <text dy='0.33em' x='184' y='78'>G</text>
+      <text dy='0.33em' x='207' y='78'>A♭</text>
+      <text dy='0.33em' x='230' y='78'>A</text>
+      <text dy='0.33em' x='253' y='78'>B♭</text>
+      <text dy='0.33em' x='276' y='78'>B</text>
+      <text dy='0.33em' x='299' y='78'>C</text>
+      <text dy='0.33em' x='322' y='78'>D♭</text>
+    </g>
+    <g font-size='18'>
+      <text dy='0.33em' x='-46' y='0'>Dmaj⁷</text>
+      <text dy='0.33em' x='-46' y='46'>Bmaj⁷</text>
+    </g>
+    <g stroke-width='3'>
+      <path class='yellow' d='M69 0L0 46M230 0L161 46M161 0L92 46M322 0L253 46'/>
+      <path class='green' d='M69 0L161 0M0 46L92 46M230 0L322 0M161 46L253 46'/>
+      <path class='yellow' d='M161 0L230 0M92 46L161 46'/>
+    </g>
+    <g stroke-width='1.75' class='purple'>
+      <g stroke-dasharray='2 3'>
+        <circle r='8' cx='161' cy='46'/>
+        <circle r='8' cx='46' cy='0'/>
+        <circle r='8' cx='276' cy='46'/>
+      </g>
+      <circle r='8' cx='69' cy='0'/>
+      <circle r='8' cx='230' cy='0'/>
+      <circle r='8' cx='161' cy='0'/>
+      <circle r='8' cx='322' cy='0'/>
+      <circle r='8' cx='0' cy='46'/>
+      <circle r='8' cx='92' cy='46'/>
+      <circle r='8' cx='253' cy='46'/>
+    </g>
+    <g class='red' style='fill:none' stroke-width='2'>
+      <path d='M35.65 82L35.65 90L102.35 90L102.35 82'/>
+      <path d='M219.65 82L219.65 90L286.35 90L286.35 82'/>
+    </g>
+  </g>
+</svg>
+
+<figure>
+  <div class='wrap' style='padding:1em 3em 0.5em'>
+    <audio src="audio_outerscriabin/p2.mp3" controls></audio>
+    <audio src="audio_outerscriabin/a2.mp3" controls></audio>
+  </div>
+  <figcaption>All in one octave</figcaption>
+</figure>
+
+<p>The entire work is practically woven out of this idea, of adding one thing to a transposed copy. In preparation to unravel it, I'd like to dissect one of Scriabin's favorite devices, the octatonic scale. This is the <a href="symmetric.html">symmetric scale</a> that repeats every 3 semitones, alternating 1-step and 2-step intervals.</p>
+<svg viewBox='-299.6 -81 599.2 162'>
+  <g transform='translate(0 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <g opacity='0.8'>
+        <path class='green' d=''/>
+        <path class='yellow' d='M0 -55.8L55.8 -0M27.9 -48.324L48.324 27.9M55.8 -0L0 55.8M48.324 27.9L-27.9 48.324M0 55.8L-55.8 0M-27.9 48.324L-48.324 -27.9M-55.8 0L0 -55.8M-48.324 -27.9L27.9 -48.324'/>
+      </g>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'></g>
+  </g>
+</svg>
+
+<p>As discussed <a href="tertian.html#what-are-they-really">here</a>, an octatonic scale is composed of two diminished seventh chords (and it's the <a href="complement.html">complement</a> of another). To put this another way, you can get it by taking one diminished seventh, and adding it to itself shifted up 1 semitone—or 4 or 7 (take note!) or -2, because that chord is symmetric at 3 semitones. In BQN we can write this as an addition <a href="https://mlochbaum.github.io/BQN/doc/map.html#table">table</a>, which is good because Outer Product, as APLers call it, is the <a href="https://mlochbaum.github.io/OuterProduct/commentary.html">only primitive I know</a>.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=M8OX4oaVNCAgICAgICAgICMgRGltaW5pc2hlZCBzZXZlbnRoIGNob3JkCgow4oC/MSAr4oycIDPDl+KGlTQgICMgVHdvIG9mIHRoZW0gZ2l2ZXMgb2N0YXRvbmljCgow4oC/MSAr4oycIDDigL82ICvijJwgMOKAvzMgICMgSXQncyBhIGN1YmU/">↗️</a><pre>    <span class='Number'>3</span><span class='Function'>×↕</span><span class='Number'>4</span>         <span class='Comment'># Diminished seventh chord
+</span>⟨ 0 3 6 9 ⟩
+
+    <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>1</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>3</span><span class='Function'>×↕</span><span class='Number'>4</span>  <span class='Comment'># Two of them gives octatonic
+</span>┌─          
+╵ 0 3 6  9  
+  1 4 7 10  
+           ┘
+
+    <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>1</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>6</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>3</span>  <span class='Comment'># It's a cube?
+</span>┌─      
+╎ 0  3  
+  6  9  
+        
+  1  4  
+  7 10  
+       ┘
+</pre>
+<p>It's less often mentioned that the diminished seventh chord itself can be decomposed this way, into a tritone (6 semitones) plus itself shifted by 3 steps. Or a 3-semitone interval with a 6-step shift: a cool property of <code><span class='Function'>+</span><span class='Modifier'>⌜</span></code> is that the arguments can be rearranged any which way and it will only affect the ordering of the axes, not which values appear (this depends on addition being commutative). We can draw this 3-way addition table as a cube. See how the upper cell <code><span class='Bracket'>[</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>3</span><span class='Separator'>,</span><span class='Number'>6</span><span class='Ligature'>‿</span><span class='Number'>9</span><span class='Bracket'>]</span></code> matches up with the top face and the other one with the bottom?</p>
+<svg viewBox='-100 -28 512 128'>
+  <g fill='currentColor' text-anchor='middle'>
+    <g class='blackKey'>
+      <path stroke-width='22' d='M46 -18L46 72M92 -18L92 72M161 -18L161 72M207 -18L207 72M253 -18L253 72'/>
+      <path stroke-width='1' d='M11.5 -18L11.5 80M126.5 -18L126.5 80'/>
+    </g>
+    <g font-size='14'>
+      <text dy='0.33em' x='0' y='84'>B</text>
+      <text dy='0.33em' x='23' y='84'>C</text>
+      <text dy='0.33em' x='46' y='84'>D♭</text>
+      <text dy='0.33em' x='69' y='84'>D</text>
+      <text dy='0.33em' x='92' y='84'>E♭</text>
+      <text dy='0.33em' x='115' y='84'>E</text>
+      <text dy='0.33em' x='138' y='84'>F</text>
+      <text dy='0.33em' x='161' y='84'>G♭</text>
+      <text dy='0.33em' x='184' y='84'>G</text>
+      <text dy='0.33em' x='207' y='84'>A♭</text>
+      <text dy='0.33em' x='230' y='84'>A</text>
+      <text dy='0.33em' x='253' y='84'>B♭</text>
+      <text dy='0.33em' x='276' y='84'>B</text>
+    </g>
+    <g stroke-width='3'>
+      <path class='purple' d='M92 0L230 6M115 40L253 46'/>
+      <path class='red' d='M92 0L115 40M230 6L253 46M23 10L46 50M161 16L184 56'/>
+      <path class='yellow' d='M92 0L23 10M115 40L46 50M230 6L161 16M253 46L184 56'/>
+      <path class='purple' d='M23 10L161 16M46 50L184 56'/>
+    </g>
+    <g stroke-width='1.75' class='bluegreen'>
+      <circle r='8' cx='92' cy='0'/>
+      <circle r='8' cx='230' cy='6'/>
+      <circle r='8' cx='23' cy='10'/>
+      <circle r='8' cx='161' cy='16'/>
+      <circle r='8' cx='115' cy='40'/>
+      <circle r='8' cx='253' cy='46'/>
+      <circle r='8' cx='46' cy='50'/>
+      <circle r='8' cx='184' cy='56'/>
+    </g>
+  </g>
+</svg>
+
+<p>We'll return to the octatonic scale, but as it turns out, Scriabin's major sevenths are subject to the same trick, just with the intervals 4 and 7 instead of 3 and 6. Together with the 3-step transposition, we have another cube!</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=MOKAvzcgK+KMnCAw4oC/NCAgIyBUaGUgbm90ZXMgb2YgYSBtYWpvciBzZXZlbnRoIGNob3Jk">↗️</a><pre>    <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>7</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>4</span>  <span class='Comment'># The notes of a major seventh chord
+</span>┌─      
+╵ 0  4  
+  7 11  
+       ┘
+</pre>
+<svg viewBox='-100 -28 512 128'>
+  <g fill='currentColor' text-anchor='middle'>
+    <g class='blackKey'>
+      <path stroke-width='22' d='M46 -18L46 68M92 -18L92 68M161 -18L161 68M207 -18L207 68M253 -18L253 68M322 -18L322 68'/>
+      <path stroke-width='1' d='M11.5 -18L11.5 76M126.5 -18L126.5 76M287.5 -18L287.5 76'/>
+    </g>
+    <g font-size='14'>
+      <text dy='0.33em' x='0' y='80'>B</text>
+      <text dy='0.33em' x='23' y='80'>C</text>
+      <text dy='0.33em' x='46' y='80'>D♭</text>
+      <text dy='0.33em' x='69' y='80'>D</text>
+      <text dy='0.33em' x='92' y='80'>E♭</text>
+      <text dy='0.33em' x='115' y='80'>E</text>
+      <text dy='0.33em' x='138' y='80'>F</text>
+      <text dy='0.33em' x='161' y='80'>G♭</text>
+      <text dy='0.33em' x='184' y='80'>G</text>
+      <text dy='0.33em' x='207' y='80'>A♭</text>
+      <text dy='0.33em' x='230' y='80'>A</text>
+      <text dy='0.33em' x='253' y='80'>B♭</text>
+      <text dy='0.33em' x='276' y='80'>B</text>
+      <text dy='0.33em' x='299' y='80'>C</text>
+      <text dy='0.33em' x='322' y='80'>D♭</text>
+    </g>
+    <g font-size='18'>
+      <text dy='0.33em' x='-46' y='0'>Dmaj⁷</text>
+      <text dy='0.33em' x='-46' y='52'>Bmaj⁷</text>
+    </g>
+    <g stroke-width='3'>
+      <path class='bluegreen' d='M69 0L230 0M0 38L161 38'/>
+      <path class='yellow' d='M69 0L0 38M230 0L161 38M161 14L92 52M322 14L253 52'/>
+      <path class='green' d='M69 0L161 14M0 38L92 52M230 0L322 14M161 38L253 52'/>
+      <path class='bluegreen' d='M161 14L322 14M92 52L253 52'/>
+    </g>
+    <g stroke-width='1.75' class='purple'>
+      <circle r='8' cx='69' cy='0'/>
+      <circle r='8' cx='230' cy='0'/>
+      <circle r='8' cx='161' cy='14'/>
+      <circle r='8' cx='322' cy='14'/>
+      <circle r='8' cx='0' cy='38'/>
+      <circle r='8' cx='161' cy='38'/>
+      <circle r='8' cx='92' cy='52'/>
+      <circle r='8' cx='253' cy='52'/>
+    </g>
+  </g>
+</svg>
+
+<p>And those morose notes that open the piece are also an addition table! The bass notes G and E flat are separated by 8 steps, as are B flat and G flat above. As with the major sevenths, the distance between these two pairs is 3 steps, plus an octave. If we move G up an octave and G flat down, we get a compact form:</p>
+<svg viewBox='-100 -28 512 128'>
+  <g fill='currentColor' text-anchor='middle'>
+    <g class='blackKey'>
+      <path stroke-width='22' d='M46 -18L46 68M92 -18L92 68M161 -18L161 68M207 -18L207 68M253 -18L253 68'/>
+      <path stroke-width='1' d='M11.5 -18L11.5 76M126.5 -18L126.5 76'/>
+    </g>
+    <g font-size='14'>
+      <text dy='0.33em' x='0' y='80'>B</text>
+      <text dy='0.33em' x='23' y='80'>C</text>
+      <text dy='0.33em' x='46' y='80'>D♭</text>
+      <text dy='0.33em' x='69' y='80'>D</text>
+      <text dy='0.33em' x='92' y='80'>E♭</text>
+      <text dy='0.33em' x='115' y='80'>E</text>
+      <text dy='0.33em' x='138' y='80'>F</text>
+      <text dy='0.33em' x='161' y='80'>G♭</text>
+      <text dy='0.33em' x='184' y='80'>G</text>
+      <text dy='0.33em' x='207' y='80'>A♭</text>
+      <text dy='0.33em' x='230' y='80'>A</text>
+      <text dy='0.33em' x='253' y='80'>B♭</text>
+      <text dy='0.33em' x='276' y='80'>B</text>
+    </g>
+    <g stroke-width='3'>
+      <path class='yellow' d='M161 0L92 38M253 14L184 52'/>
+      <path class='green' d='M161 0L253 14M92 38L184 52'/>
+    </g>
+    <g stroke-width='1.75' class='purple'>
+      <circle r='8' cx='161' cy='0'/>
+      <circle r='8' cx='253' cy='14'/>
+      <circle r='8' cx='92' cy='38'/>
+      <circle r='8' cx='184' cy='52'/>
+    </g>
+  </g>
+</svg>
+
+<p>What a familiar shape! To get the major sevenths from these notes you shift one copy down by 4 steps, and another up by 3 steps. But this is not the end of it. The next thing Scriabin does is play the opening again, shifted up by 3 steps: now it begins with an exact subset of the major sevenths! Specifically it takes the upper half of each 7-step interval, leaving D and keeping A, and so on (G flat stays, by virtue of appearing as both a lower and an upper half), with some shuffling between octaves of course.</p>
+<svg viewBox='-100 -28 512 348'>
+  <g fill='currentColor' text-anchor='middle'>
+    <g class='blackKey'>
+      <path stroke-width='22' d='M46 -18L46 288M92 -18L92 288M161 -18L161 288M207 -18L207 288M253 -18L253 288M322 -18L322 288M368 -18L368 288'/>
+      <path stroke-width='1' d='M11.5 -18L11.5 296M126.5 -18L126.5 296M287.5 -18L287.5 296'/>
+    </g>
+    <g font-size='14'>
+      <text dy='0.33em' x='0' y='300'>B</text>
+      <text dy='0.33em' x='23' y='300'>C</text>
+      <text dy='0.33em' x='46' y='300'>D♭</text>
+      <text dy='0.33em' x='69' y='300'>D</text>
+      <text dy='0.33em' x='92' y='300'>E♭</text>
+      <text dy='0.33em' x='115' y='300'>E</text>
+      <text dy='0.33em' x='138' y='300'>F</text>
+      <text dy='0.33em' x='161' y='300'>G♭</text>
+      <text dy='0.33em' x='184' y='300'>G</text>
+      <text dy='0.33em' x='207' y='300'>A♭</text>
+      <text dy='0.33em' x='230' y='300'>A</text>
+      <text dy='0.33em' x='253' y='300'>B♭</text>
+      <text dy='0.33em' x='276' y='300'>B</text>
+      <text dy='0.33em' x='299' y='300'>C</text>
+      <text dy='0.33em' x='322' y='300'>D♭</text>
+      <text dy='0.33em' x='345' y='300'>D</text>
+      <text dy='0.33em' x='368' y='300'>E♭</text>
+      <text dy='0.33em' x='391' y='300'>E</text>
+    </g>
+    <g class='bluegreen' style='fill:none' stroke-width='1.5'><path d='M12.65 303L12.65 311L56.35 311L56.35 303M81.65 303L81.65 311L125.35 311L125.35 303M150.65 303L150.65 311L194.35 311L194.35 303M219.65 303L219.65 311L263.35 311L263.35 303M288.65 303L288.65 311L332.35 311L332.35 303M357.65 303L357.65 311L401.35 311L401.35 303'/></g>
+    <text dy='0.33em' font-size='14' x='-46' y='0'>Bars:</text>
+    <g font-size='18'>
+      <text dy='0.33em' x='-46' y='30'>1–2</text>
+      <text dy='0.33em' x='-46' y='102'>3–4</text>
+      <text dy='0.33em' x='-46' y='174'>5–6</text>
+      <text dy='0.33em' x='-46' y='246'>7–8</text>
+    </g>
+    <g stroke-width='3'>
+      <path class='yellow' d='M161 0L92 38M253 14L184 52'/>
+      <path class='green' d='M161 0L253 14M92 38L184 52'/>
+    </g>
+    <g stroke-width='1.75' class='purple'>
+      <circle r='8' cx='161' cy='0'/>
+      <circle r='8' cx='253' cy='14'/>
+      <circle r='8' cx='92' cy='38'/>
+      <circle r='8' cx='184' cy='52'/>
+    </g>
+    <g stroke-width='3'>
+      <path class='bluegreen' d='M69 72L230 72M0 110L161 110'/>
+      <path class='yellow' d='M69 72L0 110M230 72L161 110M161 86L92 124M322 86L253 124'/>
+      <path class='green' d='M69 72L161 86M0 110L92 124M230 72L322 86M161 110L253 124'/>
+      <path class='bluegreen' d='M161 86L322 86M92 124L253 124'/>
+    </g>
+    <g stroke-width='1.75' class='purple'>
+      <circle r='8' cx='69' cy='72'/>
+      <circle r='8' cx='230' cy='72'/>
+      <circle r='8' cx='161' cy='86'/>
+      <circle r='8' cx='322' cy='86'/>
+      <circle r='8' cx='0' cy='110'/>
+      <circle r='8' cx='161' cy='110'/>
+      <circle r='8' cx='92' cy='124'/>
+      <circle r='8' cx='253' cy='124'/>
+    </g>
+    <g stroke-width='3'>
+      <path class='yellow' d='M230 144L161 182M322 158L253 196'/>
+      <path class='green' d='M230 144L322 158M161 182L253 196'/>
+    </g>
+    <g stroke-width='1.75' class='purple'>
+      <circle r='8' cx='230' cy='144'/>
+      <circle r='8' cx='322' cy='158'/>
+      <circle r='8' cx='161' cy='182'/>
+      <circle r='8' cx='253' cy='196'/>
+    </g>
+    <g stroke-width='3'>
+      <path class='bluegreen' d='M138 216L299 216M69 254L230 254'/>
+      <path class='yellow' d='M138 216L69 254M299 216L230 254M230 230L161 268M391 230L322 268'/>
+      <path class='green' d='M138 216L230 230M69 254L161 268M299 216L391 230M230 254L322 268'/>
+      <path class='bluegreen' d='M230 230L391 230M161 268L322 268'/>
+    </g>
+    <g stroke-width='1.75' class='purple'>
+      <circle r='8' cx='138' cy='216'/>
+      <circle r='8' cx='299' cy='216'/>
+      <circle r='8' cx='230' cy='230'/>
+      <circle r='8' cx='391' cy='230'/>
+      <circle r='8' cx='69' cy='254'/>
+      <circle r='8' cx='230' cy='254'/>
+      <circle r='8' cx='161' cy='268'/>
+      <circle r='8' cx='322' cy='268'/>
+    </g>
+  </g>
+</svg>
+
+<p>The skeleton above shows that a fairly small number of notes are changed at each step, not counting the octave shifts (but it's not a complete analysis: there's an important and mysterious F in the first two bars, along with other notes brought in from the major seventh chords to follow). At the bottom I've bracketed an octatonic scale that covers most notes. We can also build this whole collection in BQN from a pile of outer products, here as offsets from the bass E flat:</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=4p+oMOKAvzE1K+KMnMKvOOKAvzAsIDDigL8xNSvijJzCrzTigL8wK+KMnDDigL834p+pICAjIEZpcnN0IGhhbGYKCuKliiAw4oC/MyAr4oycIOKfqDDigL8xNSvijJzCrzjigL8wLCAw4oC/MTUr4oycwq804oC/MCvijJww4oC/N+KfqQ==">↗️</a><pre>    <span class='Bracket'>⟨</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>15</span><span class='Function'>+</span><span class='Modifier'>⌜</span><span class='Number'>¯8</span><span class='Ligature'>‿</span><span class='Number'>0</span><span class='Separator'>,</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>15</span><span class='Function'>+</span><span class='Modifier'>⌜</span><span class='Number'>¯4</span><span class='Ligature'>‿</span><span class='Number'>0</span><span class='Function'>+</span><span class='Modifier'>⌜</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>7</span><span class='Bracket'>⟩</span>  <span class='Comment'># First half
+</span>┌─                     
+· ┌─        ┌─         
+  ╵ ¯8  0   ╎ ¯4  3    
+     7 15      0  7    
+          ┘            
+              11 18    
+              15 22    
+                    ┘  
+                      ┘
+
+    <span class='Function'>⥊</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>3</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Bracket'>⟨</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>15</span><span class='Function'>+</span><span class='Modifier'>⌜</span><span class='Number'>¯8</span><span class='Ligature'>‿</span><span class='Number'>0</span><span class='Separator'>,</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>15</span><span class='Function'>+</span><span class='Modifier'>⌜</span><span class='Number'>¯4</span><span class='Ligature'>‿</span><span class='Number'>0</span><span class='Function'>+</span><span class='Modifier'>⌜</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>7</span><span class='Bracket'>⟩</span>
+┌─                                         
+· ┌─        ┌─        ┌─        ┌─         
+  ╵ ¯8  0   ╎ ¯4  3   ╵ ¯5  3   ╎ ¯1  6    
+     7 15      0  7     10 18      3 10    
+          ┘                   ┘            
+              11 18               14 21    
+              15 22               18 25    
+                    ┘                   ┘  
+                                          ┘
+</pre>
+<p>The shared <code><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>15</span></code> can be extracted with <a href="https://mlochbaum.github.io/BQN/doc/enclose.html#broadcasting">another trick</a>: <code><span class='Bracket'>⟨</span><span class='Value'>a</span> <span class='Function'>F</span> <span class='Value'>b</span><span class='Separator'>,</span> <span class='Value'>a</span> <span class='Function'>F</span> <span class='Value'>c</span><span class='Bracket'>⟩</span></code> is the same as <code><span class='Paren'>(</span><span class='Function'>&lt;</span><span class='Value'>a</span><span class='Paren'>)</span> <span class='Function'>F</span><span class='Modifier'>¨</span> <span class='Bracket'>⟨</span><span class='Value'>b</span><span class='Separator'>,</span><span class='Value'>c</span><span class='Bracket'>⟩</span></code> or <code><span class='Paren'>(</span><span class='Function'>&lt;</span><span class='Value'>a</span><span class='Paren'>)</span> <span class='Function'>F</span><span class='Modifier'>⌜</span> <span class='Bracket'>⟨</span><span class='Value'>b</span><span class='Separator'>,</span><span class='Value'>c</span><span class='Bracket'>⟩</span></code>. Naturally I'll choose the second of these. Let's also take the result modulo 3 to show the octatonic properties better. Each <code><span class='Number'>2</span></code> is a note that doesn't fit into the highlighted octatonic scale—just the root of each major seventh chord.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=M3wg4qWKIDDigL8zICvijJwgKDww4oC/MTUpICvijJzijJwg4p+owq844oC/MCwgwq804oC/MCvijJww4oC/N+KfqQ==">↗️</a><pre>    <span class='Number'>3</span><span class='Function'>|</span> <span class='Function'>⥊</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>3</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Paren'>(</span><span class='Function'>&lt;</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>15</span><span class='Paren'>)</span> <span class='Function'>+</span><span class='Modifier'>⌜⌜</span> <span class='Bracket'>⟨</span><span class='Number'>¯8</span><span class='Ligature'>‿</span><span class='Number'>0</span><span class='Separator'>,</span> <span class='Number'>¯4</span><span class='Ligature'>‿</span><span class='Number'>0</span><span class='Function'>+</span><span class='Modifier'>⌜</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>7</span><span class='Bracket'>⟩</span>
+┌─                                 
+· ┌─      ┌─      ┌─      ┌─       
+  ╵ 1 0   ╎ 2 0   ╵ 1 0   ╎ 2 0    
+    1 0     0 1     1 0     0 1    
+        ┘               ┘          
+            2 0             2 0    
+            0 1             0 1    
+                ┘               ┘  
+                                  ┘
+</pre>
+<p>Moving on, bars 9 to 12 are transitional; they introduce some new ideas and don't really stick to the outer product theme. Probably because he is writing music and not some weird array programming math blog. The next section will suit us better, and what catches the eye first is an intimidating, oscillating left-hand line, delivered in 5:3 tuplets.</p>
+<figure><img src="audio_outerscriabin/im1.png" width="49%" title="Score for bars 13 and 14 of Scriabin's Opus 71, Number 1, left hand."></img></figure>
+<figure><audio src="audio_outerscriabin/p3.mp3" controls></audio></figure>
+<p>A younger Scriabin readily jumped into complex ad-hoc patterns, but in his most ostentatious madness he rarely went without a method. This part is in fact a short sequence moving up in tritones, obscured by regrouping them from five 3-note chords to three 5-note tuplets. No matter, <a href="https://mlochbaum.github.io/BQN/doc/reshape.html">reshape</a> will do this for us, and we can throw in a quick and dirty <a href="../synth/index.html">synthesis</a> as well.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=NiDDlyAzIC3LnCDihpU1ICAgICMgVGhlIGxvdyBub3Rlcywgc3RpbGwgb2Zmc2V0IGZyb20gReKZrSA9IETima8KCuKKoiBub3RlcyDihpAgKOKMveKJoiniirjipYogKDbDlzMty5zihpU1KSAr4oycIDDigL824oC/MTMKClN5bnRoIOKGkCB7ICgzLjTii4Yt4oaV4oq4w7fiiaDwnZWpKSDDlyAt4p+cKOKLhuKfnDcpIC3in5zCrCAxfCtg8J2VqcO3NDQxMDAgfQrigKJQbGF5IOKliiAoU3ludGggNzU2MOKKuC8py5ggNTUgw5cgMuKLhjEyw7fLnCAxOCtub3RlcyAgIyBMb3cgQSA9IDU1SHoKCjMgfCBub3RlcyAgIyBBbGwgb2N0YXRvbmljLCBubyAycw==">↗️</a><pre>    <span class='Number'>6</span> <span class='Function'>×</span> <span class='Number'>3</span> <span class='Function'>-</span><span class='Modifier'>˜</span> <span class='Function'>↕</span><span class='Number'>5</span>    <span class='Comment'># The low notes, still offset from E♭ = D♯
+</span>⟨ ¯18 ¯12 ¯6 0 6 ⟩
+
+    <span class='Function'>⊢</span> <span class='Value'>notes</span> <span class='Gets'>←</span> <span class='Paren'>(</span><span class='Function'>⌽≢</span><span class='Paren'>)</span><span class='Modifier2'>⊸</span><span class='Function'>⥊</span> <span class='Paren'>(</span><span class='Number'>6</span><span class='Function'>×</span><span class='Number'>3</span><span class='Function'>-</span><span class='Modifier'>˜</span><span class='Function'>↕</span><span class='Number'>5</span><span class='Paren'>)</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>6</span><span class='Ligature'>‿</span><span class='Number'>13</span>
+┌─                   
+╵ ¯18 ¯12 ¯5 ¯12 ¯6  
+    1  ¯6  0   7  0  
+    6  13  6  12 19  
+                    ┘
+
+    <span class='Function'>Synth</span> <span class='Gets'>←</span> <span class='Brace'>{</span> <span class='Paren'>(</span><span class='Number'>3.4</span><span class='Function'>⋆-↕</span><span class='Modifier2'>⊸</span><span class='Function'>÷≠</span><span class='Value'>𝕩</span><span class='Paren'>)</span> <span class='Function'>×</span> <span class='Function'>-</span><span class='Modifier2'>⟜</span><span class='Paren'>(</span><span class='Function'>⋆</span><span class='Modifier2'>⟜</span><span class='Number'>7</span><span class='Paren'>)</span> <span class='Function'>-</span><span class='Modifier2'>⟜</span><span class='Function'>¬</span> <span class='Number'>1</span><span class='Function'>|+</span><span class='Modifier'>`</span><span class='Value'>𝕩</span><span class='Function'>÷</span><span class='Number'>44100</span> <span class='Brace'>}</span>
+    <span class='Function'>Play</span> <span class='Function'>⥊</span> <span class='Paren'>(</span><span class='Function'>Synth</span> <span class='Number'>7560</span><span class='Modifier2'>⊸</span><span class='Function'>/</span><span class='Paren'>)</span><span class='Modifier'>˘</span> <span class='Number'>55</span> <span class='Function'>×</span> <span class='Number'>2</span><span class='Function'>⋆</span><span class='Number'>12</span><span class='Function'>÷</span><span class='Modifier'>˜</span> <span class='Number'>18</span><span class='Function'>+</span><span class='Value'>notes</span>  <span class='Comment'># Low A = 55Hz
+</span><audio src="audio_outerscriabin/a3.mp3" controls></audio>
+
+    <span class='Number'>3</span> <span class='Function'>|</span> <span class='Value'>notes</span>  <span class='Comment'># All octatonic, no 2s
+</span>┌─           
+╵ 0 0 1 0 0  
+  1 0 0 1 0  
+  0 1 0 0 1  
+            ┘
+</pre>
+<p>Leaving out the reshape <code><span class='Paren'>(</span><span class='Function'>⌽≢</span><span class='Paren'>)</span><span class='Modifier2'>⊸</span><span class='Function'>⥊</span></code>, we get two columns that cover the same notes and a third that's different. Paring down to a 2 by 2 outer product gives the unique octave-equivalent notes only.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=KDbDlzMty5zihpU1KSAr4oycIDDigL824oC/MTMKCjDigL82ICvijJwgMOKAvzc=">↗️</a><pre>    <span class='Paren'>(</span><span class='Number'>6</span><span class='Function'>×</span><span class='Number'>3</span><span class='Function'>-</span><span class='Modifier'>˜</span><span class='Function'>↕</span><span class='Number'>5</span><span class='Paren'>)</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>6</span><span class='Ligature'>‿</span><span class='Number'>13</span>
+┌─            
+╵ ¯18 ¯12 ¯5  
+  ¯12  ¯6  1  
+   ¯6   0  7  
+    0   6 13  
+    6  12 19  
+             ┘
+
+    <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>6</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>7</span>
+┌─      
+╵ 0  7  
+  6 13  
+       ┘
+</pre>
+<svg viewBox='-100 -28 512 128'>
+  <g fill='currentColor' text-anchor='middle'>
+    <g class='blackKey'>
+      <path stroke-width='22' d='M46 -18L46 62M92 -18L92 62M161 -18L161 62M207 -18L207 62M253 -18L253 62M322 -18L322 62M368 -18L368 62'/>
+      <path stroke-width='1' d='M11.5 -18L11.5 70M126.5 -18L126.5 70M287.5 -18L287.5 70'/>
+    </g>
+    <g font-size='14'>
+      <text dy='0.33em' x='0' y='74'>B</text>
+      <text dy='0.33em' x='23' y='74'>C</text>
+      <text dy='0.33em' x='46' y='74'>D♭</text>
+      <text dy='0.33em' x='69' y='74'>D</text>
+      <text dy='0.33em' x='92' y='74'>E♭</text>
+      <text dy='0.33em' x='115' y='74'>E</text>
+      <text dy='0.33em' x='138' y='74'>F</text>
+      <text dy='0.33em' x='161' y='74'>G♭</text>
+      <text dy='0.33em' x='184' y='74'>G</text>
+      <text dy='0.33em' x='207' y='74'>A♭</text>
+      <text dy='0.33em' x='230' y='74'>A</text>
+      <text dy='0.33em' x='253' y='74'>B♭</text>
+      <text dy='0.33em' x='276' y='74'>B</text>
+      <text dy='0.33em' x='299' y='74'>C</text>
+      <text dy='0.33em' x='322' y='74'>D♭</text>
+      <text dy='0.33em' x='345' y='74'>D</text>
+      <text dy='0.33em' x='368' y='74'>E♭</text>
+      <text dy='0.33em' x='391' y='74'>E</text>
+    </g>
+    <g stroke-width='3'>
+      <path class='purple' d='M230 0L92 46M391 0L253 46'/>
+      <path class='bluegreen' d='M230 0L391 0M92 46L253 46'/>
+    </g>
+    <g stroke-width='1.75' class='bluegreen'>
+      <circle r='8' cx='230' cy='0'/>
+      <circle r='8' cx='391' cy='0'/>
+      <circle r='8' cx='92' cy='46'/>
+      <circle r='8' cx='253' cy='46'/>
+    </g>
+  </g>
+</svg>
+
+<p>But what about the right hand? It's playing a chord on D flat and G flat above (written C sharp and F sharp, as the spellings now indicate an octatonic scale going from C sharp to C natural; the interested reader is referred to George Perle, &quot;Scriabin's Self-Analyses&quot;). These fit neatly into our reduced outer product, because it also features a 7-step interval on one side. When we reduce the octaves out, we find that the other side is a sequence of 3-step intervals!</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=MOKAvzbigL8yNyAr4oycIDDigL83Cgow4oC/M+KAvzYgK+KMnCAw4oC/NyAgICMgU3F1YXNoIHRvZ2V0aGVy">↗️</a><pre>    <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>6</span><span class='Ligature'>‿</span><span class='Number'>27</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>7</span>
+┌─       
+╵  0  7  
+   6 13  
+  27 34  
+        ┘
+
+    <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>3</span><span class='Ligature'>‿</span><span class='Number'>6</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>7</span>   <span class='Comment'># Squash together
+</span>┌─      
+╵ 0  7  
+  3 10  
+  6 13  
+       ┘
+</pre>
+<p>This is child's play for someone well-versed in octatonic decomposition like you or I. The octatonic scale is two diminished sevenths <code><span class='Paren'>(</span><span class='Number'>3</span><span class='Function'>×↕</span><span class='Number'>4</span><span class='Paren'>)</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>7</span></code> and all we have to do is truncate them to triads <code><span class='Number'>3</span><span class='Function'>×↕</span><span class='Number'>3</span></code>. Because only four 7-step intervals are possible within the octatonic scale, any three of them must form the same structure, if you rotate them around right.</p>
+<svg viewBox='-100 -28 512 128'>
+  <g fill='currentColor' text-anchor='middle'>
+    <g class='blackKey'>
+      <path stroke-width='22' d='M46 -18L46 72M92 -18L92 72M161 -18L161 72M207 -18L207 72M253 -18L253 72M322 -18L322 72M368 -18L368 72'/>
+      <path stroke-width='1' d='M11.5 -18L11.5 80M126.5 -18L126.5 80M287.5 -18L287.5 80'/>
+    </g>
+    <g font-size='14'>
+      <text dy='0.33em' x='0' y='84'>B</text>
+      <text dy='0.33em' x='23' y='84'>C</text>
+      <text dy='0.33em' x='46' y='84'>D♭</text>
+      <text dy='0.33em' x='69' y='84'>D</text>
+      <text dy='0.33em' x='92' y='84'>E♭</text>
+      <text dy='0.33em' x='115' y='84'>E</text>
+      <text dy='0.33em' x='138' y='84'>F</text>
+      <text dy='0.33em' x='161' y='84'>G♭</text>
+      <text dy='0.33em' x='184' y='84'>G</text>
+      <text dy='0.33em' x='207' y='84'>A♭</text>
+      <text dy='0.33em' x='230' y='84'>A</text>
+      <text dy='0.33em' x='253' y='84'>B♭</text>
+      <text dy='0.33em' x='276' y='84'>B</text>
+      <text dy='0.33em' x='299' y='84'>C</text>
+      <text dy='0.33em' x='322' y='84'>D♭</text>
+      <text dy='0.33em' x='345' y='84'>D</text>
+      <text dy='0.33em' x='368' y='84'>E♭</text>
+      <text dy='0.33em' x='391' y='84'>E</text>
+    </g>
+    <g stroke-width='3'>
+      <path class='yellow' d='M230 0L161 28M391 0L322 28M161 28L92 56M322 28L253 56'/>
+      <path class='bluegreen' d='M230 0L391 0M161 28L322 28M92 56L253 56'/>
+      <path class='green' stroke-dasharray='7 11' d='M230 0L322 28M161 28L253 56'/>
+    </g>
+    <g stroke-width='1.75' class='purple'>
+      <circle r='8' cx='230' cy='0'/>
+      <circle r='8' cx='391' cy='0'/>
+      <circle r='8' cx='161' cy='28'/>
+      <circle r='8' cx='322' cy='28'/>
+      <circle r='8' cx='92' cy='56'/>
+      <circle r='8' cx='253' cy='56'/>
+    </g>
+    <g stroke-width='1.75' class='red' opacity='0.75' style='fill:none'>
+      <circle r='8' cx='230' cy='0'/>
+      <circle r='8' cx='391' cy='0'/>
+      <circle r='8' cx='92' cy='56'/>
+    </g>
+  </g>
+</svg>
+
+<p>Right after, in bar 15, Scriabin moves the B flat to the right hand, forming a perfectly normal major triad, which is again given an abnormal sound by the remaining notes in the left hand. It's the same 0-6-13 shape again, which is obscure but has some recognition as a voicing of the <a href="https://en.wikipedia.org/wiki/Viennese_trichord">Viennese trichord</a> (I quite like this sound, and was experimenting with tritone-fifth and tritone-fourth combinations on the guitar long before I knew who Scriabin was). To separate things out, the right-hand major chord is moved up an octave, but an extra D flat is left in place so the thumbs cross.</p>
+<p>It's interesting to compare this set of notes to the ones from the opening section. For example, we can get them from the last set of two major seventh chords, by moving the lower note of each 4-step interval up to shrink it to 3 steps.</p>
+<svg viewBox='-100 -28 512 232'>
+  <g fill='currentColor' text-anchor='middle'>
+    <g class='blackKey'>
+      <path stroke-width='22' d='M46 -18L46 170M92 -18L92 170M161 -18L161 170M207 -18L207 170M253 -18L253 170M322 -18L322 170M368 -18L368 170'/>
+      <path stroke-width='1' d='M11.5 -18L11.5 178M126.5 -18L126.5 178M287.5 -18L287.5 178'/>
+    </g>
+    <g font-size='14'>
+      <text dy='0.33em' x='0' y='182'>B</text>
+      <text dy='0.33em' x='23' y='182'>C</text>
+      <text dy='0.33em' x='46' y='182'>D♭</text>
+      <text dy='0.33em' x='69' y='182'>D</text>
+      <text dy='0.33em' x='92' y='182'>E♭</text>
+      <text dy='0.33em' x='115' y='182'>E</text>
+      <text dy='0.33em' x='138' y='182'>F</text>
+      <text dy='0.33em' x='161' y='182'>G♭</text>
+      <text dy='0.33em' x='184' y='182'>G</text>
+      <text dy='0.33em' x='207' y='182'>A♭</text>
+      <text dy='0.33em' x='230' y='182'>A</text>
+      <text dy='0.33em' x='253' y='182'>B♭</text>
+      <text dy='0.33em' x='276' y='182'>B</text>
+      <text dy='0.33em' x='299' y='182'>C</text>
+      <text dy='0.33em' x='322' y='182'>D♭</text>
+      <text dy='0.33em' x='345' y='182'>D</text>
+      <text dy='0.33em' x='368' y='182'>E♭</text>
+      <text dy='0.33em' x='391' y='182'>E</text>
+    </g>
+    <g class='bluegreen' style='fill:none' stroke-width='1.5'><path d='M12.65 185L12.65 193L56.35 193L56.35 185M81.65 185L81.65 193L125.35 193L125.35 185M150.65 185L150.65 193L194.35 193L194.35 185M219.65 185L219.65 193L263.35 193L263.35 185M288.65 185L288.65 193L332.35 193L332.35 185M357.65 185L357.65 193L401.35 193L401.35 185'/></g>
+    <text dy='0.33em' font-size='14' x='-46' y='0'>Bars:</text>
+    <g font-size='18'>
+      <text dy='0.33em' x='-46' y='30'>7–8</text>
+      <text dy='0.33em' x='-46' y='124'>13–16</text>
+    </g>
+    <g stroke-width='3'>
+      <path class='bluegreen' d='M138 0L299 0M69 40L230 40'/>
+      <path class='yellow' d='M138 0L69 40M299 0L230 40M230 16L161 56M391 16L322 56'/>
+      <path class='green' d='M138 0L230 16M69 40L161 56M299 0L391 16M230 40L322 56'/>
+      <path class='bluegreen' d='M230 16L391 16M161 56L322 56'/>
+    </g>
+    <g stroke-width='1.75' class='purple'>
+      <circle r='8' cx='138' cy='0'/>
+      <circle r='8' cx='299' cy='0'/>
+      <circle r='8' cx='230' cy='16'/>
+      <circle r='8' cx='391' cy='16'/>
+      <circle r='8' cx='69' cy='40'/>
+      <circle r='8' cx='230' cy='40'/>
+      <circle r='8' cx='161' cy='56'/>
+      <circle r='8' cx='322' cy='56'/>
+    </g>
+    <g stroke-width='3'>
+      <path class='bluegreen' d='M161 94L322 94M92 134L253 134'/>
+      <path class='yellow' d='M161 94L92 134M322 94L253 134M230 106L161 146M391 106L322 146'/>
+      <path class='yellow' d='M161 94L230 106M92 134L161 146M322 94L391 106M253 134L322 146'/>
+      <path class='bluegreen' d='M230 106L391 106M161 146L322 146'/>
+    </g>
+    <g stroke-width='1.75' class='purple'>
+      <circle r='8' cx='161' cy='94'/>
+      <circle r='8' cx='322' cy='94'/>
+      <circle r='8' cx='230' cy='106'/>
+      <circle r='8' cx='391' cy='106'/>
+      <circle r='8' cx='92' cy='134'/>
+      <circle r='8' cx='253' cy='134'/>
+      <circle r='8' cx='161' cy='146'/>
+      <circle r='8' cx='322' cy='146'/>
+    </g>
+  </g>
+</svg>
+
+<p>The second iteration of this pattern in bars 17 to 20 starts by repeating from the previous four bars, transposed up 3 steps—the same idea as the opening, but a more noticeable jump without another chord to prepare it. When we reach the chords with both hands together, they're unexpectedly pushed up another 3 steps. But still we can summarize this as an outer product, if we accept that the four 2-bar groups can't be broken down into a two-by-two shape.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=MOKAvzDigL8z4oC/NiAr4oycIOKliiAw4oC/NyAr4oycIDDigL8z4oC/NiAgIyBCYXJzIDEzIHRvIDIw">↗️</a><pre>    <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>3</span><span class='Ligature'>‿</span><span class='Number'>6</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Function'>⥊</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>7</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>3</span><span class='Ligature'>‿</span><span class='Number'>6</span>  <span class='Comment'># Bars 13 to 20
+</span>┌─                 
+╵ 0 3  6  7 10 13  
+  0 3  6  7 10 13  
+  3 6  9 10 13 16  
+  6 9 12 13 16 19  
+                  ┘
+</pre>
+<p>Those final chords might well be considered part of the next section, where they're interspersed with some fresh material. In the left hand we encounter another table-friendly chord that's also used heavily in the second piece in the set, and late Scriabin in general. The <a href="https://en.wikipedia.org/wiki/Augmented_sixth_chord#French_sixth">French sixth</a> is commonly presented as <code><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>6</span><span class='Function'>+</span><span class='Modifier'>⌜</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>4</span></code>, but Scriabin prefers the wider <code><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>10</span><span class='Function'>+</span><span class='Modifier'>⌜</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>6</span></code>, and the lowest notes of each bar proceed 16-10-0 missing only the 6. Because the second instance is transposed down by 6 steps, the two bars together fill out the chord.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=MOKAvzEwICvijJwgMOKAvzYKCjbigL8wICvijJwgMTbigL8xMOKAvzAgICMgYW5kIDIyID0gMTArMTI=">↗️</a><pre>    <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>10</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>6</span>
+┌─       
+╵  0  6  
+  10 16  
+        ┘
+
+    <span class='Number'>6</span><span class='Ligature'>‿</span><span class='Number'>0</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>16</span><span class='Ligature'>‿</span><span class='Number'>10</span><span class='Ligature'>‿</span><span class='Number'>0</span>  <span class='Comment'># and 22 = 10+12
+</span>┌─         
+╵ 22 16 6  
+  16 10 0  
+          ┘
+</pre>
+<p>The shared tones 10 and 16 (C sharp and G) allow him to splice both arpeggios into a starting bit that's repeated without transposing, beginning with a curious B natural. Meanwhile the right hand plays something completely different, including the only minor chord of the piece. As these features don't seem to be outer products, I have little chance of understanding them.</p>
+<p>The section trails off and suddenly congratulations are in order for reaching the midpoint of the composition! I hope you can persevere as we work through the remainder. What happens is the sequence repeats, transposed down by 6 semitones and with minor artistic changes, and finishes with a 4-bar coda that warps the theme to connect it the mystic chord (with D flat pushed up two octaves) and whole-tone scale. Outer product!</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=MOKAv8KvNiAr4oycIDDigL8z">↗️</a><pre>    <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>¯6</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>3</span>
+┌─       
+╵  0  3  
+  ¯6 ¯3  
+        ┘
+</pre>

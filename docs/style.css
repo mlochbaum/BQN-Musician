@@ -198,9 +198,11 @@ svg tspan {
 .green     { fill:#25431e; stroke:#298221; } text.green    ,tspan.green    ,.green     text { fill:#298221; stroke:none; }
 }
 
-.set       { fill:white;   } text.set ,.set text { fill:#0a0a0a; stroke:none; }
+.set       { fill:white;   } text.set,.set text { fill:#0a0a0a; stroke:none; }
 .unset     { fill:#222;    }
+.blackKey  { stroke:#999; }
 @media (prefers-color-scheme: dark) {
-.set       { fill:#d6d7d9; } text.set ,.set text { fill:#0a0a0a; stroke:none; }
+.set       { fill:#d6d7d9; } text.set,.set text { fill:#0a0a0a; stroke:none; }
 .unset     { fill:#141515; }
+.blackKey  { stroke:#060606; }
 }

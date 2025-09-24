@@ -5,3 +5,7 @@
 - [Tertian-complement scales](complement.md) include some nice pentatonic scales, and share lots of theory with tertians.
 - [Tertian scale modulation](modulation.md) describes the structure of 7-note tertian scales in terms of which can modulate to others by changing a single note.
 - [Symmetric scales](symmetric.md), a note about scales that repeat periodically.
+
+--- Freaks only! ---
+
+- [Scriabin's outer poetry](outerscriabin.md): could the early 20th century mystical composer be an array programmer?
