@@ -34,7 +34,7 @@ So we have 33 scales, which form 7 classes if you put scales that are rotations 
 
 A comment about intervals is worth making even though we won't need it: an interval in any scale is at least one step, because a scale can't feature the same note twice, and in a tertian scale it's at most three steps. That's because, when added to an adjacent interval, the total is at most four steps.
 
-In a tertian scale, the total number of steps in all the thirds is 24. This is because the total size of all the intervals is 12 (it's an octave scale), and each interval appears in exactly two thirds: the one that begins at its lower note and the one that ends at its upper note. So if there are `a` 3-step intervals and `b` 4-step ones, we know that
+In a tertian scale, the total number of steps in all the thirds is 24. This is because the total size of all the intervals is 12 (it's an octave scale), and each interval appears in exactly two thirds: the one that begins at its lower note and the one that ends at its upper note. So if there are `a` 3-step thirds and `b` 4-step ones, we know that
 
     24 = (3×a) + 4×b
        = (3 × a+b) + b
