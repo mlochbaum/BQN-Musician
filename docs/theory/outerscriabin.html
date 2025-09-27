@@ -639,7 +639,69 @@
   16 10 0  
           ┘
 </pre>
-<p>The shared tones 10 and 16 (C sharp and G) allow him to splice both arpeggios into a starting bit that's repeated without transposing, beginning with a curious B natural. Meanwhile the right hand plays something completely different, including the only minor chord of the piece. As these features don't seem to be outer products, I have little chance of understanding them.</p>
+<p>The shared tones 10 and 16 (C sharp and G) allow him to splice both arpeggios into a starting bit that's repeated without transposing, beginning with a curious B natural. Meanwhile, the right hand plays a B flat minor chord, then moves its root down for the G sharp of C sharp major. If combined, these form B flat minor seventh, which splits up much like the major seventh, into <code><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>7</span><span class='Function'>+</span><span class='Modifier'>⌜</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>3</span></code>. This time it's arranged to play the two 7-step intervals as individual chords! And the 3-step interval makes it a fragment of an octatonic scale… except it's not the same one we've been using up to now. Really these notes don't look related to much of anything, not even the left-hand part as it only shares the note C sharp.</p>
+<svg viewBox='-100 -28 512 195'>
+  <g fill='currentColor' text-anchor='middle'>
+    <g class='blackKey'>
+      <path stroke-width='22' d='M-69 -18L-69 133M-23 -18L-23 133M46 -18L46 133M92 -18L92 133M161 -18L161 133M207 -18L207 133M253 -18L253 133'/>
+      <path stroke-width='1' d='M11.5 -18L11.5 141M126.5 -18L126.5 141'/>
+    </g>
+    <g font-size='14'>
+      <text dy='0.33em' x='-69' y='145'>A♭</text>
+      <text dy='0.33em' x='-46' y='145'>A</text>
+      <text dy='0.33em' x='-23' y='145'>B♭</text>
+      <text dy='0.33em' x='0' y='145'>B</text>
+      <text dy='0.33em' x='23' y='145'>C</text>
+      <text dy='0.33em' x='46' y='145'>D♭</text>
+      <text dy='0.33em' x='69' y='145'>D</text>
+      <text dy='0.33em' x='92' y='145'>E♭</text>
+      <text dy='0.33em' x='115' y='145'>E</text>
+      <text dy='0.33em' x='138' y='145'>F</text>
+      <text dy='0.33em' x='161' y='145'>G♭</text>
+      <text dy='0.33em' x='184' y='145'>G</text>
+      <text dy='0.33em' x='207' y='145'>A♭</text>
+      <text dy='0.33em' x='230' y='145'>A</text>
+      <text dy='0.33em' x='253' y='145'>B♭</text>
+    </g>
+    <g class='bluegreen' style='fill:none' stroke-width='1.5'><path d='M-56.35 148L-56.35 156L-12.65 156L-12.65 148M12.65 148L12.65 156L56.35 156L56.35 148M81.65 148L81.65 156L125.35 156L125.35 148M150.65 148L150.65 156L194.35 156L194.35 148M219.65 148L219.65 156L263.35 156L263.35 148'/></g>
+    <g class='green' style='fill:none' stroke-width='2.5'><path d='M-54.51 153L-37.49 153M-8.51 153L8.51 153M37.49 153L54.51 153M83.49 153L100.51 153M129.49 153L146.51 153M175.49 153L192.51 153M221.49 153L238.51 153'/></g>
+    <g font-size='18' text-anchor='start'>
+      <text dy='0.33em' x='280.6' y='16'>Right hand</text>
+      <text dy='0.33em' x='280.6' y='95'>Left hand</text>
+    </g>
+    <g stroke-width='3'><path class='green' stroke-dasharray='7 11' d='M46 0L138 28'/></g>
+    <g stroke-width='1.75' class='yellow'><circle r='8' cx='0' cy='74'/></g>
+    <g stroke-width='3'>
+      <path class='yellow' d='M46 0L-23 28M207 0L138 28'/>
+      <path class='bluegreen' d='M46 0L207 0M-23 28L138 28'/>
+    </g>
+    <g stroke-width='1.75' class='purple'>
+      <circle r='8' cx='46' cy='0'/>
+      <circle r='8' cx='207' cy='0'/>
+      <circle r='8' cx='-23' cy='28'/>
+      <circle r='8' cx='138' cy='28'/>
+    </g>
+    <g stroke-width='3'>
+      <path class='purple' d='M92 66L-46 102M184 78L46 114'/>
+      <path class='green' d='M92 66L184 78M-46 102L46 114'/>
+    </g>
+    <g stroke-width='1.75' class='bluegreen'>
+      <circle r='8' cx='92' cy='66'/>
+      <circle r='8' cx='184' cy='78'/>
+      <circle r='8' cx='-46' cy='102'/>
+      <circle r='8' cx='46' cy='114'/>
+    </g>
+  </g>
+</svg>
+
+<p>We check below that one note is the smallest possible overlap between a French sixth and minor seventh, by <a href="https://mlochbaum.github.io/BQN/doc/replicate.html#inverse">counting</a> the entries of a <em>difference</em> table modulo 12 (it's not obvious this works, think about it as long as you like!). We also find that two notes is the largest overlap, and we'd get it if the chords fit the same octatonic scale. But it seems more important that the right hand's C sharp and F—the two notes appearing in both bars—fit into and complete the <a href="tertian.html#what-are-they-really">whole tone scale</a> all the left-hand notes belong to.</p>
+<a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=IyBJbnRlcnNlY3Rpb24gc2l6ZSBvZiB0d28gY2hvcmRzIGF0IGVhY2ggb2Zmc2V0IOKGlTEyCi/igbzipYogMTJ8ICgw4oC/NyvijJww4oC/MykgLeKMnCAw4oC/MTAr4oycMOKAvzYKCi/igbzipYogM3wgMOKAvzcgLeKMnCAw4oC/MTAgICMgQ2xvc2VseSByZWxhdGVkIQ==">↗️</a><pre>    <span class='Comment'># Intersection size of two chords at each offset ↕12
+</span>    <span class='Function'>/</span><span class='Modifier'>⁼</span><span class='Function'>⥊</span> <span class='Number'>12</span><span class='Function'>|</span> <span class='Paren'>(</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>7</span><span class='Function'>+</span><span class='Modifier'>⌜</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>3</span><span class='Paren'>)</span> <span class='Function'>-</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>10</span><span class='Function'>+</span><span class='Modifier'>⌜</span><span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>6</span>
+⟨ 2 1 1 2 1 1 2 1 1 2 1 1 ⟩
+
+    <span class='Function'>/</span><span class='Modifier'>⁼</span><span class='Function'>⥊</span> <span class='Number'>3</span><span class='Function'>|</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>7</span> <span class='Function'>-</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>10</span>  <span class='Comment'># Closely related!
+</span>⟨ 2 1 1 ⟩
+</pre>
 <p>The section trails off and suddenly congratulations are in order for reaching the midpoint of the composition! I hope you can persevere as we work through the remainder. What happens is the sequence repeats, transposed down by 6 semitones and with minor artistic changes, and finishes with a 4-bar coda that warps the theme to connect it the mystic chord (with D flat pushed up two octaves) and whole-tone scale. Outer product!</p>
 <a class="replLink" title="Open in the REPL" target="_blank" href="https://mlochbaum.github.io/BQN/try.html#code=MOKAv8KvNiAr4oycIDDigL8z">↗️</a><pre>    <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>¯6</span> <span class='Function'>+</span><span class='Modifier'>⌜</span> <span class='Number'>0</span><span class='Ligature'>‿</span><span class='Number'>3</span>
 ┌─       

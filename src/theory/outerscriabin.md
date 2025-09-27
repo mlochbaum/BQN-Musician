@@ -42,7 +42,7 @@ Piano ← ""Enc˜ "audio src=""audio_outerscriabin/p"∾•Repr∾".mp3"" contro
 1‿0 Wrap ⟨
   "Struggling pianist" Figure Piano 0
   "Lazy synthesist" Figure Play 2÷˜ +´ ⟨
-    1.4 × eighth‿220 Keys "95{-9}8---c89cg---[5-9cghlost-solhgc9]59c"
+    1.4 × eighth‿220 Keys "95{-9}8---c89cgh--[5-9cghlost-solhgc9]59c"
     Chords ⟨
       ⟨3, 2-˜⥊0‿15+⌜0‿8⟩, 2‿⟨⟩ ⟩∾(1⋈¨2-˜¯12‿0‿8‿15‿19)∾⟨ 2‿⟨⟩
       ⟨3, 2+7⊸≠⊸/⥊0‿15+⌜0‿7+⌜0‿4⟩, 2‿⟨⟩, 1‿⟨6⟩, 3‿⟨13⟩, ⟨3, 2+0‿7‿11⟩
@@ -78,13 +78,14 @@ LinesS ← ("stroke-width"⋈Fmt)⊸Lines
 afc ← ∾ (⊢∾¨⟜↓¨∊⟜"CF"↓¨'♭'˙) 'A'+↕7  # Chromatic scale A♭…G
 PX ← 23×⊢ ⋄ y ← 0‿46 ⋄ ty ← 32+⊢´y
 pts ← y ⋈˜¨ PX⌽+⌜˝3‿4‿7×⌜↕2
-KeyNotes ← {ky 𝕊 k: kf ← 2=≠¨k ⋄ ⟨
+_xKeyNotes ← {ky PX _𝕣 k: kf ← 2=≠¨k ⋄ ⟨
   "class=blackKey" Ge {t‿o‿p:t LinesS (ky-18‿o)⋈˜⌜PX p}¨ ⟨
     22‿12‿(/kf)
      1‿ 4‿(0.5+/∧⟜«¬kf)
   ⟩
   "font-size=14" Ge (PX↕≠k) (Pos⋈⟜(⊢´ky))⊸Text¨ k
 ⟩}
+KeyNotes ← PX _xKeyNotes
 Maj7 ← {𝕊y: "font-size=18" Ge y (Pos (PX ¯2)⊸⋈)⊸Text¨ "DB"∾¨<"maj⁷"}
 24 KSVG ⟨
   ⟨⊑y,ty⟩ KeyNotes 15⥊3⌽afc, Maj7 y
@@ -172,7 +173,7 @@ What a familiar shape! To get the major sevenths from these notes you shift one 
 
 <!--GEN
 OctBrak ← {
-  p ← "MLLL"˘⊸(Pd○⥊) ∾⟜⌽˝˘ (PX (1.5+3×↕6)+⌜-⊸⋈0.95) ⋈⌜ 𝕩+0‿8
+  p ← "MLLL"˘⊸(Pd○⥊) ∾⟜⌽˝˘ (PX (1.5+3×𝕨⊣↕6)+⌜-⊸⋈0.95) ⋈⌜ 𝕩+0‿8
   "class=bluegreen|style=fill:none|stroke-width=1.5" Ge "path" Elt p
 }
 {
@@ -240,13 +241,14 @@ But what about the right hand? It's playing a chord on D flat and G flat above (
 This is child's play for someone well-versed in octatonic decomposition like you or I. The octatonic scale is two diminished sevenths `(3×↕4) +⌜ 0‿7` and all we have to do is truncate them to triads `3×↕3`. Because only four 7-step intervals are possible within the octatonic scale, any three of them must form the same structure, if you rotate them around right.
 
 <!--GEN
+dash4 ← "stroke-dasharray"‿"7 11" ≍˜ "class"⋈4⊑intCol
 28 KSVG {
   y ← 0‿¯1 ⊏ yp ← 28×↕3
   pts ← yp ⋈˜¨ PX⌽4+⌜´3‿2↕⊸×¨i←3‿7
-  la ← ≍⟜"stroke-dasharray"‿"7 11"⌾(¯1⊸⊑) "class"⊸⋈¨ intCol⊏˜i∾4
+  la ← "class"⊸⋈¨ i⊏intCol
   ⟨
     (0‿28+y) KeyNotes 18⥊3⌽afc
-    "stroke-width=3" Ge la Lines¨ ⟨2↕pts, ⍉pts, 1↓˘»⊸≍˝⍉pts⟩
+    "stroke-width=3" Ge (la∾<dash4) Lines¨ ⟨2↕pts, ⍉pts, 1↓˘»⊸≍˝⍉pts⟩
     "stroke-width=1.75|class=purple" Ge pc ← Circ´¨ ⥊pts
     "stroke-width=1.75|class=red|opacity=0.75|style=fill:none" Ge 0‿1‿4 ⊏ pc
   ⟩
@@ -287,7 +289,31 @@ In the left hand we encounter another table-friendly chord that's also used heav
 
         6‿0 +⌜ 16‿10‿0  # and 22 = 10+12
 
-The shared tones 10 and 16 (C sharp and G) allow him to splice both arpeggios into a starting bit that's repeated without transposing, beginning with a curious B natural. Meanwhile the right hand plays something completely different, including the only minor chord of the piece. As these features don't seem to be outer products, I have little chance of understanding them.
+The shared tones 10 and 16 (C sharp and G) allow him to splice both arpeggios into a starting bit that's repeated without transposing, beginning with a curious B natural. Meanwhile, the right hand plays a B flat minor chord, then moves its root down for the G sharp of C sharp major. If combined, these form B flat minor seventh, which splits up much like the major seventh, into `0‿7+⌜0‿3`. This time it's arranged to play the two 7-step intervals as individual chords! And the 3-step interval makes it a fragment of an octatonic scale… except it's not the same one we've been using up to now. Really these notes don't look related to much of anything, not even the left-hand part as it only shares the note C sharp.
+
+<!--GEN
+{
+h ← (31 +´ d1←36‿12) + y ← 38 +´ d0←28‿0
+wt ← "class=green|style=fill:none|stroke-width=2.5"
+le ← "font-size=18|text-anchor=start"
+¯100‿¯28‿512‿(50+h) SVG "fill=currentColor|text-anchor=middle" Ge ⟨
+  (0⋈h) (PX -⟜3) _xKeyNotes 15⥊afc, (¯1+↕5) OctBrak h+3
+  wt Ge "path" Elt "ML"˘⊸(Pd○⥊) (PX (2×1-˜↕7)+⌜-⊸⋈0.37) ⋈¨ h+8
+  le Ge (16‿29+y×↕2) (Pos (PX 12.2)⊸⋈)⊸Text¨ ∾⟜" hand"¨"Right"‿"Left"
+  "stroke-width=3" Ge dash4 Lines (PX 2‿6)⋈¨⌽d0
+  "stroke-width=1.75|class=yellow" Ge 0 PX⊸Circ y+8
+  0‿d0‿0‿¯1‿"purple"    Cube 3‿7
+  y‿d1‿0‿¯2‿"bluegreen" Cube 6‿4
+⟩
+}
+-->
+
+We check below that one note is the smallest possible overlap between a French sixth and minor seventh, by [counting](https://mlochbaum.github.io/BQN/doc/replicate.html#inverse) the entries of a _difference_ table modulo 12 (it's not obvious this works, think about it as long as you like!). We also find that two notes is the largest overlap, and we'd get it if the chords fit the same octatonic scale. But it seems more important that the right hand's C sharp and F—the two notes appearing in both bars—fit into and complete the [whole tone scale](tertian.md#what-are-they-really) all the left-hand notes belong to.
+
+        # Intersection size of two chords at each offset ↕12
+        /⁼⥊ 12| (0‿7+⌜0‿3) -⌜ 0‿10+⌜0‿6
+
+        /⁼⥊ 3| 0‿7 -⌜ 0‿10  # Closely related!
 
 The section trails off and suddenly congratulations are in order for reaching the midpoint of the composition! I hope you can persevere as we work through the remainder. What happens is the sequence repeats, transposed down by 6 semitones and with minor artistic changes, and finishes with a 4-bar coda that warps the theme to connect it the mystic chord (with D flat pushed up two octaves) and whole-tone scale. Outer product!
 
