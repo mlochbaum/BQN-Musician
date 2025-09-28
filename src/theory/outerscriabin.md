@@ -275,7 +275,10 @@ tx ← PX ¯2
 
 The second iteration of this pattern in bars 17 to 20 starts by repeating from the previous four bars, transposed up 3 steps—the same idea as the opening, but a more noticeable jump without another chord to prepare it. When we reach the chords with both hands together, they're unexpectedly pushed up another 3 steps. But still we can summarize this as an outer product, if we accept that the four 2-bar groups can't be broken down into a two-by-two shape.
 
-        0‿0‿3‿6 +⌜ ⥊ 0‿7 +⌜ 0‿3‿6  # Bars 13 to 20
+        ⊢ chords ← 0‿0‿3‿6 +⌜ ⥊ 0‿7 +⌜ 0‿3‿6  # Bars 13 to 20
+
+        Arp ← { +⟜((3e3⥊0)⊸»)˝ -⟜(⋆⟜3) -⟜¬ 1| 𝕩 ×⌜ ↕⊸÷44100 }
+        Play 8÷˜⥊ Arp˘ 440 × 2⋆12÷˜ chords
 
 Those final chords might well be considered part of the next section, where they're interspersed with some fresh material.
 
