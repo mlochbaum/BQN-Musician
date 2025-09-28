@@ -278,7 +278,7 @@ The second iteration of this pattern in bars 17 to 20 starts by repeating from t
         ⊢ chords ← 0‿0‿3‿6 +⌜ ⥊ 0‿7 +⌜ 0‿3‿6  # Bars 13 to 20
 
         Arp ← { +⟜((3e3⥊0)⊸»)˝ -⟜(⋆⟜3) -⟜¬ 1| 𝕩 ×⌜ ↕⊸÷44100 }
-        Play 8÷˜⥊ Arp˘ 440 × 2⋆12÷˜ chords
+        Play 8÷˜⥊ Arp˘ 110 × 2⋆12÷˜ 18+chords
 
 Those final chords might well be considered part of the next section, where they're interspersed with some fresh material.
 
