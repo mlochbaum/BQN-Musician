@@ -34,7 +34,7 @@ Remember that we defined a [tertian scale](tertian.md) by requiring that the len
 To prove this, we translate our rules into statements about portions of the chromatic scale. We define a k-step "window" as k adjacent possible notes (so, positions `12|i+↕k` for some whole number `i`). In these terms, the rule that two adjacent scale intervals add up to at least 3 steps is saying that 3 notes can't fit in a 3-step window, or, each such window has 2 notes or fewer. And the rule that they have to add up to 4 steps or fewer says a 4-step window has to contain more than 1 note—otherwise, starting from the note before the window, you'd pass 4 steps before finishing 2 intervals (to go in the other direction, if we know every 4-step window has at least 2 notes, then the window immediately following any note contains its next two notes).
 
 <!--GEN
-PD ← ∾∾¨⟜FmtNum ⋄ Path ← {𝕨At˜"path"} Elt "d"⋈⊢
+PD ← ∾∾¨⟜FmtNum ⋄ Path ← {𝕨⊢⊘(At˜)"path"} Elt "d"⋈⊢
 Arrh ← 22‿12 { "m l l " PD (-∘⊏∾⥊) (𝕩≍-⌾⊑⌽𝕩) +˝∘×⎉1‿∞˜ 𝕗≍-⌾⊑𝕗 }
 {
 set ← ["1010110","1010001"]-'0'
@@ -80,10 +80,30 @@ So in general, a rule of "There are at [least|most] n steps in k intervals" is e
 It's sort of intuitive that 5-note scales that satisfy one regularity condition can be filled out to give 7-note scales with a different one, but it doesn't exactly seem guaranteed. At least, we can analyze the 6-note scales. As tertian scales, [we showed](tertian.md#what-are-they-really) that every interval pair has to have the maximum length of 4, because there are 6 that need to add up to 24 steps. The same math holds for tertian scale complements, except that 4 is the minimum instead of maximum length (and when every pair of intervals is 4 steps, the fact that a single interval is no more than 3 follows immediately). So the complement of a 6-note tertian scale is automatically 6-note tertian. For the broader picture, let's lay our scales out explicitly:
 
 <!--GEN
-spos ← ∾(-⊸⋈0.6)⋈˜¨¨(0.12‿0.24×⟨2/¯1‿1,1-˜↕3⟩)+0.9×(↕+¬÷2˙)¨4‿3
-spos ring.DrawTertianCompRow ⋈¨ '0' -˜ ⟨
+rp ← 5 + ring.size
+Norm ← ⊢ ÷ +´⌾(×˜)
+ac ← "class=yellow|style=fill:none|stroke-width=3.4|stroke-linecap=round"
+Arr ← { Path ("M l " PD (𝕨+u×rp) ∾ d-u×3+2×rp) ∾ Arrh u←Norm d←𝕩-𝕨 }
+Arrl ← {
+  D ← Norm 𝕨 + (-⌾⊑⌽𝕨)⊸×
+  o ← ∾⟜⌽˝ (rp×1‿1.85)⊸×˘ D¨ -⊸≍0.25‿0.32
+  Path ("M c     " PD (𝕩+⊑o)∾∾-⟜(⊑o)¨1↓o) ∾ Arrh -D 0.28
+}
+Arrc ← {
+  o ← 11×𝕨×-⌾⊑⌽ u ← Norm d ← -˜´𝕩
+  i ← (⊑𝕩)+1.7×o ⋄ s ← (o+÷⟜2)⊸⋈ d-u×3+2×rp
+  Path ("M q   " PD ∾⟨i+u×2-˜rp⟩∾s) ∾ Arrh Norm (11×u)+-˜´s
+}
+spos ← ∾(-⊸⋈0.62)⋈˜¨¨(0.08×⟨2/¯1‿1,3-˜2×↕3⟩)+(↕+¬÷2˙)¨4‿3
+tsvg ← spos ring.DrawTertianCompRow ⋈¨ '0' -˜ ⟨
   "101101010110", "011010101011", "101100110110", "011011001101"
   "101010101010", "110011001100", "011011011011"
+⟩
+spr ← spos × 2×(rp+12)
+tsvg {(¯1↓𝕨)∾1↓𝕩} (4⥊0) SVG ac Ge ⟨
+  <∘Arr´˘ (6≍˘2‿3)⊏spr
+  (<¯0.25 Arrc ⋈+¨{0.045×(2×-⌾⊑⌽𝕩)⊸+¨0.8‿¯1.4×<𝕩}∘-){𝔽≍𝔽˜}´˘ 2‿2⥊spr
+  ⟨¯2‿9,1‿3,1‿¯5,2‿¯5,2‿¯1⟩ Arrl¨ (2⊸↑∾¯3⊸↑)spr
 ⟩
 -->
 
@@ -92,7 +112,6 @@ In the top row, each 7-note class's complement fits naturally into a different c
 <!--GEN
 {
 rpos ← -⌾(1⊸⊑¨)⊸∾ ¯1.6‿¯0.66‿0.26‿0.93‿1.6⋈¨0.5+((0.2×2⊸>)+0.6×3⊸=)↕5
-rp ← 5 + ring.size
 tr←2×(rp+12)×rpos ⋄ d←⌈´|tr ⋄ w←1+rp÷˜⊑d ⋄ a ← ¯1‿2×1⊑d
 le ← rp×3.6⌈w
 DrawSc ← {
@@ -106,18 +125,10 @@ DrawSc ← {
   }
   ("transform=translate("∾(Fmt𝕨)∾")") Ge ext ring.Draw ⊑𝕩
 }
-Norm ← ⊢ ÷ +´⌾(×˜)
-Arr ← { Path ("M l " PD (𝕨+u×rp) ∾ d-u×3+2×rp) ∾ Arrh u←Norm d←𝕩-𝕨 }
-Arrc ← {
-  o ← 11×𝕨×-⌾⊑⌽ u ← Norm d ← -˜´𝕩
-  i ← (⊑𝕩)+1.7×o ⋄ s ← (o+÷⟜2)⊸⋈ d-u×3+2×rp
-  Path ("M q   " PD ∾⟨i+u×2-˜rp⟩∾s) ∾ Arrh Norm -˜´s
-}
 tc ← "fill=currentColor|font-size=26"
 ti ← "Tertian"‿"Complementary tertian"
 rc ← "text-anchor=middle|font-size=20|fill=currentColor|opacity=0.9"
 dc ← "class=lilac|stroke-width=10|opacity=0.25"
-ac ← "class=yellow|style=fill:none|stroke-width=3.4|stroke-linecap=round"
 (⥊(0≍˘a)+¯1‿2×⌜⟨8+le,rp⟩) SVG ∾⟨
   ⋈dc Path "M h" PD ¯1‿0‿2×le
   tc Ge ((12-le)⋈¨-⊸⋈38-⊑a) Pos⊸Text¨ ti

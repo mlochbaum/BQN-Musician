@@ -321,8 +321,8 @@
 <p>To prove this, we translate our rules into statements about portions of the chromatic scale. We define a k-step &quot;window&quot; as k adjacent possible notes (so, positions <code><span class='Number'>12</span><span class='Function'>|</span><span class='Value'>i</span><span class='Function'>+↕</span><span class='Value'>k</span></code> for some whole number <code><span class='Value'>i</span></code>). In these terms, the rule that two adjacent scale intervals add up to at least 3 steps is saying that 3 notes can't fit in a 3-step window, or, each such window has 2 notes or fewer. And the rule that they have to add up to 4 steps or fewer says a 4-step window has to contain more than 1 note—otherwise, starting from the note before the window, you'd pass 4 steps before finishing 2 intervals (to go in the other direction, if we know every 4-step window has at least 2 notes, then the window immediately following any note contains its next two notes).</p>
 <svg viewBox='-60 -87 500 188'>
   <g stroke-width='2' stroke='currentColor'>
-    <path path d='M-24 -20h240'/>
-    <path path d='M-24 20h240'/>
+    <path d='M-24 -20h240'/>
+    <path d='M-24 20h240'/>
     <g class='unset'>
       <circle r='12' cx='32' cy='-20'/>
       <circle r='12' cx='96' cy='-20'/>
@@ -351,11 +351,11 @@
       <text dy='0.33em' x='192' y='20'>6</text>
     </g>
     <g class='purple' style='fill:none'>
-      <path path d='M128 54h67m-22 -12l22 12l-22 12'/>
+      <path d='M128 54h67m-22 -12l22 12l-22 12'/>
     </g>
     <g class='green' style='fill:none'>
-      <path path d='M16 -32v-20h128v20'/>
-      <path path d='M0 42v24m0 -12h131m-22 -12l22 12l-22 12'/>
+      <path d='M16 -32v-20h128v20'/>
+      <path d='M0 42v24m0 -12h131m-22 -12l22 12l-22 12'/>
     </g>
     <g fill='currentColor' stroke='none' font-size='17'>
       <g font-size='22'>
@@ -400,8 +400,8 @@
 <p>So in general, a rule of &quot;There are at [least|most] n steps in k intervals&quot; is equivalent to &quot;There are at [most|least] n steps in n-k gap intervals&quot;. We can also use this to draw finer distinctions between tertian scales. Modes of major and melodic minor, and whole-tone and octatonic scales, are a little more regular that other tertian scales because they have no 3-step intervals, or, there are at most 2 steps in an interval. So in the complement, there are at least 2 steps in an interval, meaning scales like the pentatonic and diminished seventh don't have any notes right next to each other. And the harmonic and augmented scales, which break this rule, do have such pairs of notes in their complements—right in the middle of each 3-step interval, which is pretty obvious when you put it that way.</p>
 <h2 id="as-subsets"><a class="header" href="#as-subsets">As subsets</a></h2>
 <p>It's sort of intuitive that 5-note scales that satisfy one regularity condition can be filled out to give 7-note scales with a different one, but it doesn't exactly seem guaranteed. At least, we can analyze the 6-note scales. As tertian scales, <a href="tertian.html#what-are-they-really">we showed</a> that every interval pair has to have the maximum length of 4, because there are 6 that need to add up to 24 steps. The same math holds for tertian scale complements, except that 4 is the minimum instead of maximum length (and when every pair of intervals is 4 steps, the fact that a single interval is no more than 3 follows immediately). So the complement of a 6-note tertian scale is automatically 6-note tertian. For the broader picture, let's lay our scales out explicitly:</p>
-<svg viewBox='-362.42 -192.6 724.84 385.2'>
-  <g transform='translate(-273.42 -111.6)'>
+<svg viewBox='-382.88 -196.32 765.76 392.64'>
+  <g transform='translate(-293.88 -115.32)'>
     <g stroke-width='2' stroke='currentColor'>
       <g opacity='0.8'>
         <path class='purple' d=''/>
@@ -442,7 +442,7 @@
     </g>
     <g text-anchor='middle' fill='currentColor'></g>
   </g>
-  <g transform='translate(-106.02 -111.6)'>
+  <g transform='translate(-107.88 -115.32)'>
     <g stroke-width='2' stroke='currentColor'>
       <g opacity='0.8'>
         <path class='purple' d='M-55.8 0L55.8 -0'/>
@@ -483,7 +483,7 @@
     </g>
     <g text-anchor='middle' fill='currentColor'></g>
   </g>
-  <g transform='translate(106.02 -111.6)'>
+  <g transform='translate(107.88 -115.32)'>
     <g stroke-width='2' stroke='currentColor'>
       <g opacity='0.8'>
         <path class='purple' d='M27.9 48.324L-27.9 -48.324'/>
@@ -524,7 +524,7 @@
     </g>
     <g text-anchor='middle' fill='currentColor'></g>
   </g>
-  <g transform='translate(273.42 -111.6)'>
+  <g transform='translate(293.88 -115.32)'>
     <g stroke-width='2' stroke='currentColor'>
       <g opacity='0.8'>
         <path class='purple' d='M0 -55.8L0 55.8'/>
@@ -565,7 +565,7 @@
     </g>
     <g text-anchor='middle' fill='currentColor'></g>
   </g>
-  <g transform='translate(-212.04 111.6)'>
+  <g transform='translate(-230.64 115.32)'>
     <g stroke-width='2' stroke='currentColor'>
       <g opacity='0.8'>
         <path class='purple' d=''/>
@@ -606,7 +606,7 @@
     </g>
     <g text-anchor='middle' fill='currentColor'></g>
   </g>
-  <g transform='translate(0 111.6)'>
+  <g transform='translate(-14.88 115.32)'>
     <g stroke-width='2' stroke='currentColor'>
       <g opacity='0.8'>
         <path class='purple' d=''/>
@@ -647,7 +647,7 @@
     </g>
     <g text-anchor='middle' fill='currentColor'></g>
   </g>
-  <g transform='translate(212.04 111.6)'>
+  <g transform='translate(200.88 115.32)'>
     <g stroke-width='2' stroke='currentColor'>
       <g opacity='0.8'>
         <path class='purple' d='M0 -55.8L0 55.8M55.8 -0L-55.8 0M0 55.8L0 -55.8M-55.8 0L55.8 -0'/>
@@ -687,6 +687,19 @@
       <text dy='0.33em' x='-30' y='-51.962'>11</text>
     </g>
     <g text-anchor='middle' fill='currentColor'></g>
+  </g>
+  <g class='yellow' style='fill:none' stroke-width='3.4' stroke-linecap='round'>
+    <path d='M170.589 40.197l-31.295 -77.612m-2.902 24.891l2.902 -24.891l19.357 15.916'/>
+    <path d='M231.171 40.197l31.295 -77.612m-19.357 15.916l19.357 -15.916l2.902 24.891'/>
+    <path d='M-221.576 -136.735q19.707 -2.75 39.414 0m-20.842 -13.915l20.842 13.915l-22.983 9.99'/>
+    <path d='M-180.184 -93.905q-19.707 2.75 -39.414 0m20.842 13.915l-20.842 -13.915l22.983 -9.99'/>
+    <path d='M180.184 -136.735q19.707 -2.75 39.414 0m-20.842 -13.915l20.842 13.915l-22.983 9.99'/>
+    <path d='M221.576 -93.905q-19.707 2.75 -39.414 0m20.842 13.915l-20.842 -13.915l22.983 -9.99'/>
+    <path d='M-291.749 -34.348c11.492 68.258 -77.674 48.443 -38.355 -8.523m-20.965 13.729l20.965 -13.729l0.192 25.059'/>
+    <path d='M-64.393 -46.983c44.972 52.618 -41.682 81.503 -37.274 12.425m-10.914 22.559l10.914 -22.559l13.058 21.389'/>
+    <path d='M-234.493 34.412c-12.941 -67.998 76.626 -50.084 38.528 7.706m20.668 -14.172l-20.668 14.172l-0.725 -25.049'/>
+    <path d='M-3.936 35.063c-0.343 -69.217 84.465 -35.294 36.481 14.592m22.903 -10.171l-22.903 10.171l3.848 -24.763'/>
+    <path d='M262.38 62.606c45.729 -51.962 86.578 29.737 17.571 35.143m23.875 7.614l-23.875 -7.614l19.328 -15.951'/>
   </g>
 </svg>
 
@@ -1038,15 +1051,15 @@
     </g>
   </g>
   <g class='yellow' style='fill:none' stroke-width='3.4' stroke-linecap='round'>
-    <path path d='M-297.6 49.2l0 -95.4m-12 22l12 -22l12 22'/>
-    <path path d='M-252.448 62.952l82.863 -123.414m-22.226 11.576l22.226 -11.576l-2.301 24.954'/>
-    <path path d='M-167.912 62.952l-82.863 -123.414m2.301 24.954l-2.301 -24.954l22.226 11.576'/>
-    <path path d='M-122.76 49.2l0 -95.4m-12 22l12 -22l12 22'/>
-    <path path d='M113.276 44.555l117.004 -87.316m-24.809 3.541l24.809 -3.541l-10.455 22.775'/>
-    <path path d='M172.98 123.6l0 -244.2m-12 22l12 -22l12 22'/>
-    <path path d='M232.684 44.555l-117.004 -87.316m10.455 22.775l-10.455 -22.775l24.809 3.541'/>
-    <path path d='M159.715 124.508q-20.298 -76.951 -60.888 -145.405m0.899 25.044l-0.899 -25.044l21.543 12.803'/>
-    <path path d='M186.245 124.508q20.298 -76.951 60.888 -145.405m-21.543 12.803l21.543 -12.803l-0.899 25.044'/>
+    <path d='M-297.6 49.2l0 -95.4m-12 22l12 -22l12 22'/>
+    <path d='M-252.448 62.952l82.863 -123.414m-22.226 11.576l22.226 -11.576l-2.301 24.954'/>
+    <path d='M-167.912 62.952l-82.863 -123.414m2.301 24.954l-2.301 -24.954l22.226 11.576'/>
+    <path d='M-122.76 49.2l0 -95.4m-12 22l12 -22l12 22'/>
+    <path d='M113.276 44.555l117.004 -87.316m-24.809 3.541l24.809 -3.541l-10.455 22.775'/>
+    <path d='M172.98 123.6l0 -244.2m-12 22l12 -22l12 22'/>
+    <path d='M232.684 44.555l-117.004 -87.316m10.455 22.775l-10.455 -22.775l24.809 3.541'/>
+    <path d='M159.715 124.508q-20.298 -76.951 -60.888 -145.405m0.478 25.055l-0.478 -25.055l21.325 13.163'/>
+    <path d='M186.245 124.508q20.298 -76.951 60.888 -145.405m-21.325 13.163l21.325 -13.163l-0.478 25.055'/>
   </g>
   <g text-anchor='middle' font-size='20' fill='currentColor' opacity='0.9'>
     <text dy='0.33em' x='-297.6' y='18'>-1, ±6, +1</text>
