@@ -34,13 +34,13 @@ Remember that we defined a [tertian scale](tertian.md) by requiring that the len
 To prove this, we translate our rules into statements about portions of the chromatic scale. We define a k-step "window" as k adjacent possible notes (so, positions `12|i+↕k` for some whole number `i`). In these terms, the rule that two adjacent scale intervals add up to at least 3 steps is saying that 3 notes can't fit in a 3-step window, or, each such window has 2 notes or fewer. And the rule that they have to add up to 4 steps or fewer says a 4-step window has to contain more than 1 note—otherwise, starting from the note before the window, you'd pass 4 steps before finishing 2 intervals (to go in the other direction, if we know every 4-step window has at least 2 notes, then the window immediately following any note contains its next two notes).
 
 <!--GEN
-PD ← ∾∾¨⟜FmtNum ⋄ Path ← {𝕨⊢⊘(At˜)"path"} Elt "d"⋈⊢
+PD ← ∾∘⥊∾¨⟜FmtNum ⋄ Path ← {𝕨⊢⊘(At˜)"path"} Elt "d"⋈⊢
 Arrh ← 22‿12 { "m l l " PD (-∘⊏∾⥊) (𝕩≍-⌾⊑⌽𝕩) +˝∘×⎉1‿∞˜ 𝕗≍-⌾⊑𝕗 }
+Circle ← "circle" Elt "r"‿"cx"‿"cy"≍˘FmtNum
 {
 set ← ["1010110","1010001"]-'0'
 d ← 32 ⋄ h ← -⊸⋈20 ⋄ w ← d×≠⊏set
 p ← d × si ← ↕∘≠˘ set
-Circle ← "circle" Elt "r"‿"cx"‿"cy"≍˘·FmtNum 12∾⋈
 Ts ← Pos⊸Text¨
 Tr ← {
   l‿t←∾⟜⟨""⟩¨⟨("<tspan class="""∾∾⟜""">")¨"bluegreen"‿"red",⋈˜"</tspan>"⟩
@@ -48,7 +48,7 @@ Tr ← {
 }
 (⥊¯60‿500≍˘7+⌾⊑¯1‿2×94) SVG "stroke-width=2|stroke=currentColor" Ge ∾⟨
   Path∘{"M h" PD ¯24‿𝕩‿(16+w)}¨ h
-  "class=unset"‿"class=set" Ge¨ set ⊔○⥊ p Circle¨ h
+  "class=unset"‿"class=set" Ge¨ set ⊔○⥊ p (Circle 12∾⋈)¨ h
   "text-anchor=middle|class=set" Ge (p⋈¨h) Ts⟜FmtNum○(set/○⥊⊢) si
   "purple"‿"green" ("class="∾∾⟜"|style=fill:none")⊸Ge¨ 1(↑⋈↓) Path¨ ⟨
     ("M h" PD ⟨4×d,54,3+2×d⟩) ∾ Arrh 1‿0
@@ -73,7 +73,7 @@ This formulation is perfect for flipping notes and gaps. If at least 2 places in
 | A 3-window has at least 1 gap     | A 4-window has at most 2 gaps
 | At most 3 steps in 1 gap interval | At least 4 steps for 2 gap intervals
 
-So in general, a rule of "There are at [least|most] n steps in k intervals" is equivalent to "There are at [most|least] n steps in n-k gap intervals". We can also use this to draw finer distinctions between tertian scales. Modes of major and melodic minor, and whole-tone and octatonic scales, are a little more regular that other tertian scales because they have no 3-step intervals, or, there are at most 2 steps in an interval. So in the complement, there are at least 2 steps in an interval, meaning scales like the pentatonic and diminished seventh don't have any notes right next to each other. And the harmonic and augmented scales, which break this rule, do have such pairs of notes in their complements—right in the middle of each 3-step interval, which is pretty obvious when you put it that way.
+In general, a rule of "There are at [least|most] n steps in k intervals" is equivalent to "There are at [most|least] n steps in n-k gap intervals". We can also use this to draw finer distinctions between tertian scales. Modes of major and melodic minor, and whole-tone and octatonic scales, are a little more regular that other tertian scales because they have no 3-step intervals, or, there are at most 2 steps in an interval. So in the complement, there are at least 2 steps in an interval, meaning scales like the pentatonic and diminished seventh don't have any notes right next to each other. And the harmonic and augmented scales, which break this rule, do have such pairs of notes in their complements—right in the middle of each 3-step interval, which is pretty obvious when you put it that way.
 
 ## As subsets
 
@@ -159,3 +159,116 @@ ring.DrawRow {i‿n:⟨12↑/⁼0∾+`i-'0',n⟩}¨ ⟨
   "22323"  ‿"Major pentatonic"
 ⟩
 -->
+
+## Modulation
+
+A great thing about working with tertian complements is that the entire [tertian modulation](modulation.md) framework applies. Over there, modulation means moving a note to a position that doesn't have a note—in neutral terms, swapping a note with an adjacent non-note. So back here it modulates the complement in the opposite direction, and since we don't show edge direction we can reinterpret any diagram by slapping "un-" in front of all the scale names! But if we do this for the rooted diagram we get only rootless complements, which isn't very useful. Root-containing tertian complements belong to a different subset of the full diagram. Repeating our counting exercises, each of the 4 classes has 5 modes for a total of 20 scales, and an edge is included when the root is one of 4 shared notes, so there are `96×4÷12` or 32 edges.
+
+<!--GEN
+dirh ← ⌊0.5+(6⥊115-0‿15‿20)×(•math.Sin ≍˘ •math.Cos) (2×π) × 6↑↕⊸÷12
+dir ← ∾⟜-dirh
+off ← ∾"M "∾¨FmtNum p0←-2÷˜+˝dirh
+co ← "ABabCABabBcACbc" ⋄ co -↩ "Aa" ⊏˜ ci ← co≥'a'
+cs ← ¬⊸-ci
+dedup ← 4↓ci≤1≠co
+
+circ ← (4↓cs)⊸×˘dir⊏˜ dd ← 12|(↕12)+⌜4↓co
+HL ← { (𝕨⊣pa) Path off∾ ∾⥊ (𝕩⊏"m "≍"l ") ∾¨⎉(=⊣) FmtNum circ }
+ps ← "fill=none|stroke-linejoin=round|stroke-linecap=round|"
+pa ← ps∾"stroke=currentColor|stroke-width=2.5"
+ph ← ps∾"class=yellow|style=fill:none|stroke-width=4"
+
+modep ← 5↑(¯2÷˜+˝)⊸∾6↑8⌽dir
+Lab ← {p𝕊a‿t:t Enc˜ Text "text-anchor"‿a ∾ Pos p×1.06+0.04×"middle"≡a}
+(⥊(0≍˘0‿¯132)+¯1‿2×⌜320‿220) SVG ⟨
+  "opacity=0.08" Ge HL dedup
+  HL dedup⊸×˘ (¯1⊸⌽⊸∧·¬+`)⌾⥊ (4↓cs)⊸×˘dd⊏-˝0‿7=⌜↕12
+  ph Path ("M "»"l "˘)⊸PD modep
+  "fill=currentColor|font-size=14" Ge (<˘0.995×1‿4⊏+`modep) Lab¨ ⟨
+    "middle"‿"Minor pentatonic"
+    "end"   ‿"Major pent."
+  ⟩
+⟩
+-->
+
+The five pentatonic modes give us room for two full cubes. A cube still comes from a set of three independent notes we can modulate, but remember, the transpositions are backwards: to go from major to minor pentatonic you *raise* three notes.
+
+<!--GEN
+majmin ← ∧˘12|0‿3+⌜7×↕5
+ScPos ← (60 -˜ 20×⊢) ⋈¨ -⊸⋈∘⊣
+tpos ← 36 ScPos majmin
+Modul ← { 𝕨 Path⟜{∾⥊>𝕩}¨ (≠˝𝕩) ⊔ ⍉"M "‿"L "∾¨¨FmtNum¨ 20 ScPos 𝕩 }
+Te ← Pos⊸Text
+(⥊¯1‿2×⌜304‿60) SVG "fill=currentColor" Ge ⟨
+  "font-size=19|text-anchor=middle"Ge⥊tpos Te¨ FmtNum majmin
+  "font-size=16|text-anchor=end"   Ge⥊(⊏˘tpos) -⟜40‿0⊸Te¨ ∾⟜" pent."¨ "Major"‿"Minor"
+  pa‿ph Modul majmin
+⟩
+-->
+
+Taking complements has roughly turned our tertian diagram upside-down, so the obvious thing to try is to spin it 180 degrees to lay it on top of the original. This corresponds to transposing all the scales 6 steps, which lines up each pentatonic mode with its standard diatonic parent. But none of the other subset relationships match up: they have rotations of -1 or +1, not ±6. Sounds like a long way off, except that the modulation diagram is laid out in fifths (7 steps)! This works out nicely for melodic modes, as the ones that contain a given complement are a one-twelfth rotation away in either direction. Because they swap between classes, harmonic modes aren't so simple.
+
+<!--GEN
+moded ← (¯2÷˜+˝)⊸∾6↑1↓dir
+pp ← ps∾"class=purple|style=fill:none|stroke-width=3|opacity=0.25"
+pt ← ps∾"stroke=currentColor|stroke-width=1.5"
+pm ← ps∾"class=bluegreen|style=fill:none|stroke-width=4"
+pr ← ps∾"class=red|style=fill:none|stroke-width=4"
+(⥊(0≍˘⋈⟜-108)+¯1‿2×⌜320‿232) SVG ⟨
+  pp HL dedup⊸×˘ (¯1⊸⌽⊸∧+`)⌾⥊ (4↓cs)⊸×˘dd⊏-˝0‿7=⌜↕12
+  ph Ge Path¨ ⟨
+    ("M "»"l "˘)⊸PD moded
+    "M l "˘⊸PD (+`moded) ∾˘ 1(↓--⊸↓)8↑dir
+  ⟩
+  # (5⊸-⋈2⊸+)0‿1‿3‿4‿7  # (3⌽dir)+¯3⌽dir cancels
+  pr Path "M l "˘⊸PD (1+(↕6)∾8‿9) ⊏ ((+`moded⊏⊸∾1↓dir)+3⌽dir) ∾˘ -dir
+  "class=yellow|stroke-width=3" Ge (Circle 5⊸∾)¨ <˘+`-modep
+  pm Path ("M "»"l "˘)⊸PD -⟜(9↑¯1⌽dir)⌾(+`) moded⊏⊸∾8↑1↓dir
+  pt HL dedup⊸×˘ (¯1⊸⌽⊸∧+`)⌾⥊ (4↓cs)⊸×˘dd⊏-˝1‿6=⌜↕12
+  "fill=currentColor|font-size=14" Ge (<˘+`moded) Lab¨ <˘⍉[
+    2‿2‿3/⌽"start"‿"middle"‿"end"
+    "Locrian"‿"Phrygian"‿"Aeolian (minor)"‿"Dorian"‿"Mixolydian"‿"Ionian (major)"‿"Lydian"
+  ]
+⟩
+-->
+
+Apparently Emperor Palpatine's dream catcher is nearing completion, but there are a few properties of the subset relation that can be identified with some effort. First, the subset edges are undirected. This is because, if A is a subset of B, then transposing both by 6 steps doesn't change this, and taking complements reverses the direction, so the complement at B's location is a subset of a scale at A. Second, transposing both scales without complementing, thus moving around the diagram by rotation, also maintains the subset relationships. The reason the diagram isn't 12-way symmetric, other than the edge length distortion, is that I've only drawn an edge if it relates two root-containing scales, that is, in one direction or the other both sides are in the diagram. Hopefully that's enough to see that all the edges come from just five classes: diatonic to the same location, diatonic to neighboring diatonic, diatonic to melodic, melodic to neighboring melodic, and harmonic to mirror harmonic. A tertian complement always has every one of these its class can, because if it contains the root then so does any superset of it.
+
+So can does all this crazy scale theory lead to wild scale transformations? Here's one try, in just two steps we accomplish the work of two one-note modulations!
+
+<!--GEN
+ring.DrawThirdsRow -⟜'0'⌾⊑¨ ⟨
+  "101101011010"‿"Minor"
+  "100101010010"‿"Pentatonic minor"
+  "110101010110"‿"Dorian ♭2"
+⟩
+-->
+
+Following the links around the diagram is a good way to convince yourself that most of them go nowhere fast. Musically this is good: we *want* rich but restricted transformations to make interesting sounds. You're always free to hit random keys or suddenly switch scales, but if that's all you do it starts to sound the same pretty quick!
+
+The way the diagram wraps around at the top does look intriguing. There aren't a lot of ways to get to it so it's a very specific trick (and mirror image).
+
+<!--GEN
+ring.DrawThirdsRow -⟜'0'⌾⊑¨ ⟨
+  "101101011001"‿"Harmonic minor"
+ ⋈"100101001001"
+ ⋈"100100101001"
+  "100110101101"‿"Lydian ♯2 ♯5?"
+⟩
+-->
+
+If you've properly acclimated to the first two scales, that little 5 to 6 change comes as a paradigm shift, real high-concept stuff. However, the altered Lydian scale is ([as discussed](modulation.md#the-weirdest-scales)) quite a weird one and hard to play with. It strongly suggests a minor scale starting at note 1 instead of 0, so by changing the root, this could be used as a way to modulate up a semitone instead.
+
+The harmonic inclusions are also practical for quickly jumping across the lower part of the diagram, although it takes some work to get from the diatonic scales on the outside to that inner circle. Here's an example going from Lydian, the brightest mode, to a darker-than-Phrygian scale, four steps equivalent to six one-note shifts.
+
+<!--GEN
+ring.DrawThirdsRow -⟜'0'⌾⊑¨ ⟨
+  "101010110101"‿"Lydian"
+  "101010010100"‿"Major pent."
+  "101010010010"‿"Unmelodic"
+  "100110010010"‿"Un-harmonic-minor"
+  "110110011010"‿"Phrygian ♭4"
+⟩
+-->
+
+You may notice that all these scales contain the major triad 0, 4, 7. Much of this pentatonic subset stuff is a weaker form of common-chord modulation, which we could use to leap across this entire progression with that one chord. But there's also a lot of value in knowing possible intermediate steps! For example, you might try to smooth things out with a major pentatonic melody before the chommon-chord modulation, or avoid note 8 for a little while after.

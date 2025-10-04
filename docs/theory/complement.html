@@ -397,7 +397,7 @@
 </tr>
 </tbody>
 </table>
-<p>So in general, a rule of &quot;There are at [least|most] n steps in k intervals&quot; is equivalent to &quot;There are at [most|least] n steps in n-k gap intervals&quot;. We can also use this to draw finer distinctions between tertian scales. Modes of major and melodic minor, and whole-tone and octatonic scales, are a little more regular that other tertian scales because they have no 3-step intervals, or, there are at most 2 steps in an interval. So in the complement, there are at least 2 steps in an interval, meaning scales like the pentatonic and diminished seventh don't have any notes right next to each other. And the harmonic and augmented scales, which break this rule, do have such pairs of notes in their complements—right in the middle of each 3-step interval, which is pretty obvious when you put it that way.</p>
+<p>In general, a rule of &quot;There are at [least|most] n steps in k intervals&quot; is equivalent to &quot;There are at [most|least] n steps in n-k gap intervals&quot;. We can also use this to draw finer distinctions between tertian scales. Modes of major and melodic minor, and whole-tone and octatonic scales, are a little more regular that other tertian scales because they have no 3-step intervals, or, there are at most 2 steps in an interval. So in the complement, there are at least 2 steps in an interval, meaning scales like the pentatonic and diminished seventh don't have any notes right next to each other. And the harmonic and augmented scales, which break this rule, do have such pairs of notes in their complements—right in the middle of each 3-step interval, which is pretty obvious when you put it that way.</p>
 <h2 id="as-subsets"><a class="header" href="#as-subsets">As subsets</a></h2>
 <p>It's sort of intuitive that 5-note scales that satisfy one regularity condition can be filled out to give 7-note scales with a different one, but it doesn't exactly seem guaranteed. At least, we can analyze the 6-note scales. As tertian scales, <a href="tertian.html#what-are-they-really">we showed</a> that every interval pair has to have the maximum length of 4, because there are 6 that need to add up to 24 steps. The same math holds for tertian scale complements, except that 4 is the minimum instead of maximum length (and when every pair of intervals is 4 steps, the fact that a single interval is no more than 3 follows immediately). So the complement of a 6-note tertian scale is automatically 6-note tertian. For the broader picture, let's lay our scales out explicitly:</p>
 <svg viewBox='-382.88 -196.32 765.76 392.64'>
@@ -1138,3 +1138,535 @@
   </g>
 </svg>
 
+<h2 id="modulation"><a class="header" href="#modulation">Modulation</a></h2>
+<p>A great thing about working with tertian complements is that the entire <a href="modulation.html">tertian modulation</a> framework applies. Over there, modulation means moving a note to a position that doesn't have a note—in neutral terms, swapping a note with an adjacent non-note. So back here it modulates the complement in the opposite direction, and since we don't show edge direction we can reinterpret any diagram by slapping &quot;un-&quot; in front of all the scale names! But if we do this for the rooted diagram we get only rootless complements, which isn't very useful. Root-containing tertian complements belong to a different subset of the full diagram. Repeating our counting exercises, each of the 4 classes has 5 modes for a total of 20 scales, and an edge is included when the root is one of 4 shared notes, so there are <code><span class='Number'>96</span><span class='Function'>×</span><span class='Number'>4</span><span class='Function'>÷</span><span class='Number'>12</span></code> or 32 edges.</p>
+<svg viewBox='-320 -220 640 308'>
+  <g opacity='0.08'><path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' stroke-width='2.5' d='M-190.5 -59l82 48l0 115l50 87l0 -115m-50 -87l50 87l-82 -48l0 115l82 48m-50 -87l-82 -48l115 0l50 87l82 48l-50 -87m-82 -48l82 48l-115 0l50 87l115 0m-82 -48l-115 0l87 -50l82 48l115 0l-82 -48m-115 0l115 0l-87 50l82 48l87 -50m-115 0l-87 50l47 -82l115 0l87 -50l-115 0m-87 50l87 -50l-47 82l115 0l47 -82m-87 50l-47 82l0 -115l87 -50l47 -82l-87 50m-47 82l47 -82l0 115l87 -50l0 -115m-47 82l0 115l-50 -87l47 -82l0 -115l-47 82m0 115l0 -115l50 87l47 -82l-50 -87m0 115l50 87l-82 -48l0 -115l-50 -87l0 115m50 87l-50 -87l82 48l0 -115l-82 -48m50 87l82 48l-115 0l-50 -87l-82 -48l50 87m82 48l-82 -48l115 0l-50 -87l-115 0m82 48l115 0l-87 50l-82 -48l-115 0l82 48m115 0l-115 0l87 -50l-82 -48l-87 50m115 0l87 -50l-47 82l-115 0l-87 50l115 0m87 -50l-87 50l47 -82l-115 0l-47 82m87 -50l47 -82l0 115l-87 50l-47 82l87 -50m47 -82l-47 82l0 -115l-87 50l0 115m47 -82l0 -115l50 87l-47 82l0 115l47 -82m0 -115l0 115l-50 -87l-47 82l50 87m0 -115l-50 -87'/></g>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' stroke-width='2.5' d='M-190.5 -59l82 48m0 115m50 87m0 -115m-50 -87l50 87l-82 -48m0 115m82 48m-50 -87m-82 -48m115 0m50 87m82 48m-50 -87m-82 -48m82 48m-115 0m50 87m115 0m-82 -48m-115 0m87 -50m82 48m115 0m-82 -48m-115 0m115 0m-87 50m82 48m87 -50m-115 0m-87 50m47 -82m115 0m87 -50m-115 0m-87 50m87 -50m-47 82m115 0m47 -82m-87 50m-47 82m0 -115m87 -50m47 -82m-87 50m-47 82m47 -82m0 115m87 -50m0 -115m-47 82m0 115m-50 -87l47 -82l0 -115l-47 82m0 115l0 -115m50 87m47 -82m-50 -87m0 115m50 87m-82 -48m0 -115m-50 -87l0 115m50 87m-50 -87l82 48l0 -115l-82 -48m50 87m82 48m-115 0m-50 -87l-82 -48m50 87m82 48m-82 -48m115 0m-50 -87l-115 0m82 48l115 0l-87 50l-82 -48l-115 0l82 48m115 0l-115 0l87 -50l-82 -48l-87 50m115 0l87 -50l-47 82l-115 0l-87 50l115 0m87 -50l-87 50l47 -82l-115 0l-47 82m87 -50l47 -82m0 115m-87 50m-47 82m87 -50m47 -82m-47 82m0 -115l-87 50m0 115m47 -82m0 -115l50 87l-47 82m0 115m47 -82m0 -115m0 115m-50 -87m-47 82m50 87m0 -115l-50 -87'/>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' class='yellow' style='fill:none' stroke-width='4' d='M140.5 -143l-82 -48l-115 0l-87 50l-47 82'/>
+  <g fill='currentColor' font-size='14'>
+    <text dy='0.33em' text-anchor='middle' x='64.028' y='-209.05'>Minor pentatonic</text>
+    <text dy='0.33em' text-anchor='end' x='-200.92' y='-62.227'>Major pent.</text>
+  </g>
+</svg>
+
+<p>The five pentatonic modes give us room for two full cubes. A cube still comes from a set of three independent notes we can modulate, but remember, the transpositions are backwards: to go from major to minor pentatonic you <em>raise</em> three notes.</p>
+<svg viewBox='-304 -60 608 120'>
+  <g fill='currentColor'>
+    <g font-size='19' text-anchor='middle'>
+      <text dy='0.33em' x='-60' y='-36'>0</text>
+      <text dy='0.33em' x='-20' y='-36'>2</text>
+      <text dy='0.33em' x='20' y='-36'>4</text>
+      <text dy='0.33em' x='80' y='-36'>7</text>
+      <text dy='0.33em' x='120' y='-36'>9</text>
+      <text dy='0.33em' x='-60' y='36'>0</text>
+      <text dy='0.33em' x='0' y='36'>3</text>
+      <text dy='0.33em' x='40' y='36'>5</text>
+      <text dy='0.33em' x='80' y='36'>7</text>
+      <text dy='0.33em' x='140' y='36'>10</text>
+    </g>
+    <g font-size='16' text-anchor='end'>
+      <text dy='0.33em' x='-100' y='-36'>Major pent.</text>
+      <text dy='0.33em' x='-100' y='36'>Minor pent.</text>
+    </g>
+    <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' stroke-width='2.5' d='M-60 -20L-60 20M80 -20L80 20'/>
+    <path fill='none' stroke-linejoin='round' stroke-linecap='round' class='yellow' style='fill:none' stroke-width='4' d='M-20 -20L0 20M20 -20L40 20M120 -20L140 20'/>
+  </g>
+</svg>
+
+<p>Taking complements has roughly turned our tertian diagram upside-down, so the obvious thing to try is to spin it 180 degrees to lay it on top of the original. This corresponds to transposing all the scales 6 steps, which lines up each pentatonic mode with its standard diatonic parent. But none of the other subset relationships match up: they have rotations of -1 or +1, not ±6. Sounds like a long way off, except that the modulation diagram is laid out in fifths (7 steps)! This works out nicely for melodic modes, as the ones that contain a given complement are a one-twelfth rotation away in either direction. Because they swap between classes, harmonic modes aren't so simple.</p>
+<svg viewBox='-320 -124 640 356'>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' class='purple' style='fill:none' stroke-width='3' opacity='0.25' d='M-190.5 -59m82 48m0 115l50 87m0 -115m-50 -87m50 87m-82 -48m0 115l82 48m-50 -87l-82 -48l115 0l50 87l82 48l-50 -87m-82 -48l82 48l-115 0l50 87l115 0m-82 -48l-115 0l87 -50l82 48l115 0l-82 -48m-115 0l115 0l-87 50l82 48l87 -50m-115 0l-87 50l47 -82l115 0l87 -50l-115 0m-87 50l87 -50l-47 82l115 0l47 -82m-87 50l-47 82l0 -115l87 -50l47 -82l-87 50m-47 82l47 -82l0 115l87 -50l0 -115m-47 82l0 115m-50 -87m47 -82m0 -115m-47 82m0 115m0 -115m50 87l47 -82m-50 -87m0 115m50 87l-82 -48l0 -115m-50 -87m0 115m50 87m-50 -87m82 48m0 -115m-82 -48m50 87l82 48l-115 0m-50 -87m-82 -48m50 87m82 48l-82 -48l115 0m-50 -87m-115 0m82 48m115 0m-87 50m-82 -48m-115 0m82 48m115 0m-115 0m87 -50m-82 -48m-87 50m115 0m87 -50m-47 82m-115 0m-87 50m115 0m87 -50m-87 50m47 -82m-115 0m-47 82m87 -50m47 -82m0 115l-87 50l-47 82l87 -50m47 -82l-47 82m0 -115m-87 50m0 115m47 -82m0 -115m50 87m-47 82m0 115l47 -82m0 -115m0 115l-50 -87l-47 82l50 87m0 -115m-50 -87'/>
+  <g fill='none' stroke-linejoin='round' stroke-linecap='round' class='yellow' style='fill:none' stroke-width='4'>
+    <path d='M-190.5 56l50 87l82 48l115 0l87 -50l47 -82l0 -115'/>
+    <path d='M-190.5 56l50 -28M-140.5 143l32 -39M-58.5 191l33 -48M56.5 191l-28 -50M143.5 141l-40 -32M190.5 59l-47 -33M190.5 -56l-50 28'/>
+  </g>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' class='red' style='fill:none' stroke-width='4' d='M-53.5 93l-50 -87M-11.5 109l-82 -48M56.5 76l-115 0M93.5 54l-87 50M108.5 11l-47 82M75.5 -56l0 115M-56.5 -76l115 0M-93.5 -54l87 -50'/>
+  <g class='yellow' stroke-width='3'>
+    <circle r='5' cx='-140.5' cy='143'/>
+    <circle r='5' cx='-58.5' cy='191'/>
+    <circle r='5' cx='56.5' cy='191'/>
+    <circle r='5' cx='143.5' cy='141'/>
+    <circle r='5' cx='190.5' cy='59'/>
+  </g>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' class='bluegreen' style='fill:none' stroke-width='4' d='M-143.5 -26l3 54l32 76l83 39l54 -2l75 -32l40 -83l-3 -54l-32 -76'/>
+  <path fill='none' stroke-linejoin='round' stroke-linecap='round' stroke='currentColor' stroke-width='1.5' d='M-190.5 -59m82 48m0 115m50 87l0 -115m-50 -87m50 87l-82 -48l0 115l82 48m-50 -87m-82 -48m115 0m50 87l82 48m-50 -87m-82 -48m82 48m-115 0m50 87l115 0m-82 -48l-115 0l87 -50l82 48l115 0l-82 -48m-115 0l115 0l-87 50l82 48l87 -50m-115 0l-87 50l47 -82l115 0l87 -50l-115 0m-87 50l87 -50l-47 82l115 0l47 -82m-87 50l-47 82m0 -115m87 -50m47 -82m-87 50m-47 82m47 -82m0 115l87 -50m0 -115m-47 82m0 115l-50 -87l47 -82m0 -115m-47 82m0 115m0 -115m50 87m47 -82m-50 -87m0 115l50 87l-82 -48m0 -115m-50 -87m0 115m50 87l-50 -87l82 48m0 -115m-82 -48m50 87m82 48m-115 0m-50 -87m-82 -48m50 87m82 48m-82 -48m115 0m-50 -87m-115 0m82 48m115 0m-87 50m-82 -48m-115 0m82 48m115 0m-115 0m87 -50m-82 -48m-87 50m115 0m87 -50m-47 82m-115 0m-87 50m115 0m87 -50m-87 50m47 -82m-115 0m-47 82m87 -50m47 -82m0 115m-87 50m-47 82m87 -50m47 -82m-47 82m0 -115m-87 50m0 115m47 -82m0 -115m50 87l-47 82l0 115l47 -82m0 -115l0 115m-50 -87m-47 82m50 87m0 -115m-50 -87'/>
+  <g fill='currentColor' font-size='14'>
+    <text dy='0.33em' text-anchor='end' x='-201.93' y='59.36'>Locrian</text>
+    <text dy='0.33em' text-anchor='end' x='-148.93' y='151.58'>Phrygian</text>
+    <text dy='0.33em' text-anchor='middle' x='-64.35' y='210.1'>Aeolian (minor)</text>
+    <text dy='0.33em' text-anchor='middle' x='62.15' y='210.1'>Dorian</text>
+    <text dy='0.33em' text-anchor='start' x='152.11' y='149.46'>Mixolydian</text>
+    <text dy='0.33em' text-anchor='start' x='201.93' y='62.54'>Ionian (major)</text>
+    <text dy='0.33em' text-anchor='start' x='201.93' y='-59.36'>Lydian</text>
+  </g>
+</svg>
+
+<p>Apparently Emperor Palpatine's dream catcher is nearing completion, but there are a few properties of the subset relation that can be identified with some effort. First, the subset edges are undirected. This is because, if A is a subset of B, then transposing both by 6 steps doesn't change this, and taking complements reverses the direction, so the complement at B's location is a subset of a scale at A. Second, transposing both scales without complementing, thus moving around the diagram by rotation, also maintains the subset relationships. The reason the diagram isn't 12-way symmetric, other than the edge length distortion, is that I've only drawn an edge if it relates two root-containing scales, that is, in one direction or the other both sides are in the diagram. Hopefully that's enough to see that all the edges come from just five classes: diatonic to the same location, diatonic to neighboring diatonic, diatonic to melodic, melodic to neighboring melodic, and harmonic to mirror harmonic. A tertian complement always has every one of these its class can, because if it contains the root then so does any superset of it.</p>
+<p>So can does all this crazy scale theory lead to wild scale transformations? Here's one try, in just two steps we accomplish the work of two one-note modulations!</p>
+<svg viewBox='-299.6 -81 599.2 186'>
+  <g transform='translate(-162 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <g opacity='0.8'>
+        <path class='purple' d=''/>
+        <path class='bluegreen' d=''/>
+        <path class='green' d='M55.8 -0L-27.9 48.324M-48.324 27.9L0 -55.8M-48.324 -27.9L48.324 -27.9'/>
+        <path class='yellow' d='M0 -55.8L55.8 -0M48.324 -27.9L27.9 48.324M27.9 48.324L-48.324 27.9M-27.9 48.324L-48.324 -27.9'/>
+      </g>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Minor</text>
+    </g>
+  </g>
+  <g transform='translate(0 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <g opacity='0.8'>
+        <path class='purple' d=''/>
+        <path class='bluegreen' d='M0 -55.8L27.9 48.324M27.9 48.324L-48.324 -27.9M-27.9 48.324L0 -55.8M-48.324 -27.9L55.8 -0'/>
+        <path class='green' d='M55.8 -0L-27.9 48.324'/>
+        <path class='yellow' d=''/>
+      </g>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Pentatonic minor</text>
+    </g>
+  </g>
+  <g transform='translate(162 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <g opacity='0.8'>
+        <path class='purple' d=''/>
+        <path class='bluegreen' d=''/>
+        <path class='green' d='M27.9 -48.324L27.9 48.324M55.8 -0L-27.9 48.324M27.9 48.324L-55.8 0'/>
+        <path class='yellow' d='M0 -55.8L55.8 -0M-27.9 48.324L-48.324 -27.9M-55.8 0L0 -55.8M-48.324 -27.9L27.9 -48.324'/>
+      </g>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Dorian ♭2</text>
+    </g>
+  </g>
+</svg>
+
+<p>Following the links around the diagram is a good way to convince yourself that most of them go nowhere fast. Musically this is good: we <em>want</em> rich but restricted transformations to make interesting sounds. You're always free to hit random keys or suddenly switch scales, but if that's all you do it starts to sound the same pretty quick!</p>
+<p>The way the diagram wraps around at the top does look intriguing. There aren't a lot of ways to get to it so it's a very specific trick (and mirror image).</p>
+<svg viewBox='-332 -81 664 186'>
+  <g transform='translate(-243 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <g opacity='0.8'>
+        <path class='purple' d=''/>
+        <path class='bluegreen' d=''/>
+        <path class='green' d='M55.8 -0L-27.9 48.324M-27.9 48.324L-27.9 -48.324M-48.324 27.9L0 -55.8'/>
+        <path class='yellow' d='M0 -55.8L55.8 -0M48.324 -27.9L27.9 48.324M27.9 48.324L-48.324 27.9M-27.9 -48.324L48.324 -27.9'/>
+      </g>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Harmonic minor</text>
+    </g>
+  </g>
+  <g transform='translate(-81 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <g opacity='0.8'>
+        <path class='purple' d='M27.9 48.324L-27.9 -48.324'/>
+        <path class='bluegreen' d='M0 -55.8L27.9 48.324M55.8 -0L-48.324 27.9'/>
+        <path class='green' d='M-48.324 27.9L0 -55.8M-27.9 -48.324L55.8 -0'/>
+        <path class='yellow' d=''/>
+      </g>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='30' y='51.962'>5</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'></g>
+  </g>
+  <g transform='translate(81 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <g opacity='0.8'>
+        <path class='purple' d='M0 -55.8L0 55.8'/>
+        <path class='bluegreen' d='M55.8 -0L-48.324 27.9M0 55.8L-27.9 -48.324'/>
+        <path class='green' d='M-48.324 27.9L0 -55.8M-27.9 -48.324L55.8 -0'/>
+        <path class='yellow' d=''/>
+      </g>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'></g>
+  </g>
+  <g transform='translate(243 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <g opacity='0.8'>
+        <path class='purple' d=''/>
+        <path class='bluegreen' d=''/>
+        <path class='green' d='M0 -55.8L48.324 27.9M48.324 27.9L-48.324 27.9M-27.9 -48.324L55.8 -0'/>
+        <path class='yellow' d='M55.8 -0L0 55.8M0 55.8L-55.8 0M-48.324 27.9L-27.9 -48.324M-55.8 0L0 -55.8'/>
+      </g>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Lydian ♯2 ♯5?</text>
+    </g>
+  </g>
+</svg>
+
+<p>If you've properly acclimated to the first two scales, that little 5 to 6 change comes as a paradigm shift, real high-concept stuff. However, the altered Lydian scale is (<a href="modulation.html#the-weirdest-scales">as discussed</a>) quite a weird one and hard to play with. It strongly suggests a minor scale starting at note 1 instead of 0, so by changing the root, this could be used as a way to modulate up a semitone instead.</p>
+<p>The harmonic inclusions are also practical for quickly jumping across the lower part of the diagram, although it takes some work to get from the diatonic scales on the outside to that inner circle. Here's an example going from Lydian, the brightest mode, to a darker-than-Phrygian scale, four steps equivalent to six one-note shifts.</p>
+<svg viewBox='-413 -81 826 186'>
+  <g transform='translate(-324 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <g opacity='0.8'>
+        <path class='purple' d=''/>
+        <path class='bluegreen' d=''/>
+        <path class='green' d='M0 -55.8L48.324 27.9M48.324 -27.9L0 55.8M-27.9 48.324L-27.9 -48.324'/>
+        <path class='yellow' d='M48.324 27.9L-27.9 48.324M0 55.8L-55.8 0M-55.8 0L0 -55.8M-27.9 -48.324L48.324 -27.9'/>
+      </g>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='0' y='60'>6</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+      <text dy='0.33em' x='-30' y='-51.962'>11</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Lydian</text>
+    </g>
+  </g>
+  <g transform='translate(-162 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <g opacity='0.8'>
+        <path class='purple' d=''/>
+        <path class='bluegreen' d='M48.324 -27.9L-27.9 48.324M48.324 27.9L-55.8 0M-27.9 48.324L0 -55.8M-55.8 0L48.324 -27.9'/>
+        <path class='green' d='M0 -55.8L48.324 27.9'/>
+        <path class='yellow' d=''/>
+      </g>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-60' cy='0'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-60' y='0'>9</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Major pent.</text>
+    </g>
+  </g>
+  <g transform='translate(0 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <g opacity='0.8'>
+        <path class='purple' d='M48.324 27.9L-48.324 -27.9'/>
+        <path class='bluegreen' d='M48.324 -27.9L-27.9 48.324M-27.9 48.324L0 -55.8'/>
+        <path class='green' d='M0 -55.8L48.324 27.9M-48.324 -27.9L48.324 -27.9'/>
+        <path class='yellow' d=''/>
+      </g>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='51.962' y='-30'>2</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Unmelodic</text>
+    </g>
+  </g>
+  <g transform='translate(162 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <g opacity='0.8'>
+        <path class='purple' d='M48.324 27.9L-48.324 -27.9'/>
+        <path class='bluegreen' d='M-27.9 48.324L0 -55.8M-48.324 -27.9L55.8 -0'/>
+        <path class='green' d='M0 -55.8L48.324 27.9M55.8 -0L-27.9 48.324'/>
+        <path class='yellow' d=''/>
+      </g>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Un-harmonic-minor</text>
+    </g>
+  </g>
+  <g transform='translate(324 0)'>
+    <g stroke-width='2' stroke='currentColor'>
+      <g opacity='0.8'>
+        <path class='purple' d=''/>
+        <path class='bluegreen' d=''/>
+        <path class='green' d='M55.8 -0L-27.9 48.324M48.324 27.9L-48.324 27.9M-48.324 27.9L0 -55.8'/>
+        <path class='yellow' d='M0 -55.8L55.8 -0M27.9 -48.324L48.324 27.9M-27.9 48.324L-48.324 -27.9M-48.324 -27.9L27.9 -48.324'/>
+      </g>
+      <circle fill='none' r='60'/>
+      <g class='unset'>
+        <circle r='12' cx='51.962' cy='-30'/>
+        <circle r='12' cx='30' cy='51.962'/>
+        <circle r='12' cx='0' cy='60'/>
+        <circle r='12' cx='-60' cy='0'/>
+        <circle r='12' cx='-30' cy='-51.962'/>
+      </g>
+      <g class='set'>
+        <circle r='12' cx='0' cy='-60'/>
+        <circle r='12' cx='30' cy='-51.962'/>
+        <circle r='12' cx='60' cy='-0'/>
+        <circle r='12' cx='51.962' cy='30'/>
+        <circle r='12' cx='-30' cy='51.962'/>
+        <circle r='12' cx='-51.962' cy='30'/>
+        <circle r='12' cx='-51.962' cy='-30'/>
+      </g>
+    </g>
+    <g text-anchor='middle' class='set'>
+      <text dy='0.33em' x='0' y='-60'>0</text>
+      <text dy='0.33em' x='30' y='-51.962'>1</text>
+      <text dy='0.33em' x='60' y='-0'>3</text>
+      <text dy='0.33em' x='51.962' y='30'>4</text>
+      <text dy='0.33em' x='-30' y='51.962'>7</text>
+      <text dy='0.33em' x='-51.962' y='30'>8</text>
+      <text dy='0.33em' x='-51.962' y='-30'>10</text>
+    </g>
+    <g text-anchor='middle' fill='currentColor'>
+      <text dy='0.33em' x='0' y='89'>Phrygian ♭4</text>
+    </g>
+  </g>
+</svg>
+
+<p>You may notice that all these scales contain the major triad 0, 4, 7. Much of this pentatonic subset stuff is a weaker form of common-chord modulation, which we could use to leap across this entire progression with that one chord. But there's also a lot of value in knowing possible intermediate steps! For example, you might try to smooth things out with a major pentatonic melody before the chommon-chord modulation, or avoid note 8 for a little while after.</p>

@@ -39,4 +39,5 @@ _withIntervals_ ← { dir int _𝕣_ Neg 𝕩:
 DrawTertianRow     ⇐ 3‿4     _withIntervals_ ⊢         _extDrawRow
 DrawTertianCompRow ⇐ ⟨ 4‿5‿6 _withIntervals_ ¬, "red"⟩ _extDrawRow
 DrawQuartalRow     ⇐   4‿5‿6 _withIntervals_ ⊢         _extDrawRow
+DrawThirdsRow      ⇐ 3‿4‿5‿6 _withIntervals_ ⊢         _extDrawRow
 }
