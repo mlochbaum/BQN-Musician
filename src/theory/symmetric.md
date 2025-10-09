@@ -2,7 +2,7 @@
 
 Some [scales](scale.md) are symmetric when transposed: that is, shifting by some number of steps smaller than 12 leaves the scale unchanged. They're known as [modes of limited transposition](https://en.wikipedia.org/wiki/Mode_of_limited_transposition) because the number of *distinct* transpositions of the scale is smaller than the number of notes it has. Unwieldy and unintuitive, so we'll call them "symmetric scales" on this site.
 
-For the most part I don't find this collection of scales musically interesting (a few classical composers have been drawn to the way their ambiguity makes for smooth modulations). However, they're a complication when counting scales, and enumerating them is an interesting enough problem to discuss.
+For the most part I don't find this collection of scales musically interesting (a few classical composers [have been drawn](outerscriabin.md) to the way their ambiguity makes for smooth modulations). However, they're a complication when counting scales, and enumerating them is an interesting enough problem to discuss.
 
 <!--GEN ring.bqn
 ring.DrawRow {12⥊𝕩-'0'}⌾⊑¨ ⟨

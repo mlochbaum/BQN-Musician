@@ -73,7 +73,7 @@ This formulation is perfect for flipping notes and gaps. If at least 2 places in
 | A 3-window has at least 1 gap     | A 4-window has at most 2 gaps
 | At most 3 steps in 1 gap interval | At least 4 steps for 2 gap intervals
 
-In general, a rule of "There are at [least|most] n steps in k intervals" is equivalent to "There are at [most|least] n steps in n-k gap intervals". We can also use this to draw finer distinctions between tertian scales. Modes of major and melodic minor, and whole-tone and octatonic scales, are a little more regular that other tertian scales because they have no 3-step intervals, or, there are at most 2 steps in an interval. So in the complement, there are at least 2 steps in an interval, meaning scales like the pentatonic and diminished seventh don't have any notes right next to each other. And the harmonic and augmented scales, which break this rule, do have such pairs of notes in their complements—right in the middle of each 3-step interval, which is pretty obvious when you put it that way.
+In general, a rule of "There are at [least|most] n steps in k intervals" is equivalent to "There are at [most|least] n steps in n-k gap intervals". We can also use this to draw finer distinctions between tertian scales. Modes of major and melodic minor, and whole-tone and octatonic scales, are a little more regular than other tertian scales because they have no 3-step intervals, or, there are at most 2 steps in an interval. So in the complement, there are at least 2 steps in an interval, meaning scales like the pentatonic and diminished seventh don't have any notes right next to each other. And the harmonic and augmented scales, which break this rule, do have such pairs of notes in their complements—right in the middle of each 3-step interval, which is pretty obvious when you put it that way.
 
 ## As subsets
 
@@ -103,7 +103,7 @@ spr ← spos × 2×(rp+12)
 tsvg {(¯1↓𝕨)∾1↓𝕩} (4⥊0) SVG ac Ge ⟨
   <∘Arr´˘ (6≍˘2‿3)⊏spr
   (<¯0.25 Arrc ⋈+¨{0.045×(2×-⌾⊑⌽𝕩)⊸+¨0.8‿¯1.4×<𝕩}∘-){𝔽≍𝔽˜}´˘ 2‿2⥊spr
-  ⟨¯2‿9,1‿3,1‿¯5,2‿¯5,2‿¯1⟩ Arrl¨ (2⊸↑∾¯3⊸↑)spr
+  ⟨¯2‿9,1‿4,1‿¯5,2‿¯5,2‿¯1⟩ Arrl¨ (2⊸↑∾¯3⊸↑)spr
 ⟩
 -->
 
@@ -234,7 +234,7 @@ pr ← ps∾"class=red|style=fill:none|stroke-width=4"
 
 Apparently Emperor Palpatine's dream catcher is nearing completion, but there are a few properties of the subset relation that can be identified with some effort. First, the subset edges are undirected. This is because, if A is a subset of B, then transposing both by 6 steps doesn't change this, and taking complements reverses the direction, so the complement at B's location is a subset of a scale at A. Second, transposing both scales without complementing, thus moving around the diagram by rotation, also maintains the subset relationships. The reason the diagram isn't 12-way symmetric, other than the edge length distortion, is that I've only drawn an edge if it relates two root-containing scales, that is, in one direction or the other both sides are in the diagram. Hopefully that's enough to see that all the edges come from just five classes: diatonic to the same location, diatonic to neighboring diatonic, diatonic to melodic, melodic to neighboring melodic, and harmonic to mirror harmonic. A tertian complement always has every one of these its class can, because if it contains the root then so does any superset of it.
 
-So can does all this crazy scale theory lead to wild scale transformations? Here's one try, in just two steps we accomplish the work of two one-note modulations!
+So does all this crazy scale theory lead to wild scale transformations? Here's one try, in just two steps we accomplish the work of two one-note modulations!
 
 <!--GEN
 ring.DrawThirdsRow -⟜'0'⌾⊑¨ ⟨
