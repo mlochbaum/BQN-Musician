@@ -119,7 +119,7 @@ But I've already hinted that I just wanted a better high hat sound. Fortunately 
 
 I'll admit that I don't have any _good_ snare tricks, but we need one. A snare is more or less a tom that's got these wires underneath to make it noisier, and it's super hard to imitate because there are so many interacting parts. We can get some of this not-really-noise complexity with a not-really-random arithmetic generator. This one is sort of a sine wave with rapidly changing frequency. If you play with the `7.05` parameter a bit you'll find that it's balanced between a few weird wobbling sounds.
 
-        Play •math.Sin +`(2×π)|(↕1e4)÷7.05
+        Play •math.Sin +`(2×π)|(↕2e4)÷7.05
 
 We'll apply the usual exponential envelope, followed by `(××0.4⌊3√×˜)` for wave-shaping compression. This train follows the pattern `××Fn∘|`, which expands to `{(×𝕩)×Fn|𝕩}`: we apply some function `Fn` to the absolute value of `𝕩` to get a positive result, then multiply by the sign of `𝕩` to restore the sign it had originally. The function `3√×˜` could also be written `⋆⟜(2÷3)` except that by squaring first the absolute value is built in. This amplifies smaller values, while `0.4⌊` clamps down the bigger ones. The rough and twisty shape adds a little more complexity than a smoother one would.
 
@@ -130,7 +130,7 @@ We'll apply the usual exponential envelope, followed by `(××0.4⌊3√×˜)` f
 Finally we apply a peaking filter for a big boost at an energetic 350Hz. Depending on the kind of snare tone you're after, a frequency in the 250Hz to 400Hz range is useful to bring out that snare impact.
 
         snare ← 0.5 × 8‿350‿1.1 Peak {
-          i ← ↕1e4
+          i ← ↕2e4
           s ← •math.Sin +`(2×π)|i÷7.05
           e ← ⋆ ¯1e¯3×i
           (××0.4⌊3√×˜) e×s
