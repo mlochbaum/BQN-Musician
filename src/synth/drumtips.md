@@ -6,7 +6,7 @@ Despite the special tricks, most of the code is taken up by standard synth techn
 
 - Generate some sort of tone, often using [oscillators](oscillator.md)
 - Apply an exponential [envelope](envelope.md) so it fades naturally
-- Use a pointwise wave-shaping function to give it more complexity and sustain
+- Use a pointwise [wave-shaping](waveshape.md) function to give it more complexity and sustain
 - And apply an EQ filter to emphasize the right frequencies.
 
 On that note, we'll use several different kinds of filter and I'm not going to explain how the math for those works here (as if I even remember it). I'm going to collapse them out of sight instead.
@@ -45,11 +45,11 @@ But the method I want to show off does all three simultaneously, and makes a har
           s ← -⟜¬|-⟜¬ (÷4) + i×36÷44100  # triangle wave
           e ← ⋆ ¯14e¯3 × i               # exponential decay
           k ← 23‿0.81 Hp2q⍟16 e×s        # filter (kind of slow)
-          0.4 × 1(-÷+)⋆ 500×k            # sigmoid distortion
+          0.4 × •math.Tanh 250×k         # sigmoid distortion
         }
         Play kick
 
-Even after, we need `40×` amplification or so to get to a reasonable level, and to give it more of a punch (but reduce the realism) I pass it through a sigmoid function, which has exponential-shaped asymptotes on both sides. You can slap a huge multiplier in front of a sigmoid and it always ends up between `¯1` and `1`. This function is just great for giving more presence to bass sounds without harshness—try it on your bass guitars too. One thing to watch out for is that the short version is actually a *negative* sigmoid. If staying in phase matters, use `(-˜÷+)` or stick a `-` before or after applying it.
+Even after, we need `40×` amplification or so to get to a reasonable level, and to give it more of a punch (but reduce the realism) I pass it through a [sigmoid](waveshape.md#sigmoid-distortion) function, which has exponential-shaped asymptotes on both sides. You can slap a huge multiplier in front of a sigmoid and it always ends up between `¯1` and `1`. This function is just great for giving more presence to bass sounds without harshness—try it on your bass guitars too.
 
 <!--GEN
 Path ← ("path"At"stroke-width=2|stroke=currentColor") Elt "d"⊸⋈
@@ -61,7 +61,7 @@ Plot ← {
     ("text" Attr "fill"‿"currentColor"∾Pos 0‿1×20+dim) Enc 𝕨
   ⟩
 }
-"1(-÷+)⋆𝕩" Plot 2÷˜ ≍⟜(1(-÷+)⋆) 4× -⟜¬↕⊸∾⊸÷100
+"•math.Tanh" Plot 2÷˜ ≍⟜•math.Tanh 4× -⟜¬↕⊸∾⊸÷100
 -->
 
 ## High hat (attempted)
@@ -117,11 +117,11 @@ But I've already hinted that I just wanted a better high hat sound. Fortunately 
 
 ## Snare
 
-I'll admit that I don't have any _good_ snare tricks, but we need one. A snare is more or less a tom that's got these wires underneath to make it noisier, and it's super hard to imitate because there are so many interacting parts. We can get some of this not-really-noise complexity with a not-really-random arithmetic generator. This one is sort of a sine wave with rapidly changing frequency. If you play with the `7.05` parameter a bit you'll find that it's balanced between a few weird wobbling sounds.
+I'll admit that I don't have any _good_ snare tricks, but we need one. A snare is more or less a tom that's got these wires underneath to make it noisier, and it's super hard to imitate because there are so many interacting parts. We can get some of this not-really-noise complexity with a not-really-random arithmetic generator. This one is a "chirp tone", a sine wave with rapidly changing frequency (note that `(2×π)|` has no mathematical effect, it's only to keep the sum from getting too large and losing precision). If you play with the `7.05` parameter a bit you'll find that it's balanced between a few weird wobbling sounds.
 
         Play •math.Sin +`(2×π)|(↕2e4)÷7.05
 
-We'll apply the usual exponential envelope, followed by `(××0.4⌊3√×˜)` for wave-shaping compression. This train follows the pattern `××Fn∘|`, which expands to `{(×𝕩)×Fn|𝕩}`: we apply some function `Fn` to the absolute value of `𝕩` to get a positive result, then multiply by the sign of `𝕩` to restore the sign it had originally. The function `3√×˜` could also be written `⋆⟜(2÷3)` except that by squaring first the absolute value is built in. This amplifies smaller values, while `0.4⌊` clamps down the bigger ones. The rough and twisty shape adds a little more complexity than a smoother one would.
+We'll apply the usual exponential envelope, followed by `(××0.4⌊3√×˜)` for wave-shaping compression. This train follows the [pattern](waveshape.md#symmetric-shaping) `××Fn∘|`, which expands to `{(×𝕩)×Fn|𝕩}`: we apply some function `Fn` to the absolute value of `𝕩` to get a positive result, then multiply by the sign of `𝕩` to restore the sign it had originally. The function `3√×˜` could also be written `⋆⟜(2÷3)` except that by squaring first the absolute value is built in. This amplifies smaller values, while `0.4⌊` clamps down the bigger ones. The rough and twisty shape adds a little more complexity than a smoother one would.
 
 <!--GEN
 "(××0.4⌊3√×˜)" Plot ≍⟜(××0.4⌊3√×˜) -⟜¬↕⊸∾⊸÷100
