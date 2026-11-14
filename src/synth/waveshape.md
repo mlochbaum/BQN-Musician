@@ -144,6 +144,8 @@ Texc ← ("text" Attr "fill"‿"currentColor"∾Pos)⊸Enc
 
 The hard clipping function `¯1⌈1⌊𝕩` also breaks down as the symmetric form of `1⌊𝕩`. Instead of including `¯1` explicitly, `(××1⌊|)𝕩` flips negative values before and after clamping. It's more complex, but easier to fiddle with. One variation is a trick I use if I *want* to reduce a signal to crackling and popping, such as for a handclap effect. I'll subtract the clipped signal from the original, so on the posive side that's `𝕩-1⌊𝕩` which is `(𝕩-1)⌈𝕩-𝕩` or `0⌈𝕩-1`. That gives `(××0⌈1-˜|)` when I make it symmetric again, and allows me to reduce the `1` to a small constant around `0.1` so it can take a smaller input without zeroing it all out.
 
+        Play (××0⌈0.4-˜|) sound
+
 <!--GEN
 (⥊(0≍˘14‿¯18)+¯1‿2×⌜dim) SVG gr Ge ⟨
   Path 32 × ≍⟜-⟜(××0⌈1-˜|) ⌽∘-⊸∾1‿2
